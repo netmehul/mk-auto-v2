@@ -52,7 +52,15 @@ export function RevealItem({
   );
 }
 
-export function Eyebrow({ children, tone = "gold" }: { children: ReactNode; tone?: "gold" | "light" }) {
+export function Eyebrow({
+  children,
+  tone = "gold",
+}: {
+  children: ReactNode;
+  tone?: "gold" | "light" | "dark";
+}) {
+  const toneClass =
+    tone === "gold" ? "text-gold" : tone === "light" ? "text-off-white/70" : "text-navy-900/70";
   return (
     <RevealItem className="flex items-center gap-3">
       <motion.span
@@ -62,7 +70,7 @@ export function Eyebrow({ children, tone = "gold" }: { children: ReactNode; tone
         viewport={{ once: true, amount: 0.6 }}
         transition={{ duration: 0.8, ease: easeOut }}
       />
-      <span className={tone === "gold" ? "eyebrow text-gold" : "eyebrow text-off-white/70"}>{children}</span>
+      <span className={`eyebrow ${toneClass}`}>{children}</span>
     </RevealItem>
   );
 }

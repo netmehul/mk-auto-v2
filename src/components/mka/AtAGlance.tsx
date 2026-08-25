@@ -59,7 +59,7 @@ export function AtAGlance() {
       ref={root}
       id="at-a-glance"
       aria-labelledby="glance-title"
-      className="relative overflow-hidden bg-navy-900 section-y"
+      className="relative overflow-hidden bg-off-white section-y"
     >
       <img
         src={glanceBg}
@@ -68,19 +68,19 @@ export function AtAGlance() {
         loading="lazy"
         width={1920}
         height={1080}
-        className="glance-bg absolute inset-0 h-[120%] w-full object-cover opacity-25"
+        className="glance-bg absolute inset-0 h-[120%] w-full object-cover opacity-10"
       />
-      <div className="absolute inset-0 bg-navy-900/80" />
+      <div className="absolute inset-0 bg-off-white/90" />
 
       <div className="shell relative">
         <RevealGroup className="max-w-3xl">
-          <Eyebrow tone="light">At a Glance</Eyebrow>
+          <Eyebrow tone="dark">At a Glance</Eyebrow>
           <RevealItem>
-            <h2 id="glance-title" className="h2-display mt-7 text-off-white">
+            <h2 id="glance-title" className="h2-display mt-7 text-navy-900">
               Scale that serves the whole of the UAE.
             </h2>
           </RevealItem>
-          <RevealItem as="p" className="mt-6 max-w-[58ch] text-[17px] leading-[1.7] text-off-white/70">
+          <RevealItem as="p" className="mt-6 max-w-[58ch] text-[17px] leading-[1.7] text-navy-900/70">
             From Dubai to the Northern Emirates, our footprint is built to keep customers close to sales,
             service and genuine parts.
           </RevealItem>
@@ -89,14 +89,14 @@ export function AtAGlance() {
         <RevealGroup className="mt-16 grid gap-12 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4">
           {STATS.map((stat) => (
             <RevealItem key={stat.label}>
-              <div className="border-t border-off-white/15 pt-6">
-                <p className="font-display text-5xl text-off-white lg:text-6xl">
+              <div className="border-t border-navy-900/15 pt-6">
+                <p className="font-display text-5xl text-navy-900 lg:text-6xl">
                   <span className="stat-number" data-value={stat.value}>
                     0
                   </span>
                   <span className="text-gold">{stat.suffix}</span>
                 </p>
-                <p className="mt-4 max-w-[22ch] text-sm leading-relaxed text-off-white/60">{stat.label}</p>
+                <p className="mt-4 max-w-[22ch] text-sm leading-relaxed text-navy-900/60">{stat.label}</p>
               </div>
             </RevealItem>
           ))}
