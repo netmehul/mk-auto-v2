@@ -137,9 +137,6 @@ export function Hero() {
           />
         </span>
       </div>
-
-        </span>
-      </div>
     </section>
   );
 }
