@@ -11,7 +11,7 @@ export function WhoWeAre() {
       aria-labelledby="who-we-are-title"
       className="section-y relative overflow-hidden bg-off-white text-ink"
     >
-      <div className="pointer-events-none absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'%3E%3Ctext x='0' y='60' font-family='Arial Black, Arial, sans-serif' font-size='40' font-weight='900' fill='%2300004D' letter-spacing='-4'%3EMK%3C/text%3E%3Ctext x='100' y='160' font-family='Arial Black, Arial, sans-serif' font-size='40' font-weight='900' fill='%2300004D' letter-spacing='-4'%3EMK%3C/text%3E%3C/svg%3E\")", backgroundRepeat: "repeat", backgroundSize: "240px 240px" }} />
+      
       <div className="shell relative grid items-center gap-14 lg:grid-cols-12 lg:gap-20">
         <RevealGroup className="lg:col-span-6">
           <Eyebrow tone="dark">Who We Are</Eyebrow>

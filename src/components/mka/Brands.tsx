@@ -36,7 +36,7 @@ export function Brands() {
 
   return (
     <section ref={root} id="our-brands" aria-labelledby="brands-title" className="relative overflow-hidden bg-navy-900 section-y">
-      <div className="monogram-texture pointer-events-none absolute inset-0" aria-hidden="true" />
+      
       <div className="shell relative">
         <RevealGroup className="max-w-3xl">
           <Eyebrow tone="light">Trusted Dealer to Our Brands</Eyebrow>

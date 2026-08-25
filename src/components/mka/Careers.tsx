@@ -36,7 +36,7 @@ export function Careers() {
 
   return (
     <section ref={root} id="careers" aria-labelledby="careers-title" className="relative overflow-hidden bg-navy-800 section-y">
-      <div className="monogram-texture pointer-events-none absolute inset-0" aria-hidden="true" />
+      
       <div className="shell relative">
         <RevealGroup>
           <Eyebrow tone="light">Careers</Eyebrow>
