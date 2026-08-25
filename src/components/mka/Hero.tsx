@@ -10,11 +10,9 @@ import { prefersReducedMotion, isMobileViewport } from "@/lib/motion-prefs";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
-const LINES = [
-  "A legacy that inspires.",
-  "A vision that moves forward.",
-  "Global automotive excellence, brought to the UAE.",
-];
+const LINES = ["A legacy that inspires.", "A vision that moves forward."];
+const MARQUE_STRIP = ["Dongfeng", "Omoda", "Jaecoo"];
+
 
 export function Hero() {
   const root = useRef<HTMLElement>(null);
