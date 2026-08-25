@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import mkAnimation from "@/assets/mk-line-animation.svg.asset.json";
+import mkAnimation from "@/assets/mk-line-animation-navy.svg.asset.json";
 import { Eyebrow, RevealGroup, RevealItem } from "./Reveal";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
@@ -9,30 +9,30 @@ export function WhoWeAre() {
     <section
       id="who-we-are"
       aria-labelledby="who-we-are-title"
-      className="section-y relative overflow-hidden bg-navy-900 text-off-white"
+      className="section-y relative overflow-hidden bg-off-white text-ink"
     >
-      <div className="monogram-texture pointer-events-none absolute inset-0" />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'%3E%3Ctext x='0' y='60' font-family='Arial Black, Arial, sans-serif' font-size='40' font-weight='900' fill='%2300004D' letter-spacing='-4'%3EMK%3C/text%3E%3Ctext x='100' y='160' font-family='Arial Black, Arial, sans-serif' font-size='40' font-weight='900' fill='%2300004D' letter-spacing='-4'%3EMK%3C/text%3E%3C/svg%3E\")", backgroundRepeat: "repeat", backgroundSize: "240px 240px" }} />
       <div className="shell relative grid items-center gap-14 lg:grid-cols-12 lg:gap-20">
         <RevealGroup className="lg:col-span-6">
-          <Eyebrow>Who We Are</Eyebrow>
+          <Eyebrow tone="dark">Who We Are</Eyebrow>
           <RevealItem>
-            <h2 id="who-we-are-title" className="h2-display mt-7 max-w-[18ch] text-off-white">
+            <h2 id="who-we-are-title" className="h2-display mt-7 max-w-[18ch] text-navy-900">
               A UAE automotive group built on legacy and scale.
             </h2>
           </RevealItem>
-          <RevealItem as="p" className="mt-7 max-w-[62ch] text-[17px] leading-[1.7] text-off-white/65">
+          <RevealItem as="p" className="mt-7 max-w-[62ch] text-[17px] leading-[1.7] text-ink/65">
             Part of the Mahy Khoory family of businesses, MKA represents world-class automotive brands across
             the Emirates. Our operation spans distribution, retail, aftersales and genuine parts — supported by
             a network engineered for consistency in every showroom we open.
           </RevealItem>
-          <RevealItem as="p" className="mt-4 max-w-[62ch] text-[17px] leading-[1.7] text-off-white/65">
+          <RevealItem as="p" className="mt-4 max-w-[62ch] text-[17px] leading-[1.7] text-ink/65">
             We measure ourselves on long-term ownership experience, not single transactions. That principle
             shapes how we invest in facilities, technicians and the customers who trust us.
           </RevealItem>
           <RevealItem className="mt-9">
             <a
               href="#at-a-glance"
-              className="group inline-flex items-center gap-3 font-display text-xs uppercase tracking-[0.16em] text-off-white"
+              className="group inline-flex items-center gap-3 font-display text-xs uppercase tracking-[0.16em] text-navy-900"
             >
               Learn more about us
               <span className="block h-px w-8 bg-gold transition-all duration-300 group-hover:w-14" />
