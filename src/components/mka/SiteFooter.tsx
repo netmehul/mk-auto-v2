@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "motion/react";
 
 import logoAsset from "@/assets/logo.svg.asset.json";
+import logo from "@/assets/logo.svg";
 import { RevealGroup, RevealItem } from "./Reveal";
 
 // ============================================================
@@ -152,7 +153,7 @@ export function SiteFooter() {
               className="inline-flex"
             >
               <img
-                src={logoAsset.url}
+                src={logo}
                 alt="MAHY Khooray Automotive"
                 className="
                   h-auto
@@ -321,6 +322,7 @@ export function SiteFooter() {
             mx-auto
             flex
             w-full
+            max-w-[1440px]
             flex-col
             items-center
             gap-3

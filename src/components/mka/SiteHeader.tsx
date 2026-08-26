@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useSpring } from "motion/react";
 import logoAsset from "@/assets/logo.svg.asset.json";
+import logo from "@/assets/logo.svg";
 import { cn } from "@/lib/utils";
 
 const NAV = [
@@ -40,7 +41,7 @@ export function SiteHeader() {
       />
       <div className="shell flex items-center justify-between py-5">
         <a href="#top" aria-label="MKA — Mahy Khoory Automotive home">
-          <img src={logoAsset.url} alt="Mahy Khoory Automotive" className="h-12 w-auto lg:h-16" />
+          <img src={logo} alt="Mahy Khoory Automotive" className="h-12 w-auto lg:h-16" />
         </a>
 
         <nav aria-label="Primary" className="hidden items-center gap-9 lg:flex">
