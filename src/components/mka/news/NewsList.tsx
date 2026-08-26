@@ -92,7 +92,7 @@ export function NewsList() {
         <RevealGroup className="mt-14 grid gap-10 md:grid-cols-3">
           {STORIES.map((story) => (
             <RevealItem key={story.title}>
-              <a href="#news" className="group block">
+              <a href="/news_details" className="group block">
                 <div className="overflow-hidden">
                   <img
                     src={story.image}

@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as News_detailsRouteImport } from './routes/news_details'
 import { Route as News_insightsRouteImport } from './routes/news_insights'
 
 const IndexRoute = IndexRouteImport.update({
@@ -23,6 +24,11 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const News_detailsRoute = News_detailsRouteImport.update({
+  id: '/news_details',
+  path: '/news_details',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const News_insightsRoute = News_insightsRouteImport.update({
   id: '/news_insights',
   path: '/news_insights',
@@ -32,30 +38,34 @@ const News_insightsRoute = News_insightsRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/news_details': typeof News_detailsRoute
   '/news_insights': typeof News_insightsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/news_details': typeof News_detailsRoute
   '/news_insights': typeof News_insightsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/news_details': typeof News_detailsRoute
   '/news_insights': typeof News_insightsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/news_insights'
+  fullPaths: '/' | '/about' | '/news_details' | '/news_insights'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/news_insights'
-  id: '__root__' | '/' | '/about' | '/news_insights'
+  to: '/' | '/about' | '/news_details' | '/news_insights'
+  id: '__root__' | '/' | '/about' | '/news_details' | '/news_insights'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  News_detailsRoute: typeof News_detailsRoute
   News_insightsRoute: typeof News_insightsRoute
 }
 
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/news_details': {
+      id: '/news_details'
+      path: '/news_details'
+      fullPath: '/news_details'
+      preLoaderRoute: typeof News_detailsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/news_insights': {
       id: '/news_insights'
       path: '/news_insights'
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  News_detailsRoute: News_detailsRoute,
   News_insightsRoute: News_insightsRoute,
 }
 export const routeTree = rootRouteImport
