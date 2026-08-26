@@ -1,7 +1,7 @@
 import news1 from "@/assets/news-1.jpg";
 import news2 from "@/assets/news-2.jpg";
 import news3 from "@/assets/news-3.jpg";
-import { Eyebrow, RevealGroup, RevealItem } from "./Reveal";
+import { RevealGroup, RevealItem } from "./Reveal";
 
 const STORIES = [
   {
@@ -33,9 +33,9 @@ export function News() {
       <div className="shell">
         <RevealGroup className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <Eyebrow>News &amp; Insights</Eyebrow>
+
             <RevealItem>
-              <h2 id="news-title" className="h2-display mt-7 max-w-[20ch] text-navy-900">
+              <h2 id="news-title" className="h2-display uppercase mt-7 max-w-[20ch] text-navy-900">
                 The latest from the group.
               </h2>
             </RevealItem>

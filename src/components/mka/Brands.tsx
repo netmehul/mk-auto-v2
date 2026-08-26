@@ -134,8 +134,8 @@ export function Brands() {
               text-off-white/70
             "
           >
-            Each brand is supported end-to-end by MKA — sales,
-            aftersales, genuine parts and warranty — under one
+            Each brand is supported end-to-end by MKA sales,
+            aftersales, genuine parts and warranty under one
             accountable group.
           </RevealItem>
         </RevealGroup>
@@ -328,19 +328,12 @@ export function Brands() {
                     group
                     flex
                     h-full
-                    min-h-[100px]
-                    md:min-h-[180px]
+                    min-h-[80px]
                     w-full
                     flex-col
-                    justify-between
-                    p-8
-                    text-left
+                    p-2
                     transition-colors
                     duration-500
-
-                    lg:min-h-[260px]
-                    lg:p-10
-
                     ${
                       isActive
                         ? "bg-navy-800"
@@ -358,6 +351,7 @@ export function Brands() {
                       flex
                       min-h-[70px]
                       items-center
+                      justify-center
                     "
                   >
                     <img
@@ -367,9 +361,6 @@ export function Brands() {
                         block
                         max-h-[52px]
                         w-auto
-                        
-                        object-contain
-                        object-left
                         opacity-90
                         transition-opacity
                         duration-500
@@ -384,47 +375,7 @@ export function Brands() {
                       DESCRIPTION
                       ================================================== */}
 
-                  <span
-                    className="
-                      mt-10
-                      flex
-                      items-center
-                      justify-between
-                      gap-4
-                    "
-                  >
-                    <span
-                      className={`
-                        text-sm
-                        transition-colors
-                        duration-500
-
-                        ${
-                          isActive
-                            ? "text-off-white/75"
-                            : "text-off-white/55"
-                        }
-                      `}
-                    >
-                      {brand.note}
-                    </span>
-
-                    <span
-                      className={`
-                        block
-                        h-px
-                        shrink-0
-                        transition-all
-                        duration-500
-
-                        ${
-                          isActive
-                            ? "w-14 bg-gold"
-                            : "w-8 bg-gold/60 group-hover:w-14 group-hover:bg-gold"
-                        }
-                      `}
-                    />
-                  </span>
+                  
 
                 </button>
               </RevealItem>

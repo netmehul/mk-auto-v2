@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useSpring } from "motion/react";
-import logoAsset from "@/assets/logo.svg.asset.json";
 import logo from "@/assets/logo.svg";
 import { cn } from "@/lib/utils";
 

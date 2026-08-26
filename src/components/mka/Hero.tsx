@@ -21,7 +21,6 @@ export function Hero() {
   useGSAP(
     () => {
       if (prefersReducedMotion() || isMobileViewport()) return;
-
       gsap.to(".hero-media", {
         yPercent: 12,
         scale: 1.08,
@@ -33,7 +32,6 @@ export function Hero() {
           scrub: true,
         },
       });
-
       gsap.to(".hero-scrim", {
         opacity: 1,
         ease: "none",
@@ -44,7 +42,6 @@ export function Hero() {
           scrub: true,
         },
       });
-
       gsap.to(".hero-content", {
         y: -60,
         opacity: 0.15,
@@ -87,9 +84,7 @@ export function Hero() {
         closeVideo();
       }
     };
-
     window.addEventListener("keydown", handleKeyDown);
-
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "";
@@ -122,22 +117,22 @@ export function Hero() {
             className="h-full w-full cursor-pointer object-cover"
           />
         </div>
-
         <div className="absolute inset-0 bg-gradient-to-b from-navy-900/70 via-navy-900/35 to-navy-900/90" />
         <div className="hero-scrim absolute inset-0 bg-navy-900 opacity-0" />
-
         <div
           className={`hero-content shell relative z-10 w-full pb-14 pt-40 transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] lg:pb-16 ${
-            videoStarted && !contentVisible
-              ? "pointer-events-none opacity-0"
-              : "opacity-100"
+            videoStarted && !contentVisible ? "pointer-events-none opacity-0" : "opacity-100"
           }`}
         >
           <motion.div
             initial="hidden"
             animate="show"
             variants={{
-              show: { transition: { staggerChildren: 0.12 } },
+              show: {
+                transition: {
+                  staggerChildren: 0.12,
+                },
+              },
             }}
           >
             <div className="mt-6 w-full">
@@ -166,20 +161,11 @@ export function Hero() {
                         },
                       }}
                     >
-                      <span
-                        className={
-                          i === 1
-                            ? "text-off-white/70"
-                            : undefined
-                        }
-                      >
-                        {line}
-                      </span>
+                      <span className={i === 1 ? "text-off-white/70" : undefined}>{line}</span>
                     </motion.span>
                   </span>
                 ))}
               </h1>
-
               <div className="mt-7">
                 <PrimaryButton
                   type="button"
@@ -192,12 +178,8 @@ export function Hero() {
             </div>
           </motion.div>
         </div>
-
         <div className="pointer-events-none absolute bottom-8 right-6 z-10 hidden flex-col items-center gap-3 lg:flex">
-          <span className="eyebrow text-off-white/50">
-            Scroll
-          </span>
-
+          <span className="eyebrow text-off-white/50">Scroll</span>
           <span className="relative block h-14 w-px overflow-hidden bg-off-white/20">
             <motion.span
               className="absolute inset-x-0 top-0 block h-5 bg-gold"
@@ -211,11 +193,9 @@ export function Hero() {
           </span>
         </div>
       </section>
-
       {/* ======================================================
           FULLSCREEN VIDEO
-          ====================================================== */}
-
+      ====================================================== */}
       {isVideoOpen && (
         <motion.div
           initial={{ opacity: 0 }}
@@ -230,33 +210,11 @@ export function Hero() {
             playsInline
             className="h-full w-full object-contain"
           />
-
           <button
             type="button"
             onClick={closeVideo}
             aria-label="Close video"
-            className="
-              absolute
-              right-5
-              top-5
-              z-10
-              flex
-              h-11
-              w-11
-              items-center
-              justify-center
-              border
-              border-white/30
-              bg-black/40
-              text-2xl
-              text-white
-              backdrop-blur-sm
-              transition-colors
-              duration-300
-              hover:border-white
-              hover:bg-white
-              hover:text-navy-900
-            "
+            className="absolute right-5 top-5 z-10 flex h-11 w-11 items-center justify-center border border-white/30 bg-black/40 text-2xl text-white backdrop-blur-sm transition-colors duration-300 hover:border-white hover:bg-white hover:text-navy-900"
           >
             ×
           </button>

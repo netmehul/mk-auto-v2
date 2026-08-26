@@ -2,7 +2,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { Eyebrow, RevealGroup, RevealItem } from "./Reveal";
+import { RevealGroup, RevealItem } from "./Reveal";
 import { MagneticButton } from "./Buttons";
 import { prefersReducedMotion, isMobileViewport } from "@/lib/motion-prefs";
 
@@ -38,10 +38,7 @@ export function Careers() {
     <section ref={root} id="careers" aria-labelledby="careers-title" className="relative overflow-hidden bg-navy-800 section-y">
       
       <div className="shell relative">
-        <RevealGroup>
-          <Eyebrow tone="light">Careers</Eyebrow>
-        </RevealGroup>
-        <h2 id="careers-title" className="h2-display mt-8 max-w-[20ch] text-off-white">
+        <h2 id="careers-title" className="h2-display uppercase mt-8 max-w-[400ch] text-off-white">
           <span className="careers-line block">Be part of something bigger.</span>
           <span className="careers-line block text-off-white/70">Build the future with us.</span>
         </h2>

@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import mkAnimation from "@/assets/mk-line-animation-navy.svg.asset.json";
 import { RevealGroup, RevealItem } from "./Reveal";
+import MkAnimationF from "@/assets/mk-line-animation-navy.svg";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -21,7 +22,7 @@ export function WhoWeAre() {
           </RevealItem>
           <RevealItem as="p" className="mt-7 max-w-[62ch] text-[17px] leading-[1.7] text-ink/65">
             Part of the Mahy Khoory family of businesses, MKA represents world-class automotive brands across
-            the Emirates. Our operation spans distribution, retail, aftersales and genuine parts — supported by
+            the Emirates. Our operation spans distribution, retail, aftersales and genuine parts - supported by
             a network engineered for consistency in every showroom we open.
           </RevealItem>
           <RevealItem as="p" className="mt-4 max-w-[62ch] text-[17px] leading-[1.7] text-ink/65">
@@ -48,7 +49,7 @@ export function WhoWeAre() {
             className="relative flex items-center justify-center py-6"
           >
             <img
-              src={mkAnimation.url}
+              src={MkAnimationF}
               alt="Animated MK monogram outline"
               loading="lazy"
               width={419}

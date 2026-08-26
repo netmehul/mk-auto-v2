@@ -322,7 +322,6 @@ export function SiteFooter() {
             mx-auto
             flex
             w-full
-            max-w-[1440px]
             flex-col
             items-center
             gap-3
@@ -346,12 +345,12 @@ export function SiteFooter() {
 
           <p
             className="
-              text-[14px]
+              text-[12px]
               uppercase
               tracking-[0.02em]
               text-white/45
 
-              md:text-[16px]
+              md:text-[14px]
             "
           >
             Copyright © 2026 MAHYKhooray.com - All rights
@@ -379,7 +378,7 @@ export function SiteFooter() {
                 key={item.label}
                 href={item.href}
                 className="
-                  text-[14px]
+                  text-[12px]
                   uppercase
                   tracking-[0.02em]
                   text-white/45
@@ -389,7 +388,7 @@ export function SiteFooter() {
 
                   hover:text-white
 
-                  md:text-[16px]
+                  md:text-[14px]
                 "
               >
                 {item.label}
