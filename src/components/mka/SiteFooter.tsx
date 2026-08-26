@@ -27,7 +27,7 @@ const brandLinks = [
 const exploreLinks = [
   {
     label: "Careers",
-    href: "#",
+    href: "/careers",
   },
   {
     label: "News & Insights",

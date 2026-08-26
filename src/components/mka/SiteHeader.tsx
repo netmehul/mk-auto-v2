@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 const NAV = [
   { label: "About Us", href: "/about" },
   { label: "News & Insights", href: "/news_insights" },
-  { label: "Careers", href: "#careers" },
+  { label: "Careers", href: "/careers" },
 ];
 
 export function SiteHeader() {
@@ -55,7 +55,7 @@ export function SiteHeader() {
             </a>
           ))}
           <a
-            href="#careers"
+            href="/contactus"
             className="border border-off-white/40 px-5 py-2.5 font-display text-[12px] uppercase tracking-[0.16em] text-off-white transition-colors hover:border-gold hover:text-gold-soft"
           >
             Get In Touch

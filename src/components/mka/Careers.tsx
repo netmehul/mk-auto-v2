@@ -8,7 +8,7 @@ import { prefersReducedMotion, isMobileViewport } from "@/lib/motion-prefs";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-export function Careers() {
+export function CareersSection() {
   const root = useRef<HTMLElement>(null);
 
   useGSAP(
@@ -48,7 +48,7 @@ export function Careers() {
             group grows.
           </RevealItem>
           <RevealItem>
-            <MagneticButton href="#news">Explore Careers</MagneticButton>
+            <MagneticButton href="/careers">Explore Careers</MagneticButton>
           </RevealItem>
         </RevealGroup>
       </div>

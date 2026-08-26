@@ -4,7 +4,7 @@ import { Hero } from "@/components/mka/Hero";
 import { WhoWeAre } from "@/components/mka/WhoWeAre";
 import { Brands } from "@/components/mka/Brands";
 import { AtAGlance } from "@/components/mka/AtAGlance";
-import { Careers } from "@/components/mka/Careers";
+import { CareersSection } from "@/components/mka/Careers";
 import { News } from "@/components/mka/News";
 import { SiteFooter } from "@/components/mka/SiteFooter";
 
@@ -55,7 +55,7 @@ function Home() {
         <WhoWeAre />
         <Brands />
         <AtAGlance />
-        <Careers />
+        <CareersSection />
         <News />
       </main>
       <SiteFooter />
