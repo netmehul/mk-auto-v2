@@ -4,7 +4,7 @@ import logo from "@/assets/logo.svg";
 import { cn } from "@/lib/utils";
 
 const NAV = [
-  { label: "About Us", href: "#who-we-are" },
+  { label: "About Us", href: "/about" },
   { label: "News & Insights", href: "#our-brands" },
   { label: "Careers", href: "#careers" },
 ];
@@ -39,7 +39,7 @@ export function SiteHeader() {
         aria-hidden="true"
       />
       <div className="shell flex items-center justify-between py-5">
-        <a href="#top" aria-label="MKA — Mahy Khoory Automotive home">
+        <a href="/" aria-label="MKA — Mahy Khoory Automotive home">
           <img src={logo} alt="Mahy Khoory Automotive" className="h-12 w-auto lg:h-16" />
         </a>
 
