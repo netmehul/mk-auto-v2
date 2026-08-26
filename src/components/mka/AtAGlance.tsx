@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import glanceBg from "@/assets/glance-bg.jpg";
-import { Eyebrow, RevealGroup, RevealItem } from "./Reveal";
+import { RevealGroup, RevealItem } from "./Reveal";
 import { prefersReducedMotion, isMobileViewport } from "@/lib/motion-prefs";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
@@ -74,9 +74,8 @@ export function AtAGlance() {
 
       <div className="shell relative">
         <RevealGroup className="max-w-3xl">
-          <Eyebrow tone="dark">At a Glance</Eyebrow>
           <RevealItem>
-            <h2 id="glance-title" className="h2-display mt-7 text-navy-900">
+            <h2 id="glance-title" className="h2-display uppercase mt-7 text-navy-900">
               Scale that serves the whole of the UAE.
             </h2>
           </RevealItem>

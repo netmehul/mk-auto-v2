@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import mkAnimation from "@/assets/mk-line-animation-navy.svg.asset.json";
-import { Eyebrow, RevealGroup, RevealItem } from "./Reveal";
+import { RevealGroup, RevealItem } from "./Reveal";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -14,9 +14,8 @@ export function WhoWeAre() {
       
       <div className="shell relative grid items-center gap-14 lg:grid-cols-12 lg:gap-20">
         <RevealGroup className="lg:col-span-6">
-          <Eyebrow tone="dark">Who We Are</Eyebrow>
           <RevealItem>
-            <h2 id="who-we-are-title" className="h2-display mt-7 max-w-[18ch] text-navy-900">
+            <h2 id="who-we-are-title" className="h2-display mt-7 uppercase max-w-[18ch] text-navy-900">
               A UAE automotive group built on legacy and scale.
             </h2>
           </RevealItem>

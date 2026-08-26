@@ -1,97 +1,879 @@
+import { useState } from "react";
+import { motion } from "motion/react";
+
 import logoAsset from "@/assets/logo.svg.asset.json";
 import { RevealGroup, RevealItem } from "./Reveal";
 
-const COLUMNS = [
+// ============================================================
+// FOOTER DATA
+// ============================================================
+
+const brandLinks = [
   {
-    title: "Company",
-    links: ["About", "News & Insights", "Careers", "Contact"],
+    label: "Dongfeng",
+    href: "#",
   },
   {
-    title: "Brands",
-    links: ["Dongfeng", "Omoda", "Jaecoo"],
+    label: "OMODA | JAECOO",
+    href: "#",
   },
   {
-    title: "Support",
-    links: ["Service Booking", "Genuine Parts", "Warranty"],
+    label: "Pre Owned",
+    href: "#",
   },
 ];
 
-function SocialIcon({ label, d }: { label: string; d: string }) {
-  return (
-    <a
-      href="#news"
-      aria-label={label}
-      className="flex h-10 w-10 items-center justify-center border border-off-white/15 text-off-white/70 transition-colors hover:border-gold hover:text-gold-soft"
-    >
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-        <path d={d} />
-      </svg>
-    </a>
-  );
-}
+const exploreLinks = [
+  {
+    label: "Careers",
+    href: "#",
+  },
+  {
+    label: "News & Insights",
+    href: "#",
+  },
+];
+
+const legalLinks = [
+  {
+    label: "Privacy & Policy",
+    href: "#",
+  },
+  {
+    label: "Cookie Policy",
+    href: "#",
+  },
+  {
+    label: "Terms of Services",
+    href: "#",
+  },
+];
+
+const socials = [
+  {
+    label: "Facebook",
+    icon: "/icons/social/facebook.svg",
+    href: "#",
+  },
+  {
+    label: "Instagram",
+    icon: "/icons/social/instagram.svg",
+    href: "#",
+  },
+  {
+    label: "X",
+    icon: "/icons/social/x.svg",
+    href: "#",
+  },
+  {
+    label: "TikTok",
+    icon: "/icons/social/tiktok.svg",
+    href: "#",
+  },
+  {
+    label: "YouTube",
+    icon: "/icons/social/youtube.svg",
+    href: "#",
+  },
+];
+
+// ============================================================
+// FOOTER
+// ============================================================
 
 export function SiteFooter() {
   return (
-    <footer className="bg-navy-900 pb-8 pt-20 lg:pt-28">
-      <div className="shell">
-        <RevealGroup className="grid gap-12 lg:grid-cols-12">
-          <RevealItem className="lg:col-span-4">
-            <img src={logoAsset.url} alt="Mahy Khoory Automotive" className="h-11 w-auto" />
-            <p className="mt-6 max-w-[34ch] text-sm leading-relaxed text-off-white/60">
-              Mahy Khoory Automotive LLC
-              <br />
-              Sheikh Zayed Road, Dubai, United Arab Emirates
-            </p>
-            <p className="mt-4 text-sm text-off-white/60">
-              <a href="tel:+97140000000" className="hover:text-gold-soft">
-                +971 4 000 0000
-              </a>
-              {" · "}
-              <a href="mailto:info@mka.ae" className="hover:text-gold-soft">
-                info@mka.ae
-              </a>
-            </p>
+    <footer className="relative w-full overflow-hidden bg-navy-900">
+
+      {/* ======================================================
+          BACKGROUND PATTERN
+          ====================================================== */}
+
+      <div
+        aria-hidden="true"
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          opacity-[0.045]
+        "
+      >
+        <div
+          className="
+            absolute
+            inset-0
+            bg-[url('/logo/MK-pattern.svg')]
+            bg-repeat
+            bg-[length:110px_110px]
+          "
+        />
+      </div>
+
+
+      {/* ======================================================
+          DESKTOP FOOTER
+          ====================================================== */}
+
+      <div
+        className="
+          relative
+          z-10
+          mx-auto
+          hidden
+          w-full
+          px-6
+          py-12
+
+          md:block
+          md:px-10
+          md:py-14
+
+          lg:px-12
+          lg:py-16
+        "
+      >
+        <RevealGroup
+          className="
+            grid
+            grid-cols-[1.6fr_0.6fr_0.6fr_0.8fr]
+            gap-8
+            lg:gap-12
+          "
+        >
+
+          {/* ==================================================
+              LOGO
+              ================================================== */}
+
+          <RevealItem>
+            <a
+              href="/"
+              aria-label="MAHY Khooray Automotive"
+              className="inline-flex"
+            >
+              <img
+                src={logoAsset.url}
+                alt="MAHY Khooray Automotive"
+                className="
+                  h-auto
+                  w-[245px]
+                  lg:w-[385px]
+                "
+              />
+            </a>
           </RevealItem>
 
-          {COLUMNS.map((col) => (
-            <RevealItem key={col.title} className="lg:col-span-2">
-              <h3 className="eyebrow text-off-white/50">{col.title}</h3>
-              <ul className="mt-6 space-y-3">
-                {col.links.map((link) => (
-                  <li key={link}>
-                    <a href="#news" className="text-sm text-off-white/75 transition-colors hover:text-gold-soft">
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </RevealItem>
-          ))}
 
-          <RevealItem className="lg:col-span-2">
-            <h3 className="eyebrow text-off-white/50">Follow</h3>
-            <div className="mt-6 flex gap-3">
-              <SocialIcon label="LinkedIn" d="M4 9v11M4 4.5v.01M10 20V13a3 3 0 016 0v7M10 20v-7" />
-              <SocialIcon label="Instagram" d="M3 8a5 5 0 015-5h8a5 5 0 015 5v8a5 5 0 01-5 5H8a5 5 0 01-5-5V8zm9 0a4 4 0 100 8 4 4 0 000-8zm5.5-1.5v.01" />
-              <SocialIcon label="YouTube" d="M2.5 8.5A3 3 0 015.5 5.5h13a3 3 0 013 3v7a3 3 0 01-3 3h-13a3 3 0 01-3-3v-7zM10 9.5l5 2.5-5 2.5v-5z" />
-            </div>
-          </RevealItem>
+          {/* ==================================================
+              OUR BRANDS
+              ================================================== */}
+
+          <FooterColumn title="Our Brands">
+            <ul className="flex flex-col gap-4">
+              {brandLinks.map((item) => (
+                <FooterLink
+                  key={item.label}
+                  href={item.href}
+                >
+                  {item.label}
+                </FooterLink>
+              ))}
+            </ul>
+          </FooterColumn>
+
+
+          {/* ==================================================
+              EXPLORE
+              ================================================== */}
+
+          <FooterColumn title="Explore">
+            <ul className="flex flex-col gap-4">
+              {exploreLinks.map((item) => (
+                <FooterLink
+                  key={item.label}
+                  href={item.href}
+                >
+                  {item.label}
+                </FooterLink>
+              ))}
+            </ul>
+          </FooterColumn>
+
+
+          {/* ==================================================
+              CONTACT
+              ================================================== */}
+
+          <FooterColumn title="Contact">
+            <ContactContent />
+          </FooterColumn>
+
         </RevealGroup>
+      </div>
 
-        <div className="mt-16 border-t border-off-white/12 pt-6">
-          <div className="flex flex-col gap-3 text-xs text-off-white/45 sm:flex-row sm:items-center sm:justify-between">
-            <p>© {new Date().getFullYear()} Mahy Khoory Automotive. All rights reserved.</p>
-            <p className="flex gap-6">
-              <a href="#news" className="hover:text-gold-soft">
-                Privacy Policy
+
+      {/* ======================================================
+          MOBILE FOOTER
+          ====================================================== */}
+
+      <div
+        className="
+          relative
+          z-10
+          flex
+          w-full
+          flex-col
+          items-center
+          px-6
+          py-12
+
+          md:hidden
+        "
+      >
+
+        {/* ====================================================
+            LOGO
+            ==================================================== */}
+
+        <RevealItem>
+          <a
+            href="/"
+            aria-label="MAHY Khooray Automotive"
+            className="
+              inline-flex
+              items-center
+              justify-center
+            "
+          >
+            <img
+              src={logoAsset.url}
+              alt="MAHY Khooray Automotive"
+              className="
+                h-auto
+                w-[235px]
+              "
+            />
+          </a>
+        </RevealItem>
+
+
+        {/* ====================================================
+            MOBILE NAV ACCORDIONS
+            ==================================================== */}
+
+        <div
+          className="
+            mt-10
+            flex
+            w-full
+            max-w-[420px]
+            flex-col
+          "
+        >
+          <MobileFooterAccordion
+            title="Our Brands"
+            items={brandLinks}
+          />
+
+          <MobileFooterAccordion
+            title="Explore"
+            items={exploreLinks}
+          />
+        </div>
+
+
+        {/* ====================================================
+            MOBILE CONTACT
+            ==================================================== */}
+
+        <div
+          className="
+            mt-10
+            flex
+            w-full
+            max-w-[420px]
+            flex-col
+            items-center
+            text-center
+          "
+        >
+          <ContactContent mobile />
+        </div>
+
+      </div>
+
+
+      {/* ======================================================
+          LEGAL BAR
+          ====================================================== */}
+
+      <div
+        className="
+          relative
+          z-10
+          border-t
+          border-white/[0.06]
+          bg-black/100
+        "
+      >
+        <div
+          className="
+            mx-auto
+            flex
+            w-full
+            flex-col
+            items-center
+            gap-3
+            px-6
+            py-4
+            text-center
+
+            md:flex-row
+            md:justify-between
+            md:px-10
+            md:py-3
+            md:text-left
+
+            lg:px-12
+          "
+        >
+
+          {/* ==================================================
+              COPYRIGHT
+              ================================================== */}
+
+          <p
+            className="
+              text-[14px]
+              uppercase
+              tracking-[0.02em]
+              text-white/45
+
+              md:text-[16px]
+            "
+          >
+            Copyright © 2026 MAHYKhooray.com - All rights
+            reserved.
+          </p>
+
+
+          {/* ==================================================
+              LEGAL LINKS
+              ================================================== */}
+
+          <nav
+            aria-label="Legal"
+            className="
+              flex
+              flex-wrap
+              items-center
+              justify-center
+              gap-x-5
+              gap-y-2
+            "
+          >
+            {legalLinks.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="
+                  text-[14px]
+                  uppercase
+                  tracking-[0.02em]
+                  text-white/45
+
+                  transition-colors
+                  duration-300
+
+                  hover:text-white
+
+                  md:text-[16px]
+                "
+              >
+                {item.label}
               </a>
-              <a href="#news" className="hover:text-gold-soft">
-                Terms of Use
-              </a>
-            </p>
-          </div>
+            ))}
+          </nav>
+
         </div>
       </div>
+
     </footer>
+  );
+}
+
+
+// ============================================================
+// MOBILE FOOTER ACCORDION
+// ============================================================
+
+function MobileFooterAccordion({
+  title,
+  items,
+}: {
+  title: string;
+  items: {
+    label: string;
+    href: string;
+  }[];
+}) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div
+      className="
+        w-full
+        border-b
+        border-white/[0.10]
+      "
+    >
+
+      {/* ======================================================
+          ACCORDION HEADER
+          ====================================================== */}
+
+      <button
+        type="button"
+        onClick={() => setOpen((value) => !value)}
+        aria-expanded={open}
+        className="
+          flex
+          w-full
+          items-center
+          justify-between
+          py-5
+        "
+      >
+        <span
+          className="
+            text-[14px]
+            uppercase
+            tracking-[0.22em]
+            text-white
+          "
+        >
+          {title}
+        </span>
+
+
+        {/* ==================================================
+            PLUS / MINUS
+            ================================================== */}
+
+        <span
+          className="
+            relative
+            flex
+            h-5
+            w-5
+            shrink-0
+            items-center
+            justify-center
+          "
+          aria-hidden="true"
+        >
+          {/* Horizontal line */}
+
+          <span
+            className="
+              absolute
+              h-px
+              w-3
+              bg-white
+            "
+          />
+
+          {/* Vertical line */}
+
+          <motion.span
+            animate={{
+              rotate: open ? 90 : 0,
+              opacity: open ? 0 : 1,
+            }}
+            transition={{
+              duration: 0.25,
+              ease: "easeInOut",
+            }}
+            className="
+              absolute
+              h-3
+              w-px
+              bg-white
+            "
+          />
+        </span>
+
+      </button>
+
+
+      {/* ======================================================
+          ACCORDION CONTENT
+          ====================================================== */}
+
+      <motion.div
+        initial={false}
+        animate={{
+          height: open ? "auto" : 0,
+          opacity: open ? 1 : 0,
+        }}
+        transition={{
+          height: {
+            duration: 0.3,
+            ease: [0.22, 1, 0.36, 1],
+          },
+          opacity: {
+            duration: 0.2,
+          },
+        }}
+        className="overflow-hidden"
+      >
+        <div
+          className="
+            flex
+            flex-col
+            items-center
+            gap-4
+            pb-5
+          "
+        >
+          {items.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              className="
+                text-[14px]
+                uppercase
+                tracking-[0.04em]
+                text-white/60
+
+                transition-colors
+                duration-300
+
+                hover:text-white
+              "
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+      </motion.div>
+
+    </div>
+  );
+}
+
+
+// ============================================================
+// CONTACT CONTENT
+// ============================================================
+
+function ContactContent({
+  mobile = false,
+}: {
+  mobile?: boolean;
+}) {
+  return (
+    <div
+      className={`
+        flex
+        flex-col
+
+        ${
+          mobile
+            ? "items-center text-center"
+            : "items-start text-left"
+        }
+      `}
+    >
+
+      {/* ====================================================
+          EMAIL
+          ==================================================== */}
+
+      <ContactItem
+        label="Email"
+        value="info@mahykhoorayautomotive.com"
+        href="mailto:info@mahykhoorayautomotive.com"
+        mobile={mobile}
+      />
+
+
+      {/* ====================================================
+          CALL
+          ==================================================== */}
+
+      <ContactItem
+        label="Call"
+        value="+971 - 1234 - 568 - 7891"
+        href="tel:+9711234567891"
+        mobile={mobile}
+      />
+
+
+      {/* ====================================================
+          ADDRESS
+          ==================================================== */}
+
+      <div
+        className={`
+          flex
+          flex-col
+          gap-2
+
+          ${
+            mobile
+              ? "items-center"
+              : "items-start"
+          }
+        `}
+      >
+        <span
+          className="
+            text-[14px]
+            uppercase
+            tracking-[0.22em]
+            text-white
+
+            md:text-[16px]
+          "
+        >
+          Address
+        </span>
+
+        <p
+          className="
+            text-[14px]
+            leading-relaxed
+            text-white/60
+          "
+        >
+          41, Near Abu Hail Metro Station, Dubai, UAE.
+        </p>
+      </div>
+
+
+      {/* ====================================================
+          SOCIAL LINKS
+          ==================================================== */}
+
+      <SocialLinks
+        className={`
+          mt-6
+
+          ${
+            mobile
+              ? "justify-center"
+              : "justify-start"
+          }
+        `}
+      />
+
+    </div>
+  );
+}
+
+
+// ============================================================
+// CONTACT ITEM
+// ============================================================
+
+function ContactItem({
+  label,
+  value,
+  href,
+  mobile = false,
+}: {
+  label: string;
+  value: string;
+  href: string;
+  mobile?: boolean;
+}) {
+  return (
+    <div
+      className={`
+        mb-6
+        flex
+        flex-col
+        gap-2
+
+        ${
+          mobile
+            ? "items-center text-center"
+            : "items-start text-left"
+        }
+      `}
+    >
+      <span
+        className="
+          text-[14px]
+          uppercase
+          tracking-[0.22em]
+          text-white
+
+          md:text-[16px]
+        "
+      >
+        {label}
+      </span>
+
+      <a
+        href={href}
+        className="
+          max-w-full
+          break-all
+          text-[14px]
+          leading-relaxed
+          text-white/60
+
+          transition-colors
+          duration-300
+
+          hover:text-white
+
+          md:text-[16px]
+        "
+      >
+        {value}
+      </a>
+    </div>
+  );
+}
+
+
+// ============================================================
+// SOCIAL LINKS
+// ============================================================
+
+function SocialLinks({
+  className = "",
+}: {
+  className?: string;
+}) {
+  return (
+    <div
+      className={`
+        flex
+        items-center
+        gap-2
+        ${className}
+      `}
+    >
+      {socials.map((social) => (
+        <a
+          key={social.label}
+          href={social.href}
+          aria-label={social.label}
+          className="
+            group
+            flex
+            h-10
+            w-10
+            items-center
+            justify-center
+
+            border
+            border-white/15
+
+            bg-transparent
+
+            transition-all
+            duration-300
+            ease-in-out
+
+            hover:border-white
+            hover:bg-white/10
+          "
+        >
+          <img
+            src={social.icon}
+            alt=""
+            width={36}
+            height={36}
+            className="
+              h-[36px]
+              w-[36px]
+              object-contain
+
+              transition-all
+              duration-300
+              ease-in-out
+            "
+          />
+        </a>
+      ))}
+    </div>
+  );
+}
+
+
+// ============================================================
+// DESKTOP FOOTER COLUMN
+// ============================================================
+
+function FooterColumn({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <RevealItem>
+      <div className="flex flex-col">
+
+        <h3
+          className="
+            mb-5
+            text-[14px]
+            uppercase
+            tracking-[0.22em]
+            text-white
+
+            md:text-[16px]
+          "
+        >
+          {title}
+        </h3>
+
+        {children}
+
+      </div>
+    </RevealItem>
+  );
+}
+
+
+// ============================================================
+// FOOTER LINK
+// ============================================================
+
+function FooterLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <li>
+      <a
+        href={href}
+        className="
+          text-[14px]
+          uppercase
+          tracking-[0.03em]
+          text-white/65
+
+          transition-colors
+          duration-300
+
+          hover:text-white
+
+          md:text-[16px]
+        "
+      >
+        {children}
+      </a>
+    </li>
   );
 }

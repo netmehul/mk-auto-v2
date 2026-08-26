@@ -4,11 +4,9 @@ import logoAsset from "@/assets/logo.svg.asset.json";
 import { cn } from "@/lib/utils";
 
 const NAV = [
-  { label: "Who We Are", href: "#who-we-are" },
-  { label: "Our Brands", href: "#our-brands" },
-  { label: "At a Glance", href: "#at-a-glance" },
+  { label: "About Us", href: "#who-we-are" },
+  { label: "News & Insights", href: "#our-brands" },
   { label: "Careers", href: "#careers" },
-  { label: "News", href: "#news" },
 ];
 
 export function SiteHeader() {
@@ -42,7 +40,7 @@ export function SiteHeader() {
       />
       <div className="shell flex items-center justify-between py-5">
         <a href="#top" aria-label="MKA — Mahy Khoory Automotive home">
-          <img src={logoAsset.url} alt="Mahy Khoory Automotive" className="h-9 w-auto lg:h-11" />
+          <img src={logoAsset.url} alt="Mahy Khoory Automotive" className="h-12 w-auto lg:h-16" />
         </a>
 
         <nav aria-label="Primary" className="hidden items-center gap-9 lg:flex">
@@ -60,7 +58,7 @@ export function SiteHeader() {
             href="#careers"
             className="border border-off-white/40 px-5 py-2.5 font-display text-[12px] uppercase tracking-[0.16em] text-off-white transition-colors hover:border-gold hover:text-gold-soft"
           >
-            Join Us
+            Get In Touch
           </a>
         </nav>
 
