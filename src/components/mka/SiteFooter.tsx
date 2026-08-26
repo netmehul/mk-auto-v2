@@ -31,7 +31,7 @@ const exploreLinks = [
   },
   {
     label: "News & Insights",
-    href: "#",
+    href: "/news_insights",
   },
 ];
 

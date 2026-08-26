@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { Eyebrow, RevealGroup, RevealItem } from "../Reveal";
+import { RevealGroup, RevealItem } from "../Reveal";
 import { prefersReducedMotion } from "@/lib/motion-prefs";
 import { EMIRATES } from "./uae-map-data";
 

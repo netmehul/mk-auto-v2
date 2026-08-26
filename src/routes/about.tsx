@@ -9,10 +9,10 @@ import { HeadOffice } from "@/components/mka/about/HeadOffice";
 import { BrandLocations } from "@/components/mka/about/BrandLocations";
 import { Careers } from "@/components/mka/Careers";
 
-const title = "About MKA | Mahy Khoory Automotive Group, UAE";
+const title = "About MAHY Khooray Automotive | Mahy Khoory Automotive Group, UAE";
 
 const description =
-  "MKA is a UAE automotive group distributing Dongfeng, Omoda and Jaecoo. Read our mission, strengths, scale and showroom network across the Emirates.";
+  "MAHY Khooray Automotive is a UAE automotive group distributing Dongfeng, Omoda and Jaecoo. Read our mission, strengths, scale and showroom network across the Emirates.";
 
 export const Route = createFileRoute("/about")({
   component: About,
