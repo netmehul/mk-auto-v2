@@ -42,7 +42,7 @@ export function News() {
           </div>
           <RevealItem>
             <a
-              href="#news"
+              href="/news_insights"
               className="group inline-flex items-center gap-3 font-display text-xs uppercase tracking-[0.16em] text-navy-900"
             >
               View all news
