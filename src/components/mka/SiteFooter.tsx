@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 
-import logoAsset from "@/assets/logo.svg.asset.json";
 import logo from "@/assets/logo.svg";
 import { RevealGroup, RevealItem } from "./Reveal";
 import FooterBg from '@/assets/footer-bg.png';
@@ -258,7 +257,7 @@ export function SiteFooter() {
             "
           >
             <img
-              src={logoAsset.url}
+              src={logo}
               alt="MAHY Khooray Automotive"
               className="
                 h-auto
