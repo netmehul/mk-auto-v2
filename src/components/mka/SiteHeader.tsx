@@ -82,12 +82,21 @@ export function SiteHeader() {
                 <a
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="block border-b border-off-white/10 py-4 font-display text-sm uppercase tracking-[0.14em] text-off-white/85"
+                  className="block border-b border-off-white/10 py-4 font-display text-sm uppercase tracking-[0.14em] text-off-white/85 transition-colors hover:text-off-white"
                 >
                   {item.label}
                 </a>
               </li>
             ))}
+            <li className="pt-4">
+              <a
+                href="/contactus"
+                onClick={() => setOpen(false)}
+                className="block w-full border border-off-white/40 px-5 py-3 text-center font-display text-[12px] uppercase tracking-[0.16em] text-off-white transition-colors hover:border-gold hover:text-gold-soft"
+              >
+                Get In Touch
+              </a>
+            </li>
           </ul>
         </nav>
       )}

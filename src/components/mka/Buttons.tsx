@@ -10,11 +10,13 @@ export function PrimaryButton({
   children,
   href,
   onClick,
+  type,
   className,
 }: {
   children: ReactNode;
   href?: string;
   onClick?: () => void;
+  type?: "button" | "submit" | "reset";
   className?: string;
 }) {
   const Tag = href ? "a" : "button";
@@ -22,6 +24,7 @@ export function PrimaryButton({
     <Tag
       href={href}
       onClick={onClick}
+      type={href ? undefined : type}
       className={cn(base, "bg-navy-900 text-off-white hover:bg-navy-800", className)}
     >
       <span className="pointer-events-none absolute inset-0 border border-gold opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -34,12 +37,14 @@ export function GhostButton({
   children,
   href,
   onClick,
+  type,
   tone = "light",
   className,
 }: {
   children: ReactNode;
   href?: string;
   onClick?: () => void;
+  type?: "button" | "submit" | "reset";
   tone?: "light" | "dark";
   className?: string;
 }) {
@@ -48,6 +53,7 @@ export function GhostButton({
     <Tag
       href={href}
       onClick={onClick}
+      type={href ? undefined : type}
       className={cn(
         base,
         "border",

@@ -1,6 +1,7 @@
 import { motion, type Variants } from "motion/react";
 import missionImg from "@/assets/about-mission.jpg";
 import fav from "@/assets/logo.svg";
+import { Target, Binoculars } from "lucide-react";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -22,11 +23,6 @@ const cardContainer: Variants = {
 const cardItem: Variants = {
   hidden: { opacity: 0, y: 30 },
   show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: easeOut } },
-};
-
-const goldLine: Variants = {
-  hidden: { scaleX: 0, originX: 0 },
-  show: { scaleX: 1, transition: { duration: 0.8, ease: easeOut } },
 };
 
 const imageReveal: Variants = {
@@ -55,18 +51,10 @@ export function MissionVision() {
           viewport={{ once: true, amount: 0.25 }}
           variants={headlineContainer}
         >
-          <header className="relative">
-            <motion.span
-              className="absolute -left-6 top-0 hidden h-full w-1 bg-gold lg:block"
-              initial={{ scaleY: 0, originY: 0 }}
-              whileInView={{ scaleY: 1 }}
-              viewport={{ once: true, amount: 0.6 }}
-              transition={{ duration: 0.9, ease: easeOut, delay: 0.1 }}
-            />
-            
+          <header>
             <h2
               id="mission-title"
-              className="mt-5 h2-display max-w-[18ch] uppercase text-navy-900"
+              className="h2-display max-w-[18ch] uppercase text-navy-900"
             >
               <motion.span className="block" variants={headlineLine}>
                 Why the group exists,
@@ -78,44 +66,64 @@ export function MissionVision() {
           </header>
 
           <motion.div
-            className="mt-12 grid gap-10 md:grid-cols-2 lg:gap-14"
+            className="mt-12 flex flex-col divide-y divide-grey-200 border-t border-grey-200"
             variants={cardContainer}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.25 }}
           >
             {/* Mission */}
-            <motion.div className="group space-y-5" variants={cardItem}>
-              <div className="flex items-center gap-3">
-                <motion.div
-                  className="h-px w-10 bg-gold"
-                  variants={goldLine}
-                />
-                <span className="eyebrow text-gold">Mission</span>
+            <motion.div
+              className="group flex items-start gap-4 py-8 sm:gap-6"
+              variants={cardItem}
+            >
+              {/* Icon Circle */}
+              <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-navy-900 shadow-md sm:h-20 sm:w-20">
+                <Target className="h-8 w-8 text-gold sm:h-9 sm:w-9" strokeWidth={1.5} />
               </div>
-              <p className="max-w-[40ch] text-[17px] leading-[1.7] text-ink/75">
-                We distribute and support automotive brands across the United Arab Emirates. Our work covers
-                sales, aftersales service and genuine parts, delivered through facilities we own and teams we
-                train. We hold the same standard in every emirate we operate in, so ownership feels consistent
-                wherever a customer buys.
-              </p>
+
+              {/* Vertical Gold Line */}
+              <div className="w-[2px] shrink-0 self-stretch bg-gold" />
+
+              {/* Text Content */}
+              <div className="flex flex-col">
+                <h3 className="font-display text-base font-bold uppercase tracking-[0.14em] text-navy-900 sm:text-lg">
+                  Mission
+                </h3>
+                <p className="mt-2 text-[15px] leading-[1.7] text-ink/75 sm:text-[16px]">
+                  We distribute and support automotive brands across the United Arab Emirates. Our work covers
+                  sales, aftersales service and genuine parts, delivered through facilities we own and teams we
+                  train. We hold the same standard in every emirate we operate in, so ownership feels consistent
+                  wherever a customer buys.
+                </p>
+              </div>
             </motion.div>
 
             {/* Vision */}
-            <motion.div className="group space-y-5" variants={cardItem}>
-              <div className="flex items-center gap-3">
-                <motion.div
-                  className="h-px w-10 bg-gold"
-                  variants={goldLine}
-                />
-                <span className="eyebrow text-gold">Vision</span>
+            <motion.div
+              className="group flex items-start gap-4 py-8 sm:gap-6"
+              variants={cardItem}
+            >
+              {/* Icon Circle */}
+              <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-navy-900 shadow-md sm:h-20 sm:w-20">
+                <Binoculars className="h-8 w-8 text-gold sm:h-9 sm:w-9" strokeWidth={1.5} />
               </div>
-              <p className="max-w-[40ch] text-[17px] leading-[1.7] text-ink/75">
-                We want to be the group UAE customers choose for the full life of a vehicle, not only the first
-                purchase. That means more service capacity, faster parts availability and a network that keeps
-                pace with new mobility technology. We build for the next decade of the market, not the next
-                quarter.
-              </p>
+
+              {/* Vertical Gold Line */}
+              <div className="w-[2px] shrink-0 self-stretch bg-gold" />
+
+              {/* Text Content */}
+              <div className="flex flex-col">
+                <h3 className="font-display text-base font-bold uppercase tracking-[0.14em] text-navy-900 sm:text-lg">
+                  Vision
+                </h3>
+                <p className="mt-2 text-[15px] leading-[1.7] text-ink/75 sm:text-[16px]">
+                  We want to be the group UAE customers choose for the full life of a vehicle, not only the first
+                  purchase. That means more service capacity, faster parts availability and a network that keeps
+                  pace with new mobility technology. We build for the next decade of the market, not the next
+                  quarter.
+                </p>
+              </div>
             </motion.div>
           </motion.div>
         </motion.div>

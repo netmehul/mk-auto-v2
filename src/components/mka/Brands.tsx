@@ -1,16 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-
+import { useEffect, useState } from "react";
 import { RevealGroup, RevealItem } from "./Reveal";
-import {
-  prefersReducedMotion,
-  isMobileViewport,
-} from "@/lib/motion-prefs";
-
-
-gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const BRANDS = [
   {
@@ -34,42 +23,7 @@ const BRANDS = [
 ];
 
 export function Brands() {
-  const root = useRef<HTMLElement>(null);
   const [activeBrand, setActiveBrand] = useState(0);
-
-  // ============================================================
-  // BRAND CARD PARALLAX
-  // ============================================================
-
-  useGSAP(
-    () => {
-      if (prefersReducedMotion() || isMobileViewport()) return;
-
-      gsap.utils
-        .toArray<HTMLElement>(".brand-tile")
-        .forEach((el, i) => {
-          gsap.fromTo(
-            el,
-            {
-              y: 40 * (i + 1) * 0.6,
-            },
-            {
-              y: -30 * (i + 1) * 0.5,
-              ease: "none",
-              scrollTrigger: {
-                trigger: root.current,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: true,
-              },
-            },
-          );
-        });
-    },
-    {
-      scope: root,
-    },
-  );
 
   // ============================================================
   // AUTOMATIC SLIDER
@@ -97,7 +51,6 @@ export function Brands() {
 
   return (
     <section
-      ref={root}
       id="our-brands"
       aria-labelledby="brands-title"
       className="
@@ -114,7 +67,6 @@ export function Brands() {
             ====================================================== */}
 
         <RevealGroup className="max-w-4xl">
-
           <RevealItem>
             <h2
               id="brands-title"
@@ -142,10 +94,86 @@ export function Brands() {
 
 
         {/* ======================================================
+            BRAND TAB SWITCHER
+            ====================================================== */}
+
+        <RevealGroup
+          className="
+            mt-12
+            grid
+            gap-px
+            border
+            border-off-white/12
+            bg-off-white/12
+            md:grid-cols-3
+          "
+        >
+          {BRANDS.map((brand, index) => {
+            const isActive = index === activeBrand;
+
+            return (
+              <RevealItem
+                key={brand.name}
+              >
+                <button
+                  type="button"
+                  onClick={() => handleBrandSelect(index)}
+                  aria-pressed={isActive}
+                  className={`
+                    group
+                    flex
+                    h-full
+                    min-h-[80px]
+                    w-full
+                    flex-col
+                    p-2
+                    transition-colors
+                    duration-500
+                    ${
+                      isActive
+                        ? "bg-navy-800"
+                        : "bg-navy-900 hover:bg-navy-800"
+                    }
+                  `}
+                >
+                  {/* ==================================================
+                      LOGO
+                      ================================================== */}
+                  <div
+                    className="
+                      flex
+                      min-h-[70px]
+                      items-center
+                      justify-center
+                    "
+                  >
+                    <img
+                      src={brand.logo}
+                      alt={`${brand.name} logo`}
+                      className="
+                        block
+                        max-h-[68px]
+                        w-auto
+                        opacity-90
+                        transition-opacity
+                        duration-500
+                        group-hover:opacity-100
+                      "
+                      draggable={false}
+                    />
+                  </div>
+                </button>
+              </RevealItem>
+            );
+          })}
+        </RevealGroup>
+
+
+        {/* ======================================================
             IMAGE SLIDER
             ====================================================== */}
 
-        <RevealGroup className="mt-14">
+        <RevealGroup className="mt-8">
           <RevealItem>
             <div
               className="
@@ -234,7 +262,7 @@ export function Brands() {
                     text-white/80
                   "
                 >
-                  {BRANDS[activeBrand].name}
+                  {BRANDS[activeBrand]?.name}
                 </span>
               </div>
 
@@ -293,87 +321,6 @@ export function Brands() {
 
             </div>
           </RevealItem>
-        </RevealGroup>
-
-
-        {/* ======================================================
-            BRAND CARDS
-            ====================================================== */}
-
-        <RevealGroup
-          className="
-            mt-8
-            grid
-            gap-px
-            border
-            border-off-white/12
-            bg-off-white/12
-
-            md:grid-cols-3
-          "
-        >
-          {BRANDS.map((brand, index) => {
-            const isActive = index === activeBrand;
-
-            return (
-              <RevealItem
-                key={brand.name}
-                className="brand-tile"
-              >
-                <button
-                  type="button"
-                  onClick={() => handleBrandSelect(index)}
-                  aria-pressed={isActive}
-                  className={`
-                    group
-                    flex
-                    h-full
-                    min-h-[80px]
-                    w-full
-                    flex-col
-                    p-2
-                    transition-colors
-                    duration-500
-                    ${
-                      isActive
-                        ? "bg-navy-800"
-                        : "bg-navy-900 hover:bg-navy-800"
-                    }
-                  `}
-                >
-
-                  {/* ==================================================
-                      LOGO
-                      ================================================== */}
-
-                  <div
-                    className="
-                      flex
-                      min-h-[70px]
-                      items-center
-                      justify-center
-                    "
-                  >
-                    <img
-                      src={brand.logo}
-                      alt={`${brand.name} logo`}
-                      className="
-                        block
-                        max-h-[68px]
-                        w-auto
-                        opacity-90
-                        transition-opacity
-                        duration-500
-                        group-hover:opacity-100
-                      "
-                      draggable={false}
-                    />
-                  </div>
-
-                </button>
-              </RevealItem>
-            );
-          })}
         </RevealGroup>
 
       </div>

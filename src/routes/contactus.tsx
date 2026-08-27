@@ -1,24 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect, ChangeEvent, FocusEvent, FormEvent } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { RevealGroup, RevealItem } from "@/components/mka/Reveal";
 import { ContactUsHeaderBand } from "@/components/mka/contactus/ContactUsHeaderBands";
 import { SiteHeader } from "@/components/mka/SiteHeader";
 import { SiteFooter } from "@/components/mka/SiteFooter";
+import { Loader2, AlertCircle } from "lucide-react";
+import { PhoneInputField } from "@/components/mka/PhoneInputField";
+import { validatePhoneNumber, formatFullPhoneNumber } from "@/lib/phoneValidation";
+import {
+  fetchContactSubjects,
+  ContactSubject,
+  FALLBACK_CONTACT_SUBJECTS,
+} from "@/lib/contactSubjects";
 
 export const Route = createFileRoute("/contactus")({
   component: Contact,
 });
-
-const ENQUIRY_TYPES = [
-  "General Enquiry",
-  "Vehicle Sales",
-  "Service & Aftersales",
-  "Genuine Parts",
-  "Warranty",
-  "Corporate Enquiry",
-  "Careers",
-  "Other",
-];
 
 const CONTACT_DETAILS = [
   {
@@ -33,14 +30,302 @@ const CONTACT_DETAILS = [
   },
 ];
 
+interface ContactFormData {
+  name: string;
+  email: string;
+  countryCode: string;
+  phone: string;
+  subject: string;
+  message: string;
+  privacy: boolean;
+}
+
+type FieldName = keyof ContactFormData;
+type ContactFormErrors = Partial<Record<FieldName, string>>;
+type ContactFormTouched = Partial<Record<FieldName, boolean>>;
+
 function Contact() {
+  const [subjects, setSubjects] = useState<ContactSubject[]>(FALLBACK_CONTACT_SUBJECTS);
+  const [isLoadingSubjects, setIsLoadingSubjects] = useState<boolean>(true);
+  const [formData, setFormData] = useState<ContactFormData>({
+    name: "",
+    email: "",
+    countryCode: "+971",
+    phone: "",
+    subject: "",
+    message: "",
+    privacy: false,
+  });
+  const [errors, setErrors] = useState<ContactFormErrors>({});
+  const [touched, setTouched] = useState<ContactFormTouched>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (
-    event: React.FormEvent<HTMLFormElement>,
+  useEffect(() => {
+    const abortController = new AbortController();
+
+    async function loadSubjects() {
+      try {
+        setIsLoadingSubjects(true);
+        const data = await fetchContactSubjects({ signal: abortController.signal });
+        if (data && data.length > 0) {
+          setSubjects(data);
+        }
+      } catch (err: unknown) {
+        if ((err as Error)?.name !== "AbortError") {
+          console.warn("Could not fetch contact subjects, using fallback list:", err);
+        }
+      } finally {
+        setIsLoadingSubjects(false);
+      }
+    }
+
+    loadSubjects();
+
+    return () => {
+      abortController.abort();
+    };
+  }, []);
+
+  const validateField = (name: FieldName, value: string | boolean): string | undefined => {
+    switch (name) {
+      case "name":
+        if (typeof value === "string") {
+          if (!value.trim()) return "Full name is required";
+          if (value.trim().length < 2) return "Name must be at least 2 characters";
+        }
+        return undefined;
+
+      case "email":
+        if (typeof value === "string") {
+          if (!value.trim()) return "Email address is required";
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim())) {
+            return "Please enter a valid email address";
+          }
+        }
+        return undefined;
+
+      case "phone":
+        if (typeof value === "string") {
+          return validatePhoneNumber(value, formData.countryCode);
+        }
+        return undefined;
+
+      case "countryCode":
+        return undefined;
+
+      case "subject":
+        if (typeof value === "string") {
+          if (!value.trim()) return "Please select a subject or enquiry type";
+        }
+        return undefined;
+
+      case "message":
+        if (typeof value === "string") {
+          if (!value.trim()) return "Message is required";
+          if (value.trim().length < 10) {
+            return "Message must be at least 10 characters";
+          }
+        }
+        return undefined;
+
+      case "privacy":
+        if (!value) {
+          return "You must agree to the processing of your information";
+        }
+        return undefined;
+
+      default:
+        return undefined;
+    }
+  };
+
+  const validateAll = (): boolean => {
+    const newErrors: ContactFormErrors = {};
+
+    const nameErr = validateField("name", formData.name);
+    if (nameErr) newErrors["name"] = nameErr;
+
+    const emailErr = validateField("email", formData.email);
+    if (emailErr) newErrors["email"] = emailErr;
+
+    const phoneErr = validatePhoneNumber(formData.phone, formData.countryCode);
+    if (phoneErr) newErrors["phone"] = phoneErr;
+
+    const subjectErr = validateField("subject", formData.subject);
+    if (subjectErr) newErrors["subject"] = subjectErr;
+
+    const msgErr = validateField("message", formData.message);
+    if (msgErr) newErrors["message"] = msgErr;
+
+    const privacyErr = validateField("privacy", formData.privacy);
+    if (privacyErr) newErrors["privacy"] = privacyErr;
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const setFieldError = (field: FieldName, error: string | undefined) => {
+    setErrors((prev) => {
+      const next = { ...prev };
+      if (error) {
+        next[field] = error;
+      } else {
+        delete next[field];
+      }
+      return next;
+    });
+  };
+
+  const handleCountryCodeChange = (newCode: string) => {
+    setFormData((prev) => ({ ...prev, countryCode: newCode }));
+    if (touched["phone"] && formData.phone) {
+      const err = validatePhoneNumber(formData.phone, newCode);
+      setFieldError("phone", err);
+    }
+  };
+
+  const handlePhoneChange = (newPhone: string) => {
+    setFormData((prev) => ({ ...prev, phone: newPhone }));
+    if (touched["phone"]) {
+      const err = validatePhoneNumber(newPhone, formData.countryCode);
+      setFieldError("phone", err);
+    }
+    if (formError) setFormError(null);
+  };
+
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    const name = e.target.name as FieldName;
+    const value = e.target.type === "checkbox" 
+      ? (e.target as HTMLInputElement).checked 
+      : e.target.value;
+
+    setFormData((prev) => ({ ...prev, [name]: value }));
+
+    if (touched[name]) {
+      const error = validateField(name, value);
+      setFieldError(name, error);
+    }
+    if (formError) setFormError(null);
+  };
+
+  const handleBlur = (
+    e: FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    const name = e.target.name as FieldName;
+    const value = e.target.type === "checkbox" 
+      ? (e.target as HTMLInputElement).checked 
+      : e.target.value;
+
+    setTouched((prev) => ({ ...prev, [name]: true }));
+    const error = validateField(name, value);
+    setFieldError(name, error);
+  };
+
+  const handleSubmit = async (
+    event: FormEvent<HTMLFormElement>,
   ) => {
     event.preventDefault();
-    setSubmitted(true);
+
+    setTouched({
+      name: true,
+      email: true,
+      phone: true,
+      subject: true,
+      message: true,
+      privacy: true,
+    });
+
+    const isValid = validateAll();
+    if (!isValid) {
+      return;
+    }
+
+    setIsSubmitting(true);
+    setFormError(null);
+
+    try {
+      const baseUrl = (import.meta.env["VITE_BACKEND_URL"] as string | undefined) || "http://192.168.1.161:8000/api";
+      const endpoint = `${baseUrl.replace(/\/+$/, "")}/contact-leads`;
+
+      const myHeaders = new Headers();
+      const apiToken = import.meta.env["VITE_API_TOKEN"] as string | undefined;
+      if (apiToken) {
+        myHeaders.append("Authorization", apiToken);
+      }
+
+      const formdata = new FormData();
+      formdata.append("name", formData.name.trim());
+      formdata.append("email", formData.email.trim());
+      formdata.append("phone", formatFullPhoneNumber(formData.countryCode, formData.phone));
+      formdata.append("contact_subject_id", formData.subject.trim());
+      formdata.append("message", formData.message.trim());
+
+      const requestOptions: RequestInit = {
+        method: "POST",
+        headers: myHeaders,
+        body: formdata,
+        redirect: "follow",
+      };
+
+      const response = await fetch(endpoint, requestOptions);
+
+      if (!response.ok) {
+        let errorDetail = `Server returned status ${response.status}`;
+        try {
+          const errJson = await response.json();
+          errorDetail = errJson.message || errJson.error || errorDetail;
+        } catch {
+          const errText = await response.text();
+          if (errText) errorDetail = errText;
+        }
+        throw new Error(errorDetail);
+      }
+
+      const result = await response.text();
+      console.log("Contact lead submitted successfully:", result);
+
+      setSubmitted(true);
+
+      // Reset form fields
+      setFormData({
+        name: "",
+        email: "",
+        countryCode: "+971",
+        phone: "",
+        subject: "",
+        message: "",
+        privacy: false,
+      });
+      setErrors({});
+      setTouched({});
+      setFormError(null);
+    } catch (error: unknown) {
+      console.error("Contact lead error:", error);
+      const message = error instanceof Error ? error.message : "Failed to submit enquiry. Please check your connection and try again.";
+      setFormError(message);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleReset = () => {
+    setSubmitted(false);
+    setFormData({
+      name: "",
+      email: "",
+      countryCode: "+971",
+      phone: "",
+      subject: "",
+      message: "",
+      privacy: false,
+    });
+    setErrors({});
+    setTouched({});
+    setFormError(null);
   };
 
   return (
@@ -315,7 +600,7 @@ function Contact() {
 
                     <button
                       type="button"
-                      onClick={() => setSubmitted(false)}
+                      onClick={handleReset}
                       className="
                         mt-8
                         border
@@ -346,8 +631,18 @@ function Contact() {
 
                   <form
                     onSubmit={handleSubmit}
+                    noValidate
                     className="space-y-8"
                   >
+                    {formError && (
+                      <div className="flex items-start gap-3 border border-red-500/40 bg-red-950/40 p-4 text-sm text-red-300">
+                        <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-400" />
+                        <div>
+                          <p className="font-medium">Submission Failed</p>
+                          <p className="mt-1 text-xs text-red-300/90">{formError}</p>
+                        </div>
+                      </div>
+                    )}
 
                     {/* NAME + EMAIL */}
 
@@ -366,21 +661,22 @@ function Contact() {
                             text-off-white/65
                           "
                         >
-                          Name
+                          Name <span className="text-red-400">*</span>
                         </label>
 
                         <input
                           id="name"
                           name="name"
                           type="text"
-                          required
+                          value={formData.name}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
                           placeholder="Your full name"
-                          className="
+                          className={`
                             mt-3
                             h-12
                             w-full
                             border-b
-                            border-off-white/20
                             bg-transparent
                             px-0
                             text-sm
@@ -389,9 +685,16 @@ function Contact() {
                             placeholder:text-off-white/30
                             transition-colors
                             duration-300
-                            focus:border-gold
-                          "
+                            ${
+                              errors["name"] && touched["name"]
+                                ? "border-red-400 focus:border-red-400"
+                                : "border-off-white/20 focus:border-gold"
+                            }
+                          `}
                         />
+                        {errors["name"] && touched["name"] && (
+                          <p className="mt-1.5 text-xs text-red-400">{errors["name"]}</p>
+                        )}
 
                       </div>
 
@@ -409,21 +712,22 @@ function Contact() {
                             text-off-white/65
                           "
                         >
-                          Email
+                          Email <span className="text-red-400">*</span>
                         </label>
 
                         <input
                           id="email"
                           name="email"
                           type="email"
-                          required
+                          value={formData.email}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
                           placeholder="you@example.com"
-                          className="
+                          className={`
                             mt-3
                             h-12
                             w-full
                             border-b
-                            border-off-white/20
                             bg-transparent
                             px-0
                             text-sm
@@ -432,9 +736,16 @@ function Contact() {
                             placeholder:text-off-white/30
                             transition-colors
                             duration-300
-                            focus:border-gold
-                          "
+                            ${
+                              errors["email"] && touched["email"]
+                                ? "border-red-400 focus:border-red-400"
+                                : "border-off-white/20 focus:border-gold"
+                            }
+                          `}
                         />
+                        {errors["email"] && touched["email"] && (
+                          <p className="mt-1.5 text-xs text-red-400">{errors["email"]}</p>
+                        )}
 
                       </div>
 
@@ -445,53 +756,29 @@ function Contact() {
 
                     <div className="grid gap-8 sm:grid-cols-2">
 
-                      <div>
-
-                        <label
-                          htmlFor="phone"
-                          className="
-                            block
-                            text-xs
-                            font-medium
-                            uppercase
-                            tracking-[0.08em]
-                            text-off-white/65
-                          "
-                        >
-                          Phone
-                        </label>
-
-                        <input
+                        <PhoneInputField
                           id="phone"
                           name="phone"
-                          type="tel"
+                          countryCode={formData.countryCode}
+                          phone={formData.phone}
+                          onCountryCodeChange={handleCountryCodeChange}
+                          onPhoneChange={handlePhoneChange}
+                          onBlur={() => {
+                            setTouched((prev) => ({ ...prev, phone: true }));
+                            const err = validatePhoneNumber(formData.phone, formData.countryCode);
+                            setFieldError("phone", err);
+                          }}
+                          error={errors["phone"]}
+                          touched={touched["phone"]}
+                          theme="dark"
                           required
-                          placeholder="+971"
-                          className="
-                            mt-3
-                            h-12
-                            w-full
-                            border-b
-                            border-off-white/20
-                            bg-transparent
-                            px-0
-                            text-sm
-                            text-off-white
-                            outline-none
-                            placeholder:text-off-white/30
-                            transition-colors
-                            duration-300
-                            focus:border-gold
-                          "
                         />
-
-                      </div>
 
 
                       <div>
 
                         <label
-                          htmlFor="enquiry"
+                          htmlFor="subject"
                           className="
                             block
                             text-xs
@@ -501,20 +788,21 @@ function Contact() {
                             text-off-white/65
                           "
                         >
-                          Subject / Department
+                          Subject / Department <span className="text-red-400">*</span>
                         </label>
 
                         <select
-                          id="enquiry"
-                          name="enquiry"
-                          required
-                          defaultValue=""
-                          className="
+                          id="subject"
+                          name="subject"
+                          value={formData.subject}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          disabled={isLoadingSubjects && subjects.length === 0}
+                          className={`
                             mt-3
                             h-12
                             w-full
                             border-b
-                            border-off-white/20
                             bg-navy-900
                             px-0
                             text-sm
@@ -522,29 +810,44 @@ function Contact() {
                             outline-none
                             transition-colors
                             duration-300
-                            focus:border-gold
-                          "
+                            ${
+                              errors["subject"] && touched["subject"]
+                                ? "border-red-400 focus:border-red-400"
+                                : "border-off-white/20 focus:border-gold"
+                            }
+                          `}
                         >
 
                           <option
                             value=""
                             disabled
-                            className="bg-navy-900"
+                            className="bg-navy-900 text-off-white"
                           >
-                            Select an enquiry type
+                            {isLoadingSubjects && subjects.length === 0
+                              ? "Loading enquiry types..."
+                              : "Select an enquiry type"}
                           </option>
 
-                          {ENQUIRY_TYPES.map((type) => (
-                            <option
-                              key={type}
-                              value={type}
-                              className="bg-navy-900"
-                            >
-                              {type}
-                            </option>
-                          ))}
+                          {subjects.map((item) => {
+                            const optionVal =
+                              item.id !== undefined && item.id !== null
+                                ? String(item.id)
+                                : item.name;
+                            return (
+                              <option
+                                key={optionVal}
+                                value={optionVal}
+                                className="bg-navy-900 text-off-white"
+                              >
+                                {item.name}
+                              </option>
+                            );
+                          })}
 
                         </select>
+                        {errors["subject"] && touched["subject"] && (
+                          <p className="mt-1.5 text-xs text-red-400">{errors["subject"]}</p>
+                        )}
 
                       </div>
 
@@ -566,21 +869,22 @@ function Contact() {
                           text-off-white/65
                         "
                       >
-                        Message
+                        Message <span className="text-red-400">*</span>
                       </label>
 
                       <textarea
                         id="message"
                         name="message"
-                        required
+                        value={formData.message}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
                         rows={6}
                         placeholder="Tell us how we can help."
-                        className="
+                        className={`
                           mt-3
                           w-full
                           resize-none
                           border-b
-                          border-off-white/20
                           bg-transparent
                           px-0
                           py-3
@@ -591,44 +895,58 @@ function Contact() {
                           placeholder:text-off-white/30
                           transition-colors
                           duration-300
-                          focus:border-gold
-                        "
+                          ${
+                            errors["message"] && touched["message"]
+                              ? "border-red-400 focus:border-red-400"
+                              : "border-off-white/20 focus:border-gold"
+                          }
+                        `}
                       />
+                      {errors["message"] && touched["message"] && (
+                        <p className="mt-1.5 text-xs text-red-400">{errors["message"]}</p>
+                      )}
 
                     </div>
 
 
                     {/* CONSENT */}
 
-                    <div className="flex items-start gap-3">
+                    <div>
+                      <div className="flex items-start gap-3">
 
-                      <input
-                        id="privacy"
-                        name="privacy"
-                        type="checkbox"
-                        required
-                        className="
-                          mt-1
-                          h-4
-                          w-4
-                          shrink-0
-                          accent-gold
-                        "
-                      />
+                        <input
+                          id="privacy"
+                          name="privacy"
+                          type="checkbox"
+                          checked={formData.privacy}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          className="
+                            mt-1
+                            h-4
+                            w-4
+                            shrink-0
+                            accent-gold
+                          "
+                        />
 
-                      <label
-                        htmlFor="privacy"
-                        className="
-                          text-xs
-                          leading-[1.7]
-                          text-off-white/45
-                        "
-                      >
-                        I agree to the processing of my information
-                        for the purpose of responding to this
-                        enquiry.
-                      </label>
+                        <label
+                          htmlFor="privacy"
+                          className="
+                            text-xs
+                            leading-[1.7]
+                            text-off-white/45
+                          "
+                        >
+                          I agree to the processing of my information
+                          for the purpose of responding to this
+                          enquiry.
+                        </label>
 
+                      </div>
+                      {errors["privacy"] && touched["privacy"] && (
+                        <p className="mt-1.5 text-xs text-red-400">{errors["privacy"]}</p>
+                      )}
                     </div>
 
 
@@ -638,6 +956,7 @@ function Contact() {
 
                       <button
                         type="submit"
+                        disabled={isSubmitting}
                         className="
                           group
                           inline-flex
@@ -661,6 +980,8 @@ function Contact() {
                           hover:border-white
                           hover:bg-[#020229]
                           hover:text-white
+                          disabled:cursor-not-allowed
+                          disabled:opacity-70
                           focus-visible:outline-none
                           focus-visible:ring-2
                           focus-visible:ring-white/40
@@ -669,20 +990,29 @@ function Contact() {
                         "
                       >
 
-                        <span>
-                          Submit
-                        </span>
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 className="h-4 w-4 animate-spin" />
+                            <span>Submitting...</span>
+                          </>
+                        ) : (
+                          <>
+                            <span>
+                              Submit
+                            </span>
 
-                        <span
-                          aria-hidden="true"
-                          className="
-                            transition-transform
-                            duration-300
-                            group-hover:translate-x-1
-                          "
-                        >
-                          →
-                        </span>
+                            <span
+                              aria-hidden="true"
+                              className="
+                                transition-transform
+                                duration-300
+                                group-hover:translate-x-1
+                              "
+                            >
+                              →
+                            </span>
+                          </>
+                        )}
 
                       </button>
 

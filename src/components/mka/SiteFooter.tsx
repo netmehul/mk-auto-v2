@@ -126,19 +126,15 @@ export function SiteFooter() {
 
       <div
         className="
+          shell
           relative
           z-10
-          mx-auto
           hidden
-          w-full
-          px-6
           py-12
 
           md:block
-          md:px-10
           md:py-14
 
-          lg:px-12
           lg:py-16
         "
       >
@@ -328,23 +324,13 @@ export function SiteFooter() {
       >
         <div
           className="
-            mx-auto
+            shell
             flex
             w-full
-            flex-col
             items-center
-            gap-3
-            px-6
+            justify-center
             py-4
             text-center
-
-            md:flex-row
-            md:justify-between
-            md:px-10
-            md:py-3
-            md:text-center
-
-            lg:px-12
           "
         >
 
@@ -358,6 +344,7 @@ export function SiteFooter() {
               uppercase
               tracking-[0.02em]
               text-white/45
+              text-center
 
               md:text-[14px]
             "
