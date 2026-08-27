@@ -82,7 +82,7 @@ export function SiteHeader() {
                 <a
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="block border-b border-off-white/10 py-4 font-display text-sm uppercase tracking-[0.14em] text-off-white/85 transition-colors hover:text-off-white"
+                  className="block border-b border-off-white/10 py-4 font-display text-[13px] uppercase tracking-[0.14em] text-off-white/85 transition-colors hover:text-off-white"
                 >
                   {item.label}
                 </a>

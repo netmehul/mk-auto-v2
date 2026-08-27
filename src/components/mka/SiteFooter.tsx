@@ -13,11 +13,15 @@ import FooterBg from '@/assets/footer-bg.png';
 const brandLinks = [
   {
     label: "Dongfeng",
-    href: "#",
+    href: "https://dongfeng-uae.com/",
+    target: "_blank",
+    rel: "noopener noreferrer",
   },
   {
     label: "OMODA | JAECOO",
-    href: "#",
+    href: "https://omodajaecoo-auh.com/",
+    target: "_blank",
+    rel: "noopener noreferrer",
   },
   {
     label: "Pre Owned",
@@ -141,7 +145,7 @@ export function SiteFooter() {
         <RevealGroup
           className="
             grid
-            grid-cols-[1.6fr_0.6fr_0.6fr_0.8fr]
+            grid-cols-[1.3fr_0.65fr_0.65fr_1.1fr]
             gap-8
             lg:gap-12
           "
@@ -180,6 +184,8 @@ export function SiteFooter() {
                 <FooterLink
                   key={item.label}
                   href={item.href}
+                  target={item.target}
+                  rel={item.rel}
                 >
                   {item.label}
                 </FooterLink>
@@ -340,56 +346,17 @@ export function SiteFooter() {
 
           <p
             className="
-              text-[12px]
+              font-display
+              text-[11px]
               uppercase
-              tracking-[0.02em]
+              tracking-[0.14em]
               text-white/45
               text-center
-
-              md:text-[14px]
+              md:text-[12px]
             "
           >
             Copyright © 2026 MAHYKhooray.com - All rights reserved.
           </p>
-
-
-          {/* ==================================================
-              LEGAL LINKS
-              ================================================== */}
-
-          {/* <nav
-            aria-label="Legal"
-            className="
-              flex
-              flex-wrap
-              items-center
-              justify-center
-              gap-x-5
-              gap-y-2
-            "
-          >
-            {legalLinks.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="
-                  text-[12px]
-                  uppercase
-                  tracking-[0.02em]
-                  text-white/45
-
-                  transition-colors
-                  duration-300
-
-                  hover:text-white
-
-                  md:text-[14px]
-                "
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav> */}
 
         </div>
       </div>
@@ -411,6 +378,8 @@ function MobileFooterAccordion({
   items: {
     label: string;
     href: string;
+    target?: string | undefined;
+    rel?: string | undefined;
   }[];
 }) {
   const [open, setOpen] = useState(false);
@@ -442,9 +411,10 @@ function MobileFooterAccordion({
       >
         <span
           className="
-            text-[14px]
+            font-display
+            text-[13px]
             uppercase
-            tracking-[0.22em]
+            tracking-[0.16em]
             text-white
           "
         >
@@ -536,15 +506,16 @@ function MobileFooterAccordion({
             <a
               key={item.label}
               href={item.href}
+              target={item.target}
+              rel={item.rel}
               className="
-                text-[14px]
+                font-display
+                text-[13px]
                 uppercase
-                tracking-[0.04em]
-                text-white/60
-
+                tracking-[0.12em]
+                text-white/70
                 transition-colors
                 duration-300
-
                 hover:text-white
               "
             >
@@ -573,11 +544,10 @@ function ContactContent({
       className={`
         flex
         flex-col
-
         ${
           mobile
-            ? "items-center text-center"
-            : "items-start text-left"
+            ? "items-center text-center gap-5"
+            : "items-start text-left gap-4"
         }
       `}
     >
@@ -600,8 +570,8 @@ function ContactContent({
 
       <ContactItem
         label="Call"
-        value="+971 - 1234 - 568 - 7891"
-        href="tel:+9711234567891"
+        value="+971 1234 568 7891"
+        href="tel:+97112345687891"
         mobile={mobile}
       />
 
@@ -614,8 +584,7 @@ function ContactContent({
         className={`
           flex
           flex-col
-          gap-2
-
+          gap-1
           ${
             mobile
               ? "items-center"
@@ -625,12 +594,11 @@ function ContactContent({
       >
         <span
           className="
-            text-[14px]
+            font-display
+            text-[11px]
             uppercase
-            tracking-[0.22em]
-            text-white
-
-            md:text-[16px]
+            tracking-[0.16em]
+            text-white/45
           "
         >
           Address
@@ -638,9 +606,10 @@ function ContactContent({
 
         <p
           className="
-            text-[14px]
+            text-[13px]
             leading-relaxed
-            text-white/60
+            text-white/75
+            md:text-[14px]
           "
         >
           41, Near Abu Hail Metro Station, Dubai, UAE.
@@ -654,8 +623,7 @@ function ContactContent({
 
       <SocialLinks
         className={`
-          mt-6
-
+          mt-2
           ${
             mobile
               ? "justify-center"
@@ -687,11 +655,9 @@ function ContactItem({
   return (
     <div
       className={`
-        mb-6
         flex
         flex-col
-        gap-2
-
+        gap-1
         ${
           mobile
             ? "items-center text-center"
@@ -701,12 +667,11 @@ function ContactItem({
     >
       <span
         className="
-          text-[14px]
+          font-display
+          text-[11px]
           uppercase
-          tracking-[0.22em]
-          text-white
-
-          md:text-[16px]
+          tracking-[0.16em]
+          text-white/45
         "
       >
         {label}
@@ -715,18 +680,14 @@ function ContactItem({
       <a
         href={href}
         className="
-          max-w-full
-          break-all
-          text-[14px]
+          text-[13px]
           leading-relaxed
-          text-white/60
-
+          text-white/75
+          break-words
           transition-colors
           duration-300
-
           hover:text-white
-
-          md:text-[16px]
+          md:text-[14px]
         "
       >
         {value}
@@ -820,12 +781,12 @@ function FooterColumn({
         <h3
           className="
             mb-5
-            text-[14px]
+            font-display
+            text-[13px]
             uppercase
-            tracking-[0.22em]
+            tracking-[0.16em]
             text-white
-
-            md:text-[16px]
+            md:text-[14px]
           "
         >
           {title}
@@ -845,27 +806,31 @@ function FooterColumn({
 
 function FooterLink({
   href,
+  target,
+  rel,
   children,
 }: {
   href: string;
+  target?: string | undefined;
+  rel?: string | undefined;
   children: React.ReactNode;
 }) {
   return (
     <li>
       <a
         href={href}
+        target={target}
+        rel={rel}
         className="
-          text-[14px]
+          font-display
+          text-[13px]
           uppercase
-          tracking-[0.03em]
-          text-white/65
-
+          tracking-[0.12em]
+          text-white/70
           transition-colors
           duration-300
-
           hover:text-white
-
-          md:text-[16px]
+          md:text-[14px]
         "
       >
         {children}
