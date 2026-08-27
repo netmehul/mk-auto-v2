@@ -342,7 +342,7 @@ export function SiteFooter() {
             md:justify-between
             md:px-10
             md:py-3
-            md:text-left
+            md:text-center
 
             lg:px-12
           "
@@ -362,8 +362,7 @@ export function SiteFooter() {
               md:text-[14px]
             "
           >
-            Copyright © 2026 MAHYKhooray.com - All rights
-            reserved.
+            Copyright © 2026 MAHYKhooray.com - All rights reserved.
           </p>
 
 
@@ -371,7 +370,7 @@ export function SiteFooter() {
               LEGAL LINKS
               ================================================== */}
 
-          <nav
+          {/* <nav
             aria-label="Legal"
             className="
               flex
@@ -403,7 +402,7 @@ export function SiteFooter() {
                 {item.label}
               </a>
             ))}
-          </nav>
+          </nav> */}
 
         </div>
       </div>
