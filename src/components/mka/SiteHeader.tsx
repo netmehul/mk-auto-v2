@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, useScroll, useSpring } from "motion/react";
 import logo from "@/assets/logo.svg";
 import { cn } from "@/lib/utils";
@@ -12,14 +12,12 @@ const NAV = [
 export function SiteHeader() {
   const [solid, setSolid] = useState(false);
   const [open, setOpen] = useState(false);
-  const heroHeight = useRef(0);
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.3 });
 
   useEffect(() => {
     const onScroll = () => {
-      heroHeight.current = window.innerHeight * 0.85;
-      setSolid(window.scrollY > heroHeight.current);
+      setSolid(window.scrollY > 20);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -29,8 +27,8 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-colors duration-500",
-        solid ? "bg-navy-900/95 backdrop-blur-sm" : "bg-transparent",
+        "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
+        solid || open ? "bg-navy-900/95 backdrop-blur-sm shadow-md" : "bg-transparent",
       )}
     >
       <motion.div
