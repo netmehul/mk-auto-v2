@@ -463,7 +463,7 @@ function Careers() {
       <section
         id="apply"
         aria-labelledby="application-title"
-        className="section-y bg-off-white"
+        className="section-y "
       >
         <div className="shell">
 
@@ -517,6 +517,7 @@ function Careers() {
                     className="
                       border
                       border-grey-200
+                      
                       bg-white
                       p-8
                       sm:p-10
@@ -573,7 +574,7 @@ function Careers() {
                   <form
                     onSubmit={handleSubmit}
                     noValidate
-                    className="space-y-8"
+                    className="space-y-8 border border-grey-200 bg-white p-8 shadow-[0_10px_35px_rgba(5,15,55,0.04)] sm:p-10"
                   >
                     {/* Error Banner */}
                     {formError && (
@@ -728,7 +729,6 @@ function Careers() {
                           h-12
                           w-full
                           border-b
-                          bg-off-white
                           px-0
                           text-sm
                           text-navy-900
@@ -745,7 +745,7 @@ function Careers() {
                         <option
                           value=""
                           disabled
-                          className="bg-off-white text-grey-500"
+                          className="bg-white text-grey-500"
                         >
                           {isLoadingRoles && jobRoles.length === 0
                             ? "Loading roles..."
@@ -761,7 +761,7 @@ function Careers() {
                             <option
                               key={optionVal}
                               value={optionVal}
-                              className="bg-off-white text-navy-900"
+                              className="bg-white text-navy-900"
                             >
                               {role.name}
                             </option>
@@ -889,10 +889,9 @@ function Careers() {
                           mt-3
                           w-full
                           resize-none
-                          border-b
+                          border-1
                           bg-transparent
-                          px-0
-                          py-3
+                          p-3
                           text-sm
                           leading-[1.7]
                           text-navy-900

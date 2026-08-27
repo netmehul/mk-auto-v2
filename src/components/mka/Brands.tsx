@@ -142,7 +142,7 @@ export function Brands() {
                     duration-500
                     ${
                       isActive
-                        ? "bg-navy-800"
+                        ? "bg-navy-800 border-1"
                         : "bg-navy-900 hover:bg-navy-800"
                     }
                   `}
