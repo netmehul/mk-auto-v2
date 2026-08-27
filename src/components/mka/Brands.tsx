@@ -187,7 +187,7 @@ export function Brands() {
             IMAGE SLIDER
             ====================================================== */}
 
-        <RevealGroup className="mt-8">
+        <RevealGroup className="mt-10 sm:mt-12">
 
           <RevealItem>
 

@@ -1,8 +1,8 @@
 import { motion } from "motion/react";
-import mkAnimation from "@/assets/mk-line-animation-navy.svg.asset.json";
 import { RevealGroup, RevealItem } from "./Reveal";
 import MkAnimationF from "@/assets/mk-line-animation-navy.svg";
-import LineAnimationE from '@/assets/line-decoration-animation-navy.svg';
+import LineDecoration from "@/assets/line-decoration-navy.svg";
+
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export function WhoWeAre() {
@@ -12,13 +12,12 @@ export function WhoWeAre() {
       aria-labelledby="who-we-are-title"
       className="section-y relative overflow-hidden bg-off-white text-ink"
     >
-      <div className="hidden sm:relative sm:block">
-        <img src={LineAnimationE} loading="lazy" className="absolute right-0" />
-        <img src={LineAnimationE} loading="lazy" className="absolute inset-y-0 right-125 rotate-225 mt-[-350px]" />
-        <img src={LineAnimationE} loading="lazy" className="absolute left-0 -scale-x-100" />
-        
+      <div className="hidden sm:relative sm:block pointer-events-none select-none">
+        <img src={LineDecoration} alt="" loading="lazy" className="absolute right-0" />
+        <img src={LineDecoration} alt="" loading="lazy" className="absolute inset-y-0 right-125 rotate-225 mt-[-350px]" />
+        <img src={LineDecoration} alt="" loading="lazy" className="absolute left-0 -scale-x-100" />
       </div>
-      
+
       <div className="shell relative grid items-center gap-14 lg:grid-cols-12 lg:gap-20">
         <RevealGroup className="lg:col-span-6">
           <RevealItem>
