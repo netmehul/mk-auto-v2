@@ -56,7 +56,7 @@ export function Brands() {
     setActiveBrand(index);
   };
 
-  const activeBrandData = BRANDS[activeBrand];
+  const activeBrandData = (BRANDS[activeBrand] ?? BRANDS[0])!;
 
   return (
     <section
@@ -411,7 +411,11 @@ export function Brands() {
 
             <RevealItem>
 
-              <MagneticButton href={activeBrandData.href}>
+              <MagneticButton
+                href={activeBrandData.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Explore {activeBrandData.name}
               </MagneticButton>
 

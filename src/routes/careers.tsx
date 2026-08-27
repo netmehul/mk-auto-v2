@@ -469,46 +469,50 @@ function Careers() {
 
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-20">
 
-            <RevealGroup className="lg:col-span-5">
-              <RevealItem>
-                <h2
-                  id="application-title"
-                  className="h2-display mt-7 uppercase text-navy-900"
-                >
-                  Want to join our team?
-                </h2>
-              </RevealItem>
+            <div className="lg:col-span-5">
+              <div className="lg:sticky lg:top-36">
+                <RevealGroup>
+                  <RevealItem>
+                    <h2
+                      id="application-title"
+                      className="h2-display mt-7 uppercase text-navy-900"
+                    >
+                      Want to join our team?
+                    </h2>
+                  </RevealItem>
 
-              <RevealItem>
-                <p
-                  className="
-                    mt-6
-                    text-[16px]
-                    leading-[1.8]
-                    text-grey-500
-                  "
-                >
-                  Tell us a little about yourself, your experience
-                  and where you see yourself contributing at
-                  Mahy Khooray Automotive.
-                </p>
-              </RevealItem>
+                  <RevealItem>
+                    <p
+                      className="
+                        mt-6
+                        text-[16px]
+                        leading-[1.8]
+                        text-grey-500
+                      "
+                    >
+                      Tell us a little about yourself, your experience
+                      and where you see yourself contributing at
+                      Mahy Khooray Automotive.
+                    </p>
+                  </RevealItem>
 
-              <RevealItem>
-                <p
-                  className="
-                    mt-5
-                    text-[16px]
-                    leading-[1.8]
-                    text-grey-500
-                  "
-                >
-                  We are always interested in meeting people who
-                  are passionate about what they do and ready to
-                  move forward.
-                </p>
-              </RevealItem>
-            </RevealGroup>
+                  <RevealItem>
+                    <p
+                      className="
+                        mt-5
+                        text-[16px]
+                        leading-[1.8]
+                        text-grey-500
+                      "
+                    >
+                      We are always interested in meeting people who
+                      are passionate about what they do and ready to
+                      move forward.
+                    </p>
+                  </RevealItem>
+                </RevealGroup>
+              </div>
+            </div>
 
             <RevealGroup className="lg:col-span-7 lg:col-start-6">
               {submitted ? (

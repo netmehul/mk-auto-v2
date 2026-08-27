@@ -11,12 +11,16 @@ export function PrimaryButton({
   href,
   onClick,
   type,
+  target,
+  rel,
   className,
 }: {
   children: ReactNode;
   href?: string;
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
+  target?: string;
+  rel?: string;
   className?: string;
 }) {
   const Tag = href ? "a" : "button";
@@ -25,6 +29,8 @@ export function PrimaryButton({
       href={href}
       onClick={onClick}
       type={href ? undefined : type}
+      target={href ? target : undefined}
+      rel={href ? rel : undefined}
       className={cn(base, "bg-navy-900 text-off-white hover:bg-navy-800", className)}
     >
       <span className="pointer-events-none absolute inset-0 border border-gold opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -38,6 +44,8 @@ export function GhostButton({
   href,
   onClick,
   type,
+  target,
+  rel,
   tone = "light",
   className,
 }: {
@@ -45,6 +53,8 @@ export function GhostButton({
   href?: string;
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
+  target?: string;
+  rel?: string;
   tone?: "light" | "dark";
   className?: string;
 }) {
@@ -54,6 +64,8 @@ export function GhostButton({
       href={href}
       onClick={onClick}
       type={href ? undefined : type}
+      target={href ? target : undefined}
+      rel={href ? rel : undefined}
       className={cn(
         base,
         "border",
@@ -71,10 +83,14 @@ export function GhostButton({
 export function MagneticButton({
   children,
   href,
+  target,
+  rel,
   className,
 }: {
   children: ReactNode;
   href?: string;
+  target?: string;
+  rel?: string;
   className?: string;
 }) {
   const ref = useRef<HTMLAnchorElement>(null);
@@ -92,6 +108,8 @@ export function MagneticButton({
     <motion.a
       ref={ref}
       href={href}
+      target={target}
+      rel={rel}
       style={{ x, y }}
       onMouseMove={handleMove}
       onMouseLeave={() => {

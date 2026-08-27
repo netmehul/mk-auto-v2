@@ -178,14 +178,17 @@ export function Excellence() {
        * ----------------------------------------------------------
        */
   
-      tl.to(
-        cards[3],
-        {
-          y: STACK_GAP * 3,
-          duration: 1,
-          ease: "power2.inOut",
-        },
-      );
+      const lastCard = cards[3];
+      if (lastCard) {
+        tl.to(
+          lastCard,
+          {
+            y: STACK_GAP * 3,
+            duration: 1,
+            ease: "power2.inOut",
+          },
+        );
+      }
   
       return () => {
         tl.scrollTrigger?.kill();
