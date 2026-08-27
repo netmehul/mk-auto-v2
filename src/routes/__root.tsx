@@ -10,7 +10,6 @@ import {
 import { useEffect, type ReactNode } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { Agentation } from "agentation";
-import { SiteLoader } from "@/components/mka/SiteLoader";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -133,7 +132,6 @@ function RootComponent() {
       <Outlet />
       <Toaster />
       {import.meta.env.DEV && <Agentation />}
-      <SiteLoader />
     </QueryClientProvider>
   );
 }

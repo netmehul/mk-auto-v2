@@ -7,6 +7,7 @@ import { AtAGlance } from "@/components/mka/AtAGlance";
 import { CareersSection } from "@/components/mka/Careers";
 import { News } from "@/components/mka/News";
 import { SiteFooter } from "@/components/mka/SiteFooter";
+import { SiteLoader } from "@/components/mka/SiteLoader";
 
 const title = "MKA — Mahy Khoory Automotive | UAE Distributor";
 const description =
@@ -49,6 +50,7 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <>
+      <SiteLoader />
       <SiteHeader />
       <main>
         <Hero />
