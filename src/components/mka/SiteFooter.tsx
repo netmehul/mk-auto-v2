@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import logoAsset from "@/assets/logo.svg.asset.json";
 import logo from "@/assets/logo.svg";
 import { RevealGroup, RevealItem } from "./Reveal";
+import FooterBg from '@/assets/footer-bg.png';
 
 // ============================================================
 // FOOTER DATA
@@ -85,7 +86,15 @@ const socials = [
 export function SiteFooter() {
   return (
     <footer className="relative w-full overflow-hidden bg-navy-900">
-
+       {/* Background */}
+      <div className="absolute inset-0">
+        <img
+          src={FooterBg}
+          alt=""
+          aria-hidden="true"
+          className="h-full w-full object-cover"
+        />
+        </div>
       {/* ======================================================
           BACKGROUND PATTERN
           ====================================================== */}

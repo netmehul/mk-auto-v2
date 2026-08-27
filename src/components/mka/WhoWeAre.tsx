@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import mkAnimation from "@/assets/mk-line-animation-navy.svg.asset.json";
 import { RevealGroup, RevealItem } from "./Reveal";
 import MkAnimationF from "@/assets/mk-line-animation-navy.svg";
-
+import LineAnimationE from '@/assets/line-decoration-animation-navy.svg';
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export function WhoWeAre() {
@@ -12,6 +12,12 @@ export function WhoWeAre() {
       aria-labelledby="who-we-are-title"
       className="section-y relative overflow-hidden bg-off-white text-ink"
     >
+      <div className="hidden sm:relative sm:block">
+        <img src={LineAnimationE} loading="lazy" className="absolute right-0" />
+        <img src={LineAnimationE} loading="lazy" className="absolute inset-y-0 right-125 rotate-225 mt-[-350px]" />
+        <img src={LineAnimationE} loading="lazy" className="absolute left-0 -scale-x-100" />
+        
+      </div>
       
       <div className="shell relative grid items-center gap-14 lg:grid-cols-12 lg:gap-20">
         <RevealGroup className="lg:col-span-6">
@@ -31,7 +37,7 @@ export function WhoWeAre() {
           </RevealItem>
           <RevealItem className="mt-9">
             <a
-              href="#at-a-glance"
+              href="/about"
               className="group inline-flex items-center gap-3 font-display text-xs uppercase tracking-[0.16em] text-navy-900"
             >
               Learn more about us
@@ -48,6 +54,7 @@ export function WhoWeAre() {
             transition={{ duration: 1.1, ease: easeOut }}
             className="relative flex items-center justify-center py-6"
           >
+            
             <img
               src={MkAnimationF}
               alt="Animated MK monogram outline"

@@ -1,0 +1,57 @@
+<svg width="264" height="391" viewBox="0 0 264 391" fill="none" xmlns="http://www.w3.org/2000/svg">
+<style>
+@keyframes kf_Vector_24_path-trim_0 {
+  0% {
+    animation-timing-function: cubic-bezier(0.365, 0, 0.696, 0.355);
+    stroke-dasharray: 0 1;
+    stroke-dashoffset: 0;
+    visibility: hidden;
+  }
+  11.22% {
+    animation-timing-function: cubic-bezier(0.511, 0, 0.536, 0.912);
+    stroke-dasharray: 0.12 1;
+    stroke-dashoffset: 0;
+    visibility: visible;
+  }
+  89.413% {
+    animation-timing-function: cubic-bezier(0.317, 0.656, 0.65, 1);
+    stroke-dasharray: 0.05 1;
+    stroke-dashoffset: -0.95;
+    visibility: visible;
+  }
+  95.238% {
+    stroke-dasharray: 0 1;
+    stroke-dashoffset: -1;
+    visibility: hidden;
+  }
+  100% {
+    stroke-dasharray: 0 1;
+    stroke-dashoffset: -1;
+    visibility: hidden;
+  }
+}
+#Vector_24, #Vector_24_glow {
+  animation: kf_Vector_24_path-trim_0 3s linear infinite;
+}
+</style>
+<g id="Frame_122" clip-path="url(#clip0_1016_1219)">
+<path id="Vector_25" d="M264 0H120L0 120V321L120 390.282H264" pathLength="1" stroke="#1B2A4A" stroke-opacity="0.1"/>
+<path id="Vector_24_glow" filter="url(#filter0_d_1016_1219)" d="M264 0H120L0 120V321L120 390.282H264" pathLength="1" stroke="#1B2A4A" stroke-width="2" stroke-dasharray="0 1"/>
+<path id="Vector_24" d="M264 0H120L0 120V321L120 390.282H264" pathLength="1" stroke="#1B2A4A" stroke-dasharray="0 1"/>
+</g>
+<defs>
+<filter id="filter0_d_1016_1219" x="-17.3" y="-17.3" width="298.6" height="424.882" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset/>
+<feGaussianBlur stdDeviation="4"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.1059 0 0 0 0 0.1647 0 0 0 0 0.2902 0 0 0 1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1016_1219"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1016_1219" result="shape"/>
+</filter>
+<clipPath id="clip0_1016_1219">
+<rect width="264" height="390.282" fill="white"/>
+</clipPath>
+</defs>
+</svg>

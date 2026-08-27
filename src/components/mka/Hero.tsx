@@ -117,7 +117,7 @@ export function Hero() {
             className="h-full w-full cursor-pointer object-cover"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-navy-900/70 via-navy-900/35 to-navy-900/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-navy-900/100 from-5% via-navy-900/15 via-30% to-navy-900/95 to-95%" />
         <div className="hero-scrim absolute inset-0 bg-navy-900 opacity-0" />
         <div
           className={`hero-content shell relative z-10 w-full pb-14 pt-40 transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] lg:pb-16 ${
@@ -168,7 +168,6 @@ export function Hero() {
               </h1>
               <div className="mt-7">
                 <PrimaryButton
-                  type="button"
                   onClick={openVideo}
                   className="border border-off-white/40 px-5 py-2.5 font-display text-[12px] uppercase tracking-[0.16em] text-off-white transition-colors hover:border-gold hover:text-gold-soft"
                 >

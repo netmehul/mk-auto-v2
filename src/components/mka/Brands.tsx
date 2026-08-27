@@ -359,7 +359,7 @@ export function Brands() {
                       alt={`${brand.name} logo`}
                       className="
                         block
-                        max-h-[52px]
+                        max-h-[68px]
                         w-auto
                         opacity-90
                         transition-opacity
@@ -369,13 +369,6 @@ export function Brands() {
                       draggable={false}
                     />
                   </div>
-
-
-                  {/* ==================================================
-                      DESCRIPTION
-                      ================================================== */}
-
-                  
 
                 </button>
               </RevealItem>
