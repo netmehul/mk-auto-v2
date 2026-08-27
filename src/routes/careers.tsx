@@ -419,13 +419,9 @@ function Careers() {
               <RevealItem key={item.number}>
                 <div
                   className="
-                    group
                     h-full
                     bg-off-white
                     p-7
-                    transition-colors
-                    duration-300
-                    hover:bg-grey-50
                     lg:p-4
                     flex flex-col
                     gap-4
@@ -437,10 +433,16 @@ function Careers() {
                   <h3 className="text-2xl uppercase leading-tight text-navy-900">
                     {item.title}
                   </h3>
-                  <img src={item.image} />
+                  <div className="overflow-hidden bg-navy-900/5 aspect-[3/2] w-full">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
                   <p
                     className="
-                      mt-4
+                      mt-2
                       text-[15px]
                       leading-[1.75]
                       text-grey-500
@@ -448,7 +450,6 @@ function Careers() {
                   >
                     {item.text}
                   </p>
-
                 </div>
               </RevealItem>
             ))}
