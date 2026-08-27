@@ -8,6 +8,7 @@ import { AboutGlance } from "@/components/mka/about/AboutGlance";
 import { HeadOffice } from "@/components/mka/about/HeadOffice";
 import { BrandLocations } from "@/components/mka/about/BrandLocations";
 import { CareersSection } from "@/components/mka/Careers";
+import { AboutCareersSection } from "@/components/mka/about/AboutCareer";
 
 const title = "About MAHY Khooray Automotive | Mahy Khoory Automotive Group, UAE";
 
@@ -50,9 +51,9 @@ function About() {
         <MissionVision />
         <Excellence />
         <AboutGlance />
-        <HeadOffice />
         <BrandLocations />
-        <CareersSection />
+        <HeadOffice />
+        <AboutCareersSection />
 
       </main>
 

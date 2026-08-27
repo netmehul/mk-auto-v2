@@ -1,179 +1,251 @@
 import { motion, type Variants } from "motion/react";
-import missionImg from "@/assets/about-mission.jpg";
-import fav from "@/assets/logo.svg";
-import { Target, Binoculars } from "lucide-react";
+import missionImg from "@/assets/about-mission.webp";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
 const headlineContainer: Variants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
-};
-
-const headlineLine: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.9, ease: easeOut } },
-};
-
-const cardContainer: Variants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.18, delayChildren: 0.35 } },
-};
-
-const cardItem: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: easeOut } },
-};
-
-const imageReveal: Variants = {
-  hidden: { clipPath: "inset(0 0 100% 0)", opacity: 0 },
   show: {
-    clipPath: "inset(0 0 0% 0)",
-    opacity: 1,
-    transition: { duration: 1.2, ease: easeOut },
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1,
+    },
   },
 };
 
-const badgePop: Variants = {
-  hidden: { opacity: 0, scale: 0.85, y: 20 },
-  show: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.6, ease: easeOut, delay: 0.7 } },
+const headlineLine: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 40,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.9,
+      ease: easeOut,
+    },
+  },
+};
+
+const imageReveal: Variants = {
+  hidden: {
+    clipPath: "inset(0 0 100% 0)",
+    opacity: 0,
+  },
+  show: {
+    clipPath: "inset(0 0 0% 0)",
+    opacity: 1,
+    transition: {
+      duration: 1.2,
+      ease: easeOut,
+    },
+  },
+};
+
+const contentContainer: Variants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.18,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const contentItem: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: easeOut,
+    },
+  },
 };
 
 export function MissionVision() {
   return (
-    <section aria-labelledby="mission-title" className="section-y bg-off-white text-ink">
-      <div className="shell grid items-center gap-14 lg:grid-cols-12 lg:gap-20">
-        {/* Content */}
-        <motion.div
-          className="lg:col-span-7"
+    <section
+      aria-labelledby="mission-title"
+      className="section-y bg-off-white text-ink"
+    >
+      <div className="shell">
+
+        {/* ======================================================
+            TITLE
+            ====================================================== */}
+
+        <motion.header
+          className="mx-auto max-w-3xl text-center"
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.25 }}
+          viewport={{
+            once: true,
+            amount: 0.3,
+          }}
           variants={headlineContainer}
         >
-          <header>
-            <h2
-              id="mission-title"
-              className="h2-display max-w-[18ch] uppercase text-navy-900"
-            >
-              <motion.span className="block" variants={headlineLine}>
-                Why the group exists,
-              </motion.span>
-              <motion.span className="block" variants={headlineLine}>
-                and where it is going.
-              </motion.span>
-            </h2>
-          </header>
-
-          <motion.div
-            className="mt-12 flex flex-col divide-y divide-grey-200 border-t border-grey-200"
-            variants={cardContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.25 }}
+          <motion.h2
+            id="mission-title"
+            className="h2-display uppercase text-navy-900"
+            variants={headlineLine}
           >
-            {/* Mission */}
-            <motion.div
-              className="group flex items-start gap-4 py-8 sm:gap-6"
-              variants={cardItem}
-            >
-              {/* Icon Circle */}
-              <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-navy-900 shadow-md sm:h-20 sm:w-20">
-                <Target className="h-8 w-8 text-gold sm:h-9 sm:w-9" strokeWidth={1.5} />
-              </div>
+            Why the group exists,
+            <br />
+            and where it is going.
+          </motion.h2>
+        </motion.header>
 
-              {/* Vertical Gold Line */}
-              <div className="w-[2px] shrink-0 self-stretch bg-gold" />
 
-              {/* Text Content */}
-              <div className="flex flex-col">
-                <h3 className="font-display text-base font-bold uppercase tracking-[0.14em] text-navy-900 sm:text-lg">
-                  Mission
-                </h3>
-                <p className="mt-2 text-[15px] leading-[1.7] text-ink/75 sm:text-[16px]">
-                  We distribute and support automotive brands across the United Arab Emirates. Our work covers
-                  sales, aftersales service and genuine parts, delivered through facilities we own and teams we
-                  train. We hold the same standard in every emirate we operate in, so ownership feels consistent
-                  wherever a customer buys.
-                </p>
-              </div>
-            </motion.div>
+        {/* ======================================================
+            IMAGE
+            ====================================================== */}
 
-            {/* Vision */}
-            <motion.div
-              className="group flex items-start gap-4 py-8 sm:gap-6"
-              variants={cardItem}
-            >
-              {/* Icon Circle */}
-              <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-navy-900 shadow-md sm:h-20 sm:w-20">
-                <Binoculars className="h-8 w-8 text-gold sm:h-9 sm:w-9" strokeWidth={1.5} />
-              </div>
-
-              {/* Vertical Gold Line */}
-              <div className="w-[2px] shrink-0 self-stretch bg-gold" />
-
-              {/* Text Content */}
-              <div className="flex flex-col">
-                <h3 className="font-display text-base font-bold uppercase tracking-[0.14em] text-navy-900 sm:text-lg">
-                  Vision
-                </h3>
-                <p className="mt-2 text-[15px] leading-[1.7] text-ink/75 sm:text-[16px]">
-                  We want to be the group UAE customers choose for the full life of a vehicle, not only the first
-                  purchase. That means more service capacity, faster parts availability and a network that keeps
-                  pace with new mobility technology. We build for the next decade of the market, not the next
-                  quarter.
-                </p>
-              </div>
-            </motion.div>
-          </motion.div>
-        </motion.div>
-
-        {/* Visual */}
-        <div className="lg:col-span-5">
-          <motion.div
-            className="relative flex items-center"
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <div className="relative w-full aspect-[4/5]">
-              {/* Decorative offset frame */}
-              <motion.div
-                className="absolute -bottom-5 -right-5 z-0 h-full w-full border border-gold/30"
-                initial={{ opacity: 0, x: -20, y: -20 }}
-                whileInView={{ opacity: 1, x: 0, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.9, ease: easeOut, delay: 0.2 }}
+              <img
+                src={missionImg}
+                alt="Mahy Khooray Automotive showroom floor in the United Arab Emirates"
+                className=" mt-8 h-full w-full object-cover object-center"
+                width={1920}
+                height={680}
               />
 
-              {/* Image container */}
-              <motion.div
-                className="relative z-10 h-full w-full overflow-hidden bg-white shadow-2xl"
-                variants={imageReveal}
-              >
-                <img
-                  src={missionImg}
-                  alt="MKA showroom floor in the United Arab Emirates"
-                  loading="lazy"
-                  width={1280}
-                  height={1600}
-                  className="h-full w-full object-cover"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-navy-900/20 via-transparent to-transparent" />
-              </motion.div>
 
-              {/* Floating brand badge */}
-              <motion.div
-                className="absolute -left-4 -top-4 z-20 bg-navy-900 p-5 shadow-xl"
-                variants={badgePop}
+        {/* ======================================================
+            MISSION + VISION
+            ====================================================== */}
+
+        <motion.div
+          className="
+            mt-12
+            grid
+            gap-10
+            sm:mt-14
+            lg:mt-16
+            lg:grid-cols-2
+            lg:gap-0
+          "
+          initial="hidden"
+          whileInView="show"
+          viewport={{
+            once: true,
+            amount: 0.2,
+          }}
+          variants={contentContainer}
+        >
+
+          {/* ====================================================
+              MISSION
+              ==================================================== */}
+
+          <motion.article
+            className="
+              lg:border-r
+              lg:border-grey-300
+              lg:pr-14
+            "
+            variants={contentItem}
+          >
+
+            <div className="flex items-center gap-4">
+
+              <span className="h-px w-8 bg-gold" />
+
+              <h3
+                className="
+                  font-display
+                  text-base
+                  font-bold
+                  uppercase
+                  tracking-[0.14em]
+                  text-navy-900
+                  sm:text-lg
+                "
               >
-                <div className="flex flex-col items-start gap-2">
-                  <img src={fav} alt="Logo" />
-                </div>
-              </motion.div>
+                Mission
+              </h3>
+
             </div>
-          </motion.div>
-        </div>
+
+            <p
+              className="
+                mt-6
+                max-w-[58ch]
+                text-[15px]
+                leading-[1.8]
+                text-ink/75
+                sm:text-[16px]
+              "
+            >
+              We distribute and support automotive brands across
+              the United Arab Emirates. Our work covers sales,
+              aftersales service and genuine parts, delivered
+              through facilities we own and teams we train. We
+              hold the same standard in every emirate we operate
+              in, so ownership feels consistent wherever a
+              customer buys.
+            </p>
+
+          </motion.article>
+
+
+          {/* ====================================================
+              VISION
+              ==================================================== */}
+
+          <motion.article
+            className="
+              lg:pl-14
+            "
+            variants={contentItem}
+          >
+
+            <div className="flex items-center gap-4">
+
+              <span className="h-px w-8 bg-gold" />
+
+              <h3
+                className="
+                  font-display
+                  text-base
+                  font-bold
+                  uppercase
+                  tracking-[0.14em]
+                  text-navy-900
+                  sm:text-lg
+                "
+              >
+                Vision
+              </h3>
+
+            </div>
+
+            <p
+              className="
+                mt-6
+                max-w-[58ch]
+                text-[15px]
+                leading-[1.8]
+                text-ink/75
+                sm:text-[16px]
+              "
+            >
+              We want to be the group UAE customers choose for
+              the full life of a vehicle, not only the first
+              purchase. That means more service capacity, faster
+              parts availability and a network that keeps pace
+              with new mobility technology. We build for the
+              next decade of the market, not the next quarter.
+            </p>
+
+          </motion.article>
+
+        </motion.div>
+
       </div>
     </section>
   );

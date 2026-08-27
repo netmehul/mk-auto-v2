@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { RevealGroup, RevealItem } from "./Reveal";
+import { MagneticButton } from "./Buttons";
 
 const BRANDS = [
   {
@@ -7,18 +8,24 @@ const BRANDS = [
     note: "Passenger & commercial vehicles",
     image: "/brands/dongfeng-lineup.webp",
     logo: "/brands/dongfeng-logo.svg",
+    desc: "A global automotive maker offering innovative, reliable passenger and commercial vehicles.",
+    href: "https://dongfeng-uae.com/",
   },
   {
     name: "Omoda | Jaecoo",
     note: "Design-led & off-road premium SUVs",
     image: "/brands/oj-lineup.webp",
     logo: "/brands/omoda-jaecoo.svg",
+    desc: "Modern crossovers designed for urban lifestyles, blending advanced technology with bold contemporary design.",
+    href: "https://omodajaecoo-auh.com/",
   },
   {
     name: "Pre-Owned",
     note: "Quality vehicles, ready for their next journey",
     image: "/brands/preowned-lineup.webp",
     logo: "/brands/certified-pre-owned.svg",
+    desc: "Explore quality pre-owned vehicles backed by the expertise and reputation of Mahy Khooray Automotive.",
+    href: undefined,
   },
 ];
 
@@ -49,6 +56,8 @@ export function Brands() {
     setActiveBrand(index);
   };
 
+  const activeBrandData = BRANDS[activeBrand];
+
   return (
     <section
       id="our-brands"
@@ -67,6 +76,7 @@ export function Brands() {
             ====================================================== */}
 
         <RevealGroup className="max-w-4xl">
+
           <RevealItem>
             <h2
               id="brands-title"
@@ -86,10 +96,11 @@ export function Brands() {
               text-off-white/70
             "
           >
-            Each brand is supported end-to-end by MKA sales,
-            aftersales, genuine parts and warranty under one
-            accountable group.
+            Each brand is supported end-to-end by Mahy Khooray
+            Automotive sales, aftersales, genuine parts and
+            warranty under one accountable group.
           </RevealItem>
+
         </RevealGroup>
 
 
@@ -108,13 +119,13 @@ export function Brands() {
             md:grid-cols-3
           "
         >
+
           {BRANDS.map((brand, index) => {
             const isActive = index === activeBrand;
 
             return (
-              <RevealItem
-                key={brand.name}
-              >
+              <RevealItem key={brand.name}>
+
                 <button
                   type="button"
                   onClick={() => handleBrandSelect(index)}
@@ -136,9 +147,7 @@ export function Brands() {
                     }
                   `}
                 >
-                  {/* ==================================================
-                      LOGO
-                      ================================================== */}
+
                   <div
                     className="
                       flex
@@ -147,6 +156,7 @@ export function Brands() {
                       justify-center
                     "
                   >
+
                     <img
                       src={brand.logo}
                       alt={`${brand.name} logo`}
@@ -161,11 +171,15 @@ export function Brands() {
                       "
                       draggable={false}
                     />
+
                   </div>
+
                 </button>
+
               </RevealItem>
             );
           })}
+
         </RevealGroup>
 
 
@@ -174,7 +188,9 @@ export function Brands() {
             ====================================================== */}
 
         <RevealGroup className="mt-8">
+
           <RevealItem>
+
             <div
               className="
                 relative
@@ -192,6 +208,7 @@ export function Brands() {
                   ================================================== */}
 
               {BRANDS.map((brand, index) => (
+
                 <div
                   key={brand.name}
                   className={`
@@ -200,7 +217,6 @@ export function Brands() {
                     transition-opacity
                     duration-700
                     ease-in-out
-
                     ${
                       index === activeBrand
                         ? "z-10 opacity-100"
@@ -208,6 +224,7 @@ export function Brands() {
                     }
                   `}
                 >
+
                   <img
                     src={brand.image}
                     alt={`${brand.name} lineup`}
@@ -219,8 +236,11 @@ export function Brands() {
                     "
                     draggable={false}
                   />
+
                 </div>
+
               ))}
+
 
               {/* ==================================================
                   IMAGE GRADIENT
@@ -240,6 +260,7 @@ export function Brands() {
                 "
               />
 
+
               {/* ==================================================
                   ACTIVE BRAND NAME
                   ================================================== */}
@@ -254,6 +275,7 @@ export function Brands() {
                   max-w-[70%]
                 "
               >
+
                 <span
                   className="
                     text-xs
@@ -262,9 +284,11 @@ export function Brands() {
                     text-white/80
                   "
                 >
-                  {BRANDS[activeBrand]?.name}
+                  {activeBrandData.name}
                 </span>
+
               </div>
+
 
               {/* ==================================================
                   SLIDER INDICATORS
@@ -281,7 +305,9 @@ export function Brands() {
                   gap-2
                 "
               >
+
                 {BRANDS.map((brand, index) => (
+
                   <button
                     key={brand.name}
                     type="button"
@@ -301,13 +327,13 @@ export function Brands() {
                       justify-center
                     "
                   >
+
                     <span
                       className={`
                         block
                         h-px
                         transition-all
                         duration-300
-
                         ${
                           index === activeBrand
                             ? "w-8 bg-white"
@@ -315,13 +341,88 @@ export function Brands() {
                         }
                       `}
                     />
+
                   </button>
+
                 ))}
+
               </div>
 
             </div>
+
           </RevealItem>
+
         </RevealGroup>
+
+
+        {/* ======================================================
+            ACTIVE BRAND CONTENT
+            ====================================================== */}
+
+        <RevealGroup
+          key={activeBrandData.name}
+          className="
+            mt-8
+            flex
+            flex-col
+            gap-7
+            border-t
+            border-off-white/12
+            pt-7
+            sm:mt-10
+            sm:pt-8
+            lg:flex-row
+            lg:items-end
+            lg:justify-between
+            lg:gap-12
+          "
+        >
+
+          {/* ====================================================
+              BRAND DESCRIPTION
+              ==================================================== */}
+
+          <RevealItem
+            as="div"
+            className="
+              max-w-[60ch]
+            "
+          >
+
+            <p
+              className="
+                text-[16px]
+                leading-[1.75]
+                text-off-white/70
+                sm:text-[17px]
+              "
+            >
+              {activeBrandData.desc}
+            </p>
+
+          </RevealItem>
+
+
+          {/* ====================================================
+              ACTIVE BRAND CTA
+              ==================================================== */}
+
+          {activeBrandData.href && (
+
+            <RevealItem>
+
+              <MagneticButton href={activeBrandData.href}>
+                Explore {activeBrandData.name}
+              </MagneticButton>
+
+            </RevealItem>
+
+          )}
+
+        </RevealGroup>
+
+
+        
 
       </div>
     </section>

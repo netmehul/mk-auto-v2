@@ -45,19 +45,14 @@ export function AboutGlance() {
   return (
     <section ref={root} id="about-glance" aria-labelledby="glance-heading" className="section-y bg-navy-900">
       <div className="shell">
-        <RevealGroup className="grid gap-10 lg:grid-cols-12 lg:gap-20">
-          <div className="lg:col-span-6">
+        <RevealGroup className="flex">
+          <div>
             <RevealItem>
               <h2 id="glance-heading" className="h2-display mt-7 uppercase max-w-[24ch] text-off-white">
-                Scale that serves the whole of the UAE.
+                Scale that serves <br/> the whole of the UAE.
               </h2>
             </RevealItem>
           </div>
-          <RevealItem as="p" className="max-w-[58ch] self-end text-[17px] leading-[1.7] text-off-white/70 lg:col-span-6 lg:col-start-7">
-            MKA operates across Dubai, Abu Dhabi, Sharjah and the Northern Emirates. Our footprint is planned so
-            that sales, service and genuine parts stay close to the customer. Figures below are placeholders
-            pending verified group data.
-          </RevealItem>
         </RevealGroup>
 
         <RevealGroup className="mt-16 grid gap-10 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4">
