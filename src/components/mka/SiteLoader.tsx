@@ -1,0 +1,185 @@
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import loaderLogo from "@/assets/logo-loader-optimized.svg";
+import PatternBG from '@/assets/pattern-bg.png';
+
+export function SiteLoader() {
+  const loader = useRef<HTMLDivElement>(null);
+  const logo = useRef<HTMLImageElement>(null);
+  const percentage = useRef<HTMLDivElement>(null);
+
+  const [isComplete, setIsComplete] = useState(false);
+
+  useEffect(() => {
+    const loaderElement = loader.current;
+    const logoElement = logo.current;
+    const percentageElement = percentage.current;
+
+    if (!loaderElement || !logoElement || !percentageElement) return;
+
+    document.body.style.overflow = "hidden";
+
+    const counter = { value: 0 };
+
+    const timeline = gsap.timeline({
+      onComplete: () => {
+        setIsComplete(true);
+
+        const exitTimeline = gsap.timeline({
+          onComplete: () => {
+            document.body.style.overflow = "";
+            loaderElement.style.display = "none";
+          },
+        });
+
+        exitTimeline
+          .to(
+            loaderElement,
+            {
+              duration: 0.8,
+              filter: "blur(18px)",
+              opacity: 0,
+              scale: 1.015,
+              ease: "power3.inOut",
+            },
+            0,
+          );
+      },
+    });
+
+    timeline.to(
+      counter,
+      {
+        value: 100,
+        duration: 1.9,
+        ease: "power2.inOut",
+        onUpdate: () => {
+          percentageElement.textContent = `${Math.round(counter.value)}%`;
+        },
+      },
+      0,
+    );
+
+    timeline.to({}, { duration: 0.15 });
+
+    return () => {
+      timeline.kill();
+      document.body.style.overflow = "";
+    };
+  }, []);
+
+  return (
+    <div
+      ref={loader}
+      className="fixed inset-0 z-[99999] flex h-screen w-screen items-center overflow-hidden bg-[#020229]"
+      aria-hidden={isComplete}
+    >
+        <div className="absolute inset-0">
+        <img
+          src={PatternBG}
+          alt=""
+          aria-hidden="true"
+          className="h-full w-full object-cover"
+        />
+        </div>
+      {/* ======================================================
+          SUBTLE MK PATTERN
+          ====================================================== */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          opacity-[0.035]
+        "
+        style={{
+          backgroundImage: `url(${loaderLogo})`,
+          backgroundRepeat: "repeat",
+          backgroundSize: "110px auto",
+        }}
+      />
+
+      {/* ======================================================
+          MAIN CONTENT
+          ====================================================== */}
+          <div className="relative flex h-full w-full items-center justify-center">
+  <div className="flex flex-col items-center">
+
+    {/* LOGO */}
+
+    <div className="flex items-center justify-center">
+      <img
+        ref={logo}
+        src={loaderLogo}
+        alt="Mahy Khooray Automotive"
+        className="
+          h-auto
+          w-[110px]
+          sm:w-[125px]
+          lg:w-[140px]
+        "
+      />
+    </div>
+
+    {/* PERCENTAGE */}
+
+    <div
+      ref={percentage}
+      className="
+        mt-7
+        font-display
+        text-[clamp(3.5rem,7vw,6rem)]
+        font-normal
+        leading-none
+        tracking-[-0.04em]
+        text-off-white
+      "
+    >
+      0%
+    </div>
+
+  </div>
+</div>
+
+      {/* <div className="relative flex h-full w-full flex-col justify-between p-8 sm:p-10 lg:p-14">
+
+
+
+        <div className="flex items-start">
+          <img
+            ref={logo}
+            src={loaderLogo}
+            alt="Mahy Khooray Automotive"
+            className="
+              h-auto
+              w-[100px]
+              sm:w-[120px]
+              lg:w-[140px]
+            "
+          />
+        </div>
+
+
+ 
+
+        <div
+          ref={percentage}
+          className="
+            self-end
+            font-display
+            text-[clamp(4.5rem,11vw,9rem)]
+            font-normal
+            leading-none
+            tracking-[-0.04em]
+            text-off-white
+          "
+        >
+          0%
+        </div>
+
+      </div> */}
+
+    </div>
+  );
+}

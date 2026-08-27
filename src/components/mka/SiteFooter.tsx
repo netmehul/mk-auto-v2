@@ -91,14 +91,8 @@ export function SiteFooter() {
   return (
     <footer className="relative w-full overflow-hidden bg-navy-900">
        {/* Background */}
-      <div className="absolute inset-0">
-        <img
-          src={FooterBg}
-          alt=""
-          aria-hidden="true"
-          className="h-full w-full object-cover"
-        />
-        </div>
+      
+      
       {/* ======================================================
           BACKGROUND PATTERN
           ====================================================== */}
@@ -339,7 +333,6 @@ export function SiteFooter() {
             text-center
           "
         >
-
           {/* ==================================================
               COPYRIGHT
               ================================================== */}
