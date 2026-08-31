@@ -9,13 +9,15 @@ import { News } from "@/components/mka/News";
 import { SiteFooter } from "@/components/mka/SiteFooter";
 import { SiteLoader } from "@/components/mka/SiteLoader";
 
-const title = "MKA — Mahy Khoory Automotive | UAE Distributor";
+const title = "MAHY Khoory Automotive";
+
 const description =
-  "Mahy Khoory Automotive is the official UAE distributor for Dongfeng, Omoda and Jaecoo — showrooms, service and genuine parts across the Emirates.";
+  "MAHY Khoory Automotive is the official UAE distributor for Dongfeng, Omoda and Jaecoo — showrooms, service and genuine parts across the Emirates.";
 
 export const Route = createFileRoute("/")({
   component: Home,
   head: () => ({
+
     meta: [
       { title },
       { name: "description", content: description },
@@ -32,8 +34,8 @@ export const Route = createFileRoute("/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
-          name: "Mahy Khoory Automotive",
-          alternateName: "MKA",
+          name: "MAHY Khoory Automotive",
+          alternateName: "MAHY Khooray Automotive",
           description,
           address: {
             "@type": "PostalAddress",
