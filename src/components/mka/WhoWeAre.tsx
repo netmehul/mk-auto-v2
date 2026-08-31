@@ -53,7 +53,7 @@ export function WhoWeAre() {
             transition={{ duration: 1.1, ease: easeOut }}
             className="relative flex items-center justify-center py-6"
           >
-            
+
             <img
               src={MkAnimationF}
               alt="Animated MK monogram outline"

@@ -416,7 +416,7 @@ export function Brands() {
             ACTIVE BRAND CONTENT
             ====================================================== */}
 
-        {/* <RevealGroup
+        <RevealGroup
           key={activeBrandData.name}
           className="
             mt-8
@@ -471,7 +471,7 @@ export function Brands() {
 
           )}
 
-        </RevealGroup> */}
+        </RevealGroup>
 
 
         
