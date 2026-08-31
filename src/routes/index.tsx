@@ -8,6 +8,7 @@ import { CareersSection } from "@/components/mka/Careers";
 import { News } from "@/components/mka/News";
 import { SiteFooter } from "@/components/mka/SiteFooter";
 import { SiteLoader } from "@/components/mka/SiteLoader";
+import ogImage from "@/assets/OG-image.png";
 
 const title = "MAHY Khoory Automotive";
 
@@ -17,7 +18,6 @@ const description =
 export const Route = createFileRoute("/")({
   component: Home,
   head: () => ({
-
     meta: [
       { title },
       { name: "description", content: description },
@@ -25,7 +25,9 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
+      { property: "og:image", content: ogImage },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: ogImage },
     ],
     links: [{ rel: "canonical", href: "/" }],
     scripts: [

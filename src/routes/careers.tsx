@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, ChangeEvent, FocusEvent, FormEvent } from "react";
+import { useState, useEffect, useRef, ChangeEvent, FocusEvent, FormEvent, DragEvent } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { RevealGroup, RevealItem } from "@/components/mka/Reveal";
 import { SiteHeader } from "@/components/mka/SiteHeader";
@@ -8,7 +8,7 @@ import PurposeCareer from '@/assets/purpose_career.webp';
 import PurposeOpportunity from '@/assets/purpose_opportunity.webp';
 import PurposePeople from '@/assets/purpose_people.webp';
 import BuildChapterImage from '@/assets/build_chapter_image.webp';
-import { Loader2, AlertCircle, CheckCircle2, FileText, X } from "lucide-react";
+import { Loader2, AlertCircle, CheckCircle2, FileText, X, ChevronDown, Upload } from "lucide-react";
 import { PhoneInputField } from "@/components/mka/PhoneInputField";
 import { validatePhoneNumber, formatFullPhoneNumber } from "@/lib/phoneValidation";
 import { fetchJobRoles, JobRole, FALLBACK_JOB_ROLES } from "@/lib/jobRoles";
@@ -66,6 +66,7 @@ function Careers() {
     message: "",
   });
   const [cvFile, setCvFile] = useState<File | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
   const [errors, setErrors] = useState<CareerFormErrors>({});
   const [touched, setTouched] = useState<CareerFormTouched>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -240,6 +241,28 @@ function Careers() {
     }
     if (touched["cv"]) {
       setFieldError("cv", "Please upload your CV / Resume");
+    }
+  };
+
+  const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = () => {
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e: DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDragging(false);
+    const file = e.dataTransfer.files?.[0] || null;
+    if (file) {
+      setCvFile(file);
+      setTouched((prev) => ({ ...prev, cv: true }));
+      const error = validateField("cv", "", file);
+      setFieldError("cv", error);
+      if (formError) setFormError(null);
     }
   };
 
@@ -721,57 +744,67 @@ function Careers() {
                         Role / Department of Interest <span className="text-red-500">*</span>
                       </label>
 
-                      <select
-                        id="department"
-                        name="department"
-                        value={formData.department}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        disabled={isLoadingRoles && jobRoles.length === 0}
-                        className={`
-                          mt-3
-                          h-12
-                          w-full
-                          border-b
-                          px-0
-                          text-sm
-                          text-navy-900
-                          outline-none
-                          transition-colors
-                          duration-300
-                          ${
-                            errors["department"] && touched["department"]
-                              ? "border-red-500 focus:border-red-500"
-                              : "border-grey-200 focus:border-gold"
-                          }
-                        `}
-                      >
-                        <option
-                          value=""
-                          disabled
-                          className="bg-white text-grey-500"
+                      <div className="relative mt-3">
+                        <select
+                          id="department"
+                          name="department"
+                          value={formData.department}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          disabled={isLoadingRoles && jobRoles.length === 0}
+                          className={`
+                            h-12
+                            w-full
+                            appearance-none
+                            border-b
+                            bg-transparent
+                            px-0
+                            pr-8
+                            text-sm
+                            outline-none
+                            transition-colors
+                            duration-300
+                            cursor-pointer
+                            ${
+                              !formData.department
+                                ? "text-grey-400 font-normal"
+                                : "text-navy-900"
+                            }
+                            ${
+                              errors["department"] && touched["department"]
+                                ? "border-red-500 focus:border-red-500"
+                                : "border-grey-200 focus:border-gold"
+                            }
+                          `}
                         >
-                          {isLoadingRoles && jobRoles.length === 0
-                            ? "Loading roles..."
-                            : "Select an area"}
-                        </option>
+                          <option
+                            value=""
+                            disabled
+                            className="bg-white text-grey-400"
+                          >
+                            {isLoadingRoles && jobRoles.length === 0
+                              ? "Loading roles..."
+                              : "Select an area"}
+                          </option>
 
-                        {jobRoles.map((role) => {
-                          const optionVal =
-                            role.id !== undefined && role.id !== null
-                              ? String(role.id)
-                              : role.name;
-                          return (
-                            <option
-                              key={optionVal}
-                              value={optionVal}
-                              className="bg-white text-navy-900"
-                            >
-                              {role.name}
-                            </option>
-                          );
-                        })}
-                      </select>
+                          {jobRoles.map((role) => {
+                            const optionVal =
+                              role.id !== undefined && role.id !== null
+                                ? String(role.id)
+                                : role.name;
+                            return (
+                              <option
+                                key={optionVal}
+                                value={optionVal}
+                                className="bg-white text-navy-900"
+                              >
+                                {role.name}
+                              </option>
+                            );
+                          })}
+                        </select>
+                        <ChevronDown className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 h-4 w-4 text-grey-400" />
+                      </div>
                       {errors["department"] && touched["department"] && (
                         <p className="mt-1.5 text-xs text-red-500">{errors["department"]}</p>
                       )}
@@ -793,73 +826,90 @@ function Careers() {
                         CV / Resume <span className="text-red-500">*</span>
                       </label>
 
-                      <div
-                        className={`
-                          mt-3
-                          border
-                          border-dashed
-                          p-6
-                          transition-colors
-                          duration-300
-                          ${
-                            errors["cv"] && touched["cv"]
-                              ? "border-red-500 bg-red-50/20"
-                              : "border-grey-200 hover:border-grey-400"
-                          }
-                        `}
-                      >
-                        <input
-                          ref={fileInputRef}
-                          id="cv"
-                          name="cv"
-                          type="file"
-                          accept=".pdf,.doc,.docx"
-                          onChange={handleFileChange}
-                          className="
-                            block
-                            w-full
-                            cursor-pointer
-                            text-sm
-                            text-grey-500
-                            file:mr-4
-                            file:border-0
-                            file:bg-navy-900
-                            file:px-4
-                            file:py-2
-                            file:text-xs
-                            file:font-medium
-                            file:uppercase
-                            file:tracking-[0.06em]
-                            file:text-off-white
-                            file:transition-colors
-                            hover:file:bg-gold
-                          "
-                        />
+                      <input
+                        ref={fileInputRef}
+                        id="cv"
+                        name="cv"
+                        type="file"
+                        accept=".pdf,.doc,.docx"
+                        onChange={handleFileChange}
+                        className="sr-only"
+                      />
 
-                        {cvFile ? (
-                          <div className="mt-3 flex items-center justify-between rounded bg-white p-2 text-xs text-navy-900 border border-grey-200">
-                            <div className="flex items-center gap-2 overflow-hidden">
-                              <FileText className="h-4 w-4 shrink-0 text-gold" />
-                              <span className="truncate font-medium">{cvFile.name}</span>
-                              <span className="shrink-0 text-grey-400">
-                                ({(cvFile.size / 1024).toFixed(1)} KB)
-                              </span>
-                            </div>
-                            <button
-                              type="button"
-                              onClick={handleRemoveFile}
-                              className="ml-2 text-grey-400 hover:text-red-500 p-1"
-                              title="Remove file"
-                            >
-                              <X className="h-3.5 w-3.5" />
-                            </button>
+                      {!cvFile ? (
+                        <div
+                          onClick={() => fileInputRef.current?.click()}
+                          onDragOver={handleDragOver}
+                          onDragLeave={handleDragLeave}
+                          onDrop={handleDrop}
+                          role="button"
+                          tabIndex={0}
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter" || e.key === " ") {
+                              e.preventDefault();
+                              fileInputRef.current?.click();
+                            }
+                          }}
+                          className={`
+                            mt-3
+                            flex
+                            h-12
+                            cursor-pointer
+                            items-center
+                            justify-between
+                            border-b
+                            bg-transparent
+                            px-0
+                            transition-colors
+                            duration-300
+                            ${
+                              errors["cv"] && touched["cv"]
+                                ? "border-red-500"
+                                : isDragging
+                                ? "border-gold"
+                                : "border-grey-200 hover:border-grey-400"
+                            }
+                          `}
+                        >
+                          <span className="text-sm font-normal text-grey-400">
+                            Upload CV / Resume (PDF, DOC, DOCX - max 10MB)
+                          </span>
+                          <Upload className="h-4 w-4 shrink-0 text-grey-400" />
+                        </div>
+                      ) : (
+                        <div
+                          className="
+                            mt-3
+                            flex
+                            h-12
+                            items-center
+                            justify-between
+                            border-b
+                            border-grey-200
+                            bg-transparent
+                            px-0
+                          "
+                        >
+                          <div className="flex items-center gap-2.5 overflow-hidden">
+                            <FileText className="h-4 w-4 shrink-0 text-gold" />
+                            <span className="truncate text-sm font-medium text-navy-900">
+                              {cvFile.name}
+                            </span>
+                            <span className="shrink-0 text-xs text-grey-400">
+                              ({(cvFile.size / 1024).toFixed(1)} KB)
+                            </span>
                           </div>
-                        ) : (
-                          <p className="mt-3 text-xs text-grey-400">
-                            PDF, DOC or DOCX (Max 10MB)
-                          </p>
-                        )}
-                      </div>
+                          <button
+                            type="button"
+                            onClick={handleRemoveFile}
+                            className="p-1 text-grey-400 transition-colors duration-200 hover:text-red-500 cursor-pointer"
+                            title="Remove file"
+                          >
+                            <X className="h-4 w-4" />
+                          </button>
+                        </div>
+                      )}
+
                       {errors["cv"] && touched["cv"] && (
                         <p className="mt-1.5 text-xs text-red-500">{errors["cv"]}</p>
                       )}
