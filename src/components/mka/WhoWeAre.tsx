@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { RevealGroup, RevealItem } from "./Reveal";
 import MkAnimationF from "@/assets/mk-line-animation-navy.svg";
-import LineDecoration from "@/assets/line-decoration-navy.svg";
+// import LineDecoration from "@/assets/line-decoration-navy.svg";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -12,11 +12,13 @@ export function WhoWeAre() {
       aria-labelledby="who-we-are-title"
       className="section-y relative overflow-hidden bg-off-white text-ink"
     >
-      <div className="hidden sm:relative sm:block pointer-events-none select-none">
+
+      {/* remove lines */}
+      {/* <div className="hidden sm:relative sm:block pointer-events-none select-none">
         <img src={LineDecoration} alt="" loading="lazy" className="absolute right-0" />
         <img src={LineDecoration} alt="" loading="lazy" className="absolute inset-y-0 right-125 rotate-225 mt-[-350px]" />
         <img src={LineDecoration} alt="" loading="lazy" className="absolute left-0 -scale-x-100" />
-      </div>
+      </div> */}
 
       <div className="shell relative grid items-center gap-14 lg:grid-cols-12 lg:gap-20">
         <RevealGroup className="lg:col-span-6">
@@ -53,7 +55,7 @@ export function WhoWeAre() {
             transition={{ duration: 1.1, ease: easeOut }}
             className="relative flex items-center justify-center py-6"
           >
-            
+
             <img
               src={MkAnimationF}
               alt="Animated MK monogram outline"
