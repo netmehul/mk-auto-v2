@@ -103,7 +103,6 @@ export function Brands() {
 
         </RevealGroup>
 
-
         {/* ======================================================
             BRAND TAB SWITCHER
             ====================================================== */}
@@ -119,25 +118,21 @@ export function Brands() {
             md:grid-cols-3
           "
         >
-
           {BRANDS.map((brand, index) => {
             const isActive = index === activeBrand;
 
             return (
               <RevealItem key={brand.name}>
 
-                <button
-                  type="button"
-                  onClick={() => handleBrandSelect(index)}
-                  aria-pressed={isActive}
+                <div
                   className={`
                     group
+                    relative
                     flex
-                    h-full
-                    min-h-[80px]
+                    h-[158px]
                     w-full
                     flex-col
-                    p-2
+                    overflow-hidden
                     transition-colors
                     duration-500
                     ${
@@ -148,40 +143,102 @@ export function Brands() {
                   `}
                 >
 
-                  <div
+                  {/* ==================================================
+                      LOGO
+                      ================================================== */}
+
+                  <button
+                    type="button"
+                    onClick={() => handleBrandSelect(index)}
+                    aria-pressed={isActive}
                     className="
                       flex
-                      min-h-[70px]
+                      min-h-0
+                      flex-1
+                      w-full
                       items-center
                       justify-center
+                      px-8
+                      pt-4
                     "
                   >
-
                     <img
                       src={brand.logo}
                       alt={`${brand.name} logo`}
                       className="
                         block
-                        max-h-[68px]
-                        w-auto
+                        w-[stretch]
                         opacity-90
                         transition-opacity
                         duration-500
+                        ease-out
                         group-hover:opacity-100
                       "
                       draggable={false}
                     />
+                  </button>
+
+
+                  {/* ==================================================
+                      CTA
+                      ================================================== */}
+
+                  <div
+                    className={`
+                      grid
+                      overflow-hidden
+                      px-4
+                      transition-[grid-template-rows,opacity]
+                      duration-600
+                      ease-[cubic-bezier(0.22,1,0.36,1)]
+                      ${
+                        isActive && brand.href
+                          ? "grid-rows-[1fr] opacity-100"
+                          : "grid-rows-[0fr] opacity-0"
+                      }
+                    `}
+                  >
+
+                    <div className="min-h-0 overflow-hidden pb-4">
+
+                      {brand.href && (
+                        <a
+                          href={brand.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="
+                            flex
+                            h-[44px]
+                            w-full
+                            items-center
+                            justify-center
+                            bg-white
+                            px-5
+                            text-center
+                            text-xs
+                            uppercase
+                            tracking-[0.12em]
+                            text-black
+                            transition-colors
+                            duration-300
+                            hover:bg-gold
+                            hover:text-navy-900
+                          "
+                        >
+                          Explore {brand.name}
+                        </a>
+                      )}
+
+                    </div>
 
                   </div>
 
-                </button>
+                </div>
 
               </RevealItem>
             );
           })}
-
         </RevealGroup>
-
 
         {/* ======================================================
             IMAGE SLIDER
@@ -359,7 +416,7 @@ export function Brands() {
             ACTIVE BRAND CONTENT
             ====================================================== */}
 
-        <RevealGroup
+        {/* <RevealGroup
           key={activeBrandData.name}
           className="
             mt-8
@@ -377,10 +434,6 @@ export function Brands() {
             lg:gap-12
           "
         >
-
-          {/* ====================================================
-              BRAND DESCRIPTION
-              ==================================================== */}
 
           <RevealItem
             as="div"
@@ -402,11 +455,6 @@ export function Brands() {
 
           </RevealItem>
 
-
-          {/* ====================================================
-              ACTIVE BRAND CTA
-              ==================================================== */}
-
           {activeBrandData.href && (
 
             <RevealItem>
@@ -423,7 +471,7 @@ export function Brands() {
 
           )}
 
-        </RevealGroup>
+        </RevealGroup> */}
 
 
         
