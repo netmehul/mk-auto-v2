@@ -40,6 +40,8 @@
   --color-off-white: var(--mka-off-white);
   --color-ink: var(--mka-ink);
   --color-grey-500: var(--mka-grey-500);
+  --color-grey-400: var(--mka-grey-400);
+  --color-grey-300: var(--mka-grey-300);
   --color-grey-200: var(--mka-grey-200);
   --color-gold: var(--mka-gold);
   --color-gold-soft: var(--mka-gold-soft);
@@ -55,6 +57,8 @@
   --mka-off-white: oklch(0.977 0.003 106.4);
   --mka-ink: oklch(0.197 0.022 284.2);
   --mka-grey-500: oklch(0.532 0.020 285.7);
+  --mka-grey-400: oklch(0.680 0.015 285.7);
+  --mka-grey-300: oklch(0.800 0.010 286.0);
   --mka-grey-200: oklch(0.920 0.005 286.3);
   --mka-gold: oklch(0.664 0.083 77.4);
   --mka-gold-soft: oklch(0.835 0.052 84.5);
@@ -94,6 +98,20 @@
     color: var(--color-foreground);
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
+  }
+
+  input,
+  textarea,
+  select,
+  button {
+    font-family: inherit;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    font-family: inherit;
+    color: var(--color-grey-400);
+    opacity: 1;
   }
 
   h1,

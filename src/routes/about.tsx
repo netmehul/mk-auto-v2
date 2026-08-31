@@ -9,6 +9,7 @@ import { HeadOffice } from "@/components/mka/about/HeadOffice";
 import { BrandLocations } from "@/components/mka/about/BrandLocations";
 import { CareersSection } from "@/components/mka/Careers";
 import { AboutCareersSection } from "@/components/mka/about/AboutCareer";
+import ogImage from "@/assets/OG-image.png";
 
 const title = "About MAHY Khooray Automotive | Mahy Khoory Automotive Group, UAE";
 
@@ -25,10 +26,12 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: ogImage },
       {
         name: "twitter:card",
         content: "summary_large_image",
       },
+      { name: "twitter:image", content: ogImage },
     ],
 
     links: [

@@ -4,7 +4,7 @@ import { RevealGroup, RevealItem } from "@/components/mka/Reveal";
 import { ContactUsHeaderBand } from "@/components/mka/contactus/ContactUsHeaderBands";
 import { SiteHeader } from "@/components/mka/SiteHeader";
 import { SiteFooter } from "@/components/mka/SiteFooter";
-import { Loader2, AlertCircle } from "lucide-react";
+import { Loader2, AlertCircle, ChevronDown } from "lucide-react";
 import { PhoneInputField } from "@/components/mka/PhoneInputField";
 import { validatePhoneNumber, formatFullPhoneNumber } from "@/lib/phoneValidation";
 import {
@@ -845,66 +845,75 @@ function Contact() {
                     <span className="text-red-500">*</span>
                   </label>
 
-                  <select
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    disabled={
-                      isLoadingSubjects &&
-                      subjects.length === 0
-                    }
-                    className={`
-                      mt-3
-                      h-12
-                      w-full
-                      border-b
-                      bg-white
-                      px-0
-                      text-sm
-                      text-navy-900
-                      outline-none
-                      transition-colors
-                      duration-300
-                      ${
-                        errors["subject"] && touched["subject"]
-                          ? "border-red-400 focus:border-red-400"
-                          : "border-grey-300 focus:border-gold"
+                  <div className="relative mt-3">
+                    <select
+                      id="subject"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      disabled={
+                        isLoadingSubjects &&
+                        subjects.length === 0
                       }
-                    `}
-                  >
-
-                    <option
-                      value=""
-                      disabled
-                      className="bg-white text-grey-400"
+                      className={`
+                        h-12
+                        w-full
+                        appearance-none
+                        border-b
+                        bg-transparent
+                        px-0
+                        pr-8
+                        text-sm
+                        outline-none
+                        transition-colors
+                        duration-300
+                        cursor-pointer
+                        ${
+                          !formData.subject
+                            ? "text-grey-400 font-normal"
+                            : "text-navy-900"
+                        }
+                        ${
+                          errors["subject"] && touched["subject"]
+                            ? "border-red-400 focus:border-red-400"
+                            : "border-grey-300 focus:border-gold"
+                        }
+                      `}
                     >
-                      {isLoadingSubjects &&
-                      subjects.length === 0
-                        ? "Loading enquiry types..."
-                        : "Select an enquiry type"}
-                    </option>
 
-                    {subjects.map((item) => {
-                      const optionVal =
-                        item.id !== undefined &&
-                        item.id !== null
-                          ? String(item.id)
-                          : item.name;
+                      <option
+                        value=""
+                        disabled
+                        className="bg-white text-grey-400"
+                      >
+                        {isLoadingSubjects &&
+                        subjects.length === 0
+                          ? "Loading enquiry types..."
+                          : "Select an enquiry type"}
+                      </option>
 
-                      return (
-                        <option
-                          key={optionVal}
-                          value={optionVal}
-                          className="bg-white text-navy-900"
-                        >
-                          {item.name}
-                        </option>
-                      );
-                    })}
+                      {subjects.map((item) => {
+                        const optionVal =
+                          item.id !== undefined &&
+                          item.id !== null
+                            ? String(item.id)
+                            : item.name;
 
-                  </select>
+                        return (
+                          <option
+                            key={optionVal}
+                            value={optionVal}
+                            className="bg-white text-navy-900"
+                          >
+                            {item.name}
+                          </option>
+                        );
+                      })}
+
+                    </select>
+                    <ChevronDown className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 h-4 w-4 text-grey-400" />
+                  </div>
 
                   {errors["subject"] &&
                     touched["subject"] && (
