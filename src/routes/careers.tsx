@@ -12,6 +12,7 @@ import { Loader2, AlertCircle, CheckCircle2, FileText, X } from "lucide-react";
 import { PhoneInputField } from "@/components/mka/PhoneInputField";
 import { validatePhoneNumber, formatFullPhoneNumber } from "@/lib/phoneValidation";
 import { fetchJobRoles, JobRole, FALLBACK_JOB_ROLES } from "@/lib/jobRoles";
+import { SmoothScroll } from "@/components/SmoothScroll";
 
 export const Route = createFileRoute("/careers")({
   component: Careers,
@@ -358,6 +359,7 @@ function Careers() {
 
   return (
     <main className="bg-off-white text-navy-900">
+      <SmoothScroll>
       <SiteHeader />
       <CareerHeaderBand />
 
@@ -982,7 +984,7 @@ function Careers() {
       </section>
 
       <SiteFooter />
-
+      </SmoothScroll>
     </main>
   );
 }

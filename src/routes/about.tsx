@@ -49,7 +49,10 @@ function About() {
         {/* About page content */}
         <AboutHeaderBand />
         <MissionVision />
+
+
         <Excellence />
+        
         <AboutGlance />
         <BrandLocations />
         <HeadOffice />

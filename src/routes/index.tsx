@@ -8,6 +8,7 @@ import { CareersSection } from "@/components/mka/Careers";
 import { News } from "@/components/mka/News";
 import { SiteFooter } from "@/components/mka/SiteFooter";
 import { SiteLoader } from "@/components/mka/SiteLoader";
+import { SmoothScroll } from "@/components/SmoothScroll";
 
 const title = "MAHY Khoory Automotive";
 
@@ -52,17 +53,23 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <>
-      <SiteLoader />
+    <SiteLoader />
+    <SmoothScroll>
+
       <SiteHeader />
-      <main>
-        <Hero />
-        <WhoWeAre />
-        <Brands />
-        <AtAGlance />
-        <CareersSection />
-        <News />
-      </main>
-      <SiteFooter />
+
+        <main>
+          <Hero />
+          <WhoWeAre />
+          <Brands />
+          <AtAGlance />
+          <CareersSection />
+          <News />
+        </main>
+        <SiteFooter />
+
+    </SmoothScroll>
+
     </>
   );
 }

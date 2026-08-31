@@ -12,6 +12,7 @@ import {
   ContactSubject,
   FALLBACK_CONTACT_SUBJECTS,
 } from "@/lib/contactSubjects";
+import { SmoothScroll } from "@/components/SmoothScroll";
 
 export const Route = createFileRoute("/contactus")({
   component: Contact,
@@ -329,7 +330,9 @@ function Contact() {
   };
 
   return (
+    
     <main className="bg-off-white text-navy-900">
+      <SmoothScroll>
         <SiteHeader />
         <ContactUsHeaderBand />
       {/* ======================================================
@@ -1117,6 +1120,7 @@ function Contact() {
 
       
       <SiteFooter />
+      </SmoothScroll>
     </main>
   );
 }
