@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { RevealGroup, RevealItem } from "./Reveal";
-import { MagneticButton } from "./Buttons";
 
 const BRANDS = [
   {
@@ -411,70 +410,6 @@ export function Brands() {
 
         </RevealGroup>
 
-
-        {/* ======================================================
-            ACTIVE BRAND CONTENT
-            ====================================================== */}
-
-        <RevealGroup
-          key={activeBrandData.name}
-          className="
-            mt-8
-            flex
-            flex-col
-            gap-7
-            border-t
-            border-off-white/12
-            pt-7
-            sm:mt-10
-            sm:pt-8
-            lg:flex-row
-            lg:items-end
-            lg:justify-between
-            lg:gap-12
-          "
-        >
-
-          <RevealItem
-            as="div"
-            className="
-              max-w-[60ch]
-            "
-          >
-
-            <p
-              className="
-                text-[16px]
-                leading-[1.75]
-                text-off-white/70
-                sm:text-[17px]
-              "
-            >
-              {activeBrandData.desc}
-            </p>
-
-          </RevealItem>
-
-          {activeBrandData.href && (
-
-            <RevealItem>
-
-              <MagneticButton
-                href={activeBrandData.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Explore {activeBrandData.name}
-              </MagneticButton>
-
-            </RevealItem>
-
-          )}
-
-        </RevealGroup>
-
-
-        
 
       </div>
     </section>
