@@ -5,14 +5,15 @@ import { useGSAP } from "@gsap/react";
 import glanceBg from "@/assets/glance-bg.jpg";
 import { RevealGroup, RevealItem } from "./Reveal";
 import { prefersReducedMotion, isMobileViewport } from "@/lib/motion-prefs";
+import atAGlanceImage from "@/assets/at_glance_support.webp";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const STATS = [
-  { value: 6, suffix: "+", label: "Showrooms across the Emirates" },
-  { value: 300, suffix: "+", label: "People in the group" },
-  { value: 20, suffix: "+", label: "Nationalities represented" },
-  { value: 40, suffix: "+", label: "Years of family legacy" },
+  { value: 6, suffix: "+", label: "Showrooms across the UAE" },
+  { value: 200, suffix: "+", label: "People in our Automotive team" },
+  { value: 10, suffix: "+", label: "Nationalities" },
+  { value: 96, suffix: "+", label: "Years of family legacy" },
 ];
 
 export function AtAGlance() {
@@ -76,13 +77,13 @@ export function AtAGlance() {
         <RevealGroup className="max-w-3xl">
           <RevealItem>
             <h2 id="glance-title" className="h2-display uppercase mt-7 text-navy-900">
-              Scale that serves the whole of the UAE.
+              OUR REACH ACROSS THE UAE
             </h2>
           </RevealItem>
-          <RevealItem as="p" className="mt-6 max-w-[58ch] text-[17px] leading-[1.7] text-navy-900/70">
+          {/* <RevealItem as="p" className="mt-6 max-w-[58ch] text-[17px] leading-[1.7] text-navy-900/70">
             From Dubai to the Northern Emirates, our footprint is built to keep customers close to sales,
             service and genuine parts.
-          </RevealItem>
+          </RevealItem> */}
         </RevealGroup>
 
         <RevealGroup className="mt-16 grid gap-12 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4">
@@ -99,6 +100,11 @@ export function AtAGlance() {
               </div>
             </RevealItem>
           ))}
+        </RevealGroup>
+        <RevealGroup className="mt-16">
+          <RevealItem>
+            <img src={atAGlanceImage} alt="At a Glance Support" className="w-full h-120 object-cover" />
+          </RevealItem>
         </RevealGroup>
       </div>
     </section>

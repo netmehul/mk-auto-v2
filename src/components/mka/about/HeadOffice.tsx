@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import officeImg from "@/assets/about-head-office.jpg";
+import officeImg from "@/assets/head_office_about_us.webp";
 import { RevealGroup, RevealItem } from "../Reveal";
 import { PrimaryButton } from "../Buttons";
 
@@ -12,17 +12,12 @@ export function HeadOffice() {
         <RevealGroup className="lg:col-span-5">
           <RevealItem>
             <h2 id="head-office-title" className="h2-display mt-7 uppercase max-w-[16ch] text-navy-900">
-              Where the group is based.
+              Group overview
             </h2>
           </RevealItem>
           <RevealItem as="p" className="mt-7 text-[17px] leading-[1.7] text-ink/70">
-            Mahy Khoory Automotive LLC
-            <br />
-            Sheikh Zayed Road, Al Quoz First
-            <br />
-            Dubai, United Arab Emirates
-            <br />
-            <span className="text-sm text-grey-500">(Placeholder address, pending verification)</span>
+            For nearly a century, M.A.H.Y. Khoory Group has become one of the UAE's established diversified business groups. Built on a legacy of innovation, reliability and long-standing partnerships, the Group today operates across engineering, trading, manufacturing, recycling, logistics, hospitality, interiors and green energy.
+            
           </RevealItem>
           <RevealItem as="p" className="mt-6 text-[15px] leading-[1.7] text-ink/60">
             Sunday to Thursday, 8:30 to 18:00.{" "}
@@ -31,8 +26,8 @@ export function HeadOffice() {
             </a>
           </RevealItem>
           <RevealItem className="mt-9">
-            <PrimaryButton href="https://maps.google.com/?q=Sheikh+Zayed+Road+Dubai">
-              Get Directions
+            <PrimaryButton href="https://mahykhoory.com/">
+              Explore MAHY Khooray
             </PrimaryButton>
           </RevealItem>
         </RevealGroup>

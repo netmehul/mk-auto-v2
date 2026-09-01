@@ -8,10 +8,10 @@ import { prefersReducedMotion } from "@/lib/motion-prefs";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const STATS = [
-  { value: 15, suffix: "+", label: "Years of experience" },
-  { value: 6, suffix: "+", label: "Showrooms" },
-  { value: 300, suffix: "+", label: "Employees" },
-  { value: 20, suffix: "+", label: "Nationalities" },
+  { value: 6, suffix: "+", label: "Showrooms across the UAE" },
+  { value: 200, suffix: "+", label: "People in our Automotive team" },
+  { value: 10, suffix: "+", label: "Nationalities" },
+  { value: 96, suffix: "+", label: "Years of family legacy" },
 ];
 
 export function AboutGlance() {
@@ -48,8 +48,8 @@ export function AboutGlance() {
         <RevealGroup className="flex">
           <div>
             <RevealItem>
-              <h2 id="glance-heading" className="h2-display mt-7 uppercase max-w-[24ch] text-off-white">
-                Scale that serves <br/> the whole of the UAE.
+              <h2 id="glance-heading" className="h2-display mt-7 uppercase max-w-[30ch] text-off-white">
+                Our Scale, Our People, Our Legacy.
               </h2>
             </RevealItem>
           </div>
@@ -71,14 +71,14 @@ export function AboutGlance() {
           ))}
         </RevealGroup>
 
-        <RevealGroup className="mt-20 border-t border-off-white/12 pt-10">
+        {/* <RevealGroup className="mt-20 border-t border-off-white/12 pt-10">
           <RevealItem>
             <h3 className="font-display text-2xl uppercase text-off-white lg:text-3xl">Our presence in the UAE</h3>
           </RevealItem>
           <RevealItem as="p" className="mt-4 w-full text-[17px] leading-[1.7] text-off-white/65">
             Every location below carries sales, service or parts capability, and in most cases all three.
           </RevealItem>
-        </RevealGroup>
+        </RevealGroup> */}
       </div>
     </section>
   );

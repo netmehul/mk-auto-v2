@@ -395,10 +395,10 @@ function Careers() {
         className="section-y"
       >
         <div className="shell">
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-20">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-20">
 
 
-          <RevealGroup className="lg:col-span-6">
+          <RevealGroup className="lg:col-span-6 md:mt-12">
             <RevealItem>
               <h2
                 id="why-work-with-us"
@@ -418,10 +418,7 @@ function Careers() {
                   text-grey-500
                 "
               >
-                At Mahy Khooray Automotive, we believe progress starts
-                with people. Our work brings together automotive brands,
-                customer experiences and teams working towards a shared
-                ambition for the future.
+                At MAHY Khoory Automotive, we believe progress starts with people.
               </p>
             </RevealItem>
           </RevealGroup>

@@ -81,11 +81,11 @@ export function Brands() {
               id="brands-title"
               className="h2-display mt-7 uppercase text-off-white"
             >
-              Official UAE distributor for three global marques.
+              OFFICIAL DISTRIBUTOR <br/> FOR TWO GLOBAL MARQUES
             </h2>
           </RevealItem>
 
-          <RevealItem
+          {/* <RevealItem
             as="p"
             className="
               mt-6
@@ -98,7 +98,7 @@ export function Brands() {
             Each brand is supported end-to-end by Mahy Khooray
             Automotive sales, aftersales, genuine parts and
             warranty under one accountable group.
-          </RevealItem>
+          </RevealItem> */}
 
         </RevealGroup>
 
