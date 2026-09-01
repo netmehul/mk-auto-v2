@@ -38,7 +38,7 @@ type Pin = {
       emirate: "dubay",
       lat: 25.27425701772772,
       lng: 55.34734670979811,
-      loc: "https://maps.app.goo.gl/Hr5gCEHK5B25s2Au6"
+      loc: "https://maps.app.goo.gl/mwWCVgakKK9f4nih6"
     },
   
     {
@@ -47,7 +47,7 @@ type Pin = {
       emirate: "abu-dhabi",
       lat: 24.487590085434004,
       lng: 54.354002428834875,
-      loc: "https://maps.app.goo.gl/Hr5gCEHK5B25s2Au6"
+      loc: "https://maps.app.goo.gl/azbajQ7A2sSTYtnc9"
     },
   
     {
@@ -56,7 +56,7 @@ type Pin = {
       emirate: "abu-dhabi",
       lat: 24.359651814461323,
       lng: 54.521003172966616,
-      loc: "https://maps.app.goo.gl/Hr5gCEHK5B25s2Au6"
+      loc: "https://maps.app.goo.gl/rXEwYqyxbHZZdiAF9"
     },
   
     {
@@ -65,7 +65,7 @@ type Pin = {
       emirate: "abu-dhabi",
       lat: 24.48478311581781,
       lng: 54.36026481949599,
-      loc: "https://maps.app.goo.gl/Hr5gCEHK5B25s2Au6"
+      loc: "https://maps.app.goo.gl/7AoAfXXPzGhxbUHc9"
     },
   
     {
@@ -74,7 +74,7 @@ type Pin = {
       emirate: "abu-dhabi",
       lat: 24.485782862352053,
       lng: 54.362546920265984,
-      loc: "https://maps.app.goo.gl/Hr5gCEHK5B25s2Au6"
+      loc: "https://maps.app.goo.gl/roRb5Pw9P18Uxngh7"
     },
   
     {
@@ -83,7 +83,7 @@ type Pin = {
       emirate: "dubay",
       lat: 25.219987965545624,
       lng: 55.23515534956214,
-      loc: "https://maps.app.goo.gl/Hr5gCEHK5B25s2Au6"
+      loc: "https://maps.app.goo.gl/jfqgdXb8KdRYujsU7"
     },
   
     {
@@ -92,7 +92,7 @@ type Pin = {
       emirate: "abu-dhabi",
       lat: 24.359283982690457,
       lng: 54.49389557116512,
-      loc: "https://maps.app.goo.gl/Hr5gCEHK5B25s2Au6"
+      loc: "https://maps.app.goo.gl/RLJbjepJmwPDMbVcA"
     },
   
     {
@@ -101,7 +101,7 @@ type Pin = {
       emirate: "abu-dhabi",
       lat: 24.41405261941151,
       lng: 54.51829541827092,
-      loc: "https://maps.app.goo.gl/Hr5gCEHK5B25s2Au6"
+      loc: "https://maps.app.goo.gl/RLJbjepJmwPDMbVcA"
     },
   
     {
@@ -110,7 +110,7 @@ type Pin = {
       emirate: "dubay",
       lat: 25.21731549511586,
       lng: 55.236204137079554,
-      loc: "https://maps.app.goo.gl/Hr5gCEHK5B25s2Au6"
+      loc: "https://maps.app.goo.gl/jfqgdXb8KdRYujsU7"
     },
   ];
 

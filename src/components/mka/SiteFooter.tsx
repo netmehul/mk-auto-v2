@@ -142,12 +142,12 @@ export function SiteFooter() {
           <RevealItem>
             <a
               href="/"
-              aria-label="MAHY Khooray Automotive"
+              aria-label="MAHY Khoory Automotive"
               className="inline-flex"
             >
               <img
                 src={logo}
-                alt="MAHY Khooray Automotive"
+                alt="MAHY Khoory Automotive"
                 className="
                   h-auto
                   w-[245px]
@@ -234,7 +234,7 @@ export function SiteFooter() {
         <RevealItem>
           <a
             href="/"
-            aria-label="MAHY Khooray Automotive"
+            aria-label="MAHY Khoory Automotive"
             className="
               inline-flex
               items-center
@@ -243,7 +243,7 @@ export function SiteFooter() {
           >
             <img
               src={logo}
-              alt="MAHY Khooray Automotive"
+              alt="MAHY Khoory Automotive"
               className="
                 h-auto
                 w-[235px]
@@ -338,7 +338,7 @@ export function SiteFooter() {
               md:text-[12px]
             "
           >
-            Copyright © 2026 MAHYKhooray.com - All rights reserved.
+            Copyright © 2026 MAHYKhoory.com - All rights reserved.
           </p>
 
         </div>
@@ -541,8 +541,8 @@ function ContactContent({
 
       <ContactItem
         label="Email"
-        value="info@mahykhoorayautomotive.com"
-        href="mailto:info@mahykhoorayautomotive.com"
+        value="info@mahyKhooryautomotive.com"
+        href="mailto:info@mahyKhooryautomotive.com"
         mobile={mobile}
       />
 

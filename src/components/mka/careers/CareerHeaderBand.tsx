@@ -55,7 +55,7 @@ export function CareerHeaderBand() {
         <RevealGroup className="w-full">
           <RevealItem>
             <h1 id="about-title" className="h1-display uppercase mt-8 text-off-white md:text-7xl">
-            BUILD YOUR FUTURE WITH. <br /> MAHY Khooray Automotive.
+            BUILD YOUR FUTURE WITH. <br /> MAHY Khoory Automotive.
             </h1>
           </RevealItem>
           {/* <RevealItem as="p" className="mt-7 max-w-[58ch] text-[17px] leading-[1.7] text-off-white/70">

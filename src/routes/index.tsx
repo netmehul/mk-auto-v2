@@ -38,7 +38,7 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "Organization",
           name: "MAHY Khoory Automotive",
-          alternateName: "MAHY Khooray Automotive",
+          alternateName: "MAHY Khoory Automotive",
           description,
           address: {
             "@type": "PostalAddress",

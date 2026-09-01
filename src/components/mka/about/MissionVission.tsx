@@ -99,7 +99,7 @@ export function MissionVision() {
 
               {/* <img
                 src={missionImg}
-                alt="Mahy Khooray Automotive showroom floor in the United Arab Emirates"
+                alt="Mahy Khoory Automotive showroom floor in the United Arab Emirates"
                 className=" mt-8 h-full w-full object-cover object-center"
                 width={1920}
                 height={680}

@@ -1,6 +1,6 @@
-# MAHY Khooray Automotive
+# MAHY Khoory Automotive
 
-A premium, modern automotive website designed and developed for **MAHY Khooray Automotive**, an automotive company focused on vehicle distribution, genuine parts, customer care, aftersales services, sales excellence, and future-ready automotive solutions.
+A premium, modern automotive website designed and developed for **MAHY Khoory Automotive**, an automotive company focused on vehicle distribution, genuine parts, customer care, aftersales services, sales excellence, and future-ready automotive solutions.
 
 The website combines a dark automotive visual language with motion-driven interactions, responsive layouts, and a modular component architecture.
 
@@ -8,7 +8,7 @@ The website combines a dark automotive visual language with motion-driven intera
 
 ## Overview
 
-MAHY Khooray Automotive is designed as a digital platform that brings the company's automotive ecosystem together in one experience.
+MAHY Khoory Automotive is designed as a digital platform that brings the company's automotive ecosystem together in one experience.
 
 The website communicates:
 
@@ -64,11 +64,11 @@ The interface follows a few core principles:
 
 ### Hero
 
-A high-impact introduction to MAHY Khooray Automotive with automotive-focused visual storytelling and motion.
+A high-impact introduction to MAHY Khoory Automotive with automotive-focused visual storytelling and motion.
 
 ### Brand Discovery
 
-A dedicated area for discovering the automotive brands represented by MAHY Khooray Automotive.
+A dedicated area for discovering the automotive brands represented by MAHY Khoory Automotive.
 
 ### Comprehensive Automotive Solutions
 

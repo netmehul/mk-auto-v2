@@ -514,7 +514,7 @@ function Careers() {
                     >
                       Tell us a little about yourself, your experience
                       and where you see yourself contributing at
-                      Mahy Khooray Automotive.
+                      Mahy Khoory Automotive.
                     </p>
                   </RevealItem>
 

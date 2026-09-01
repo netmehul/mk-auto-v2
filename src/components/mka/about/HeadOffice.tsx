@@ -19,15 +19,15 @@ export function HeadOffice() {
             For nearly a century, M.A.H.Y. Khoory Group has become one of the UAE's established diversified business groups. Built on a legacy of innovation, reliability and long-standing partnerships, the Group today operates across engineering, trading, manufacturing, recycling, logistics, hospitality, interiors and green energy.
             
           </RevealItem>
-          <RevealItem as="p" className="mt-6 text-[15px] leading-[1.7] text-ink/60">
+          {/* <RevealItem as="p" className="mt-6 text-[15px] leading-[1.7] text-ink/60">
             Sunday to Thursday, 8:30 to 18:00.{" "}
             <a href="tel:+97140000000" className="text-navy-900 underline-offset-4 hover:text-gold hover:underline">
               +971 4 000 0000
             </a>
-          </RevealItem>
+          </RevealItem> */}
           <RevealItem className="mt-9">
             <PrimaryButton href="https://mahykhoory.com/">
-              Explore MAHY Khooray
+              Explore
             </PrimaryButton>
           </RevealItem>
         </RevealGroup>

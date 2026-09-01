@@ -11,10 +11,10 @@ import { CareersSection } from "@/components/mka/Careers";
 import { AboutCareersSection } from "@/components/mka/about/AboutCareer";
 import ogImage from "@/assets/OG-image.png";
 
-const title = "About MAHY Khooray Automotive | Mahy Khoory Automotive Group, UAE";
+const title = "About MAHY Khoory Automotive | Mahy Khoory Automotive Group, UAE";
 
 const description =
-  "MAHY Khooray Automotive is a UAE automotive group distributing Dongfeng, Omoda and Jaecoo. Read our mission, strengths, scale and showroom network across the Emirates.";
+  "MAHY Khoory Automotive is a UAE automotive group distributing Dongfeng, Omoda and Jaecoo. Read our mission, strengths, scale and showroom network across the Emirates.";
 
 export const Route = createFileRoute("/about")({
   component: About,

@@ -203,7 +203,7 @@ export function SiteLoader() {
             <img
               ref={logo}
               src={loaderLogo}
-              alt="Mahy Khooray Automotive"
+              alt="Mahy Khoory Automotive"
               className="
                 h-auto
                 w-[110px]

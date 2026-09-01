@@ -23,7 +23,7 @@ const BRANDS = [
     note: "Quality vehicles, ready for their next journey",
     image: "/brands/preowned-lineup.webp",
     logo: "/brands/certified-pre-owned.svg",
-    desc: "Explore quality pre-owned vehicles backed by the expertise and reputation of Mahy Khooray Automotive.",
+    desc: "Explore quality pre-owned vehicles backed by the expertise and reputation of Mahy Khoory Automotive.",
     href: undefined,
   },
 ];
@@ -95,7 +95,7 @@ export function Brands() {
               text-off-white/70
             "
           >
-            Each brand is supported end-to-end by Mahy Khooray
+            Each brand is supported end-to-end by Mahy Khoory
             Automotive sales, aftersales, genuine parts and
             warranty under one accountable group.
           </RevealItem> */}

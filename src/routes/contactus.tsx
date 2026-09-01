@@ -578,7 +578,7 @@ function Contact() {
               >
                 Your enquiry has been received and will be
                 directed to the relevant team. Someone from
-                Mahy Khooray Automotive will get back to you
+                Mahy Khoory Automotive will get back to you
                 shortly.
               </p>
 

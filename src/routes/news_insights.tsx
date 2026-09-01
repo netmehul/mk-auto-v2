@@ -8,7 +8,7 @@ import ogImage from "@/assets/OG-image.png";
 const title = "News & Insights | Mahy Khoory Automotive Group, UAE";
 
 const description =
-  "MAHY Khooray Automotive is a UAE automotive group distributing Dongfeng, Omoda and Jaecoo. Read our mission, strengths, scale and showroom network across the Emirates.";
+  "MAHY Khoory Automotive is a UAE automotive group distributing Dongfeng, Omoda and Jaecoo. Read our mission, strengths, scale and showroom network across the Emirates.";
 
 export const Route = createFileRoute('/news_insights')({
   component: NewsInsights,
