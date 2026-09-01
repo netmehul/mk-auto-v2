@@ -582,7 +582,8 @@ function ContactContent({
             md:text-[14px]
           "
         >
-          Salahaldin Street, Al Khabaisi, Abu Hail - Dubai
+          <a href="https://maps.app.goo.gl/5wYxu4rA1Rvx5PjZ6" rel="noopener noreferrer" target="_blank"> Salahaldin Street, Al Khabaisi, Abu Hail - Dubai </a>
+          
         </p>
       </div>
 

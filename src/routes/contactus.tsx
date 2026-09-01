@@ -466,7 +466,7 @@ function Contact() {
         <RevealItem>
           <h2
             id="enquiry-title"
-            className="h2-display mt-7 text-navy-900"
+            className="h2-display mt-7 uppercase text-navy-900"
           >
             How can we help?
           </h2>
@@ -497,10 +497,10 @@ function Contact() {
                 max-w-[45ch]
                 text-sm
                 leading-[1.8]
-                text-grey-500
+                text-ink-500
               "
             >
-              Salahaldin Street, Al Khabaisi, Abu Hail – Dubai, UAE
+              <a href="https://maps.app.goo.gl/5wYxu4rA1Rvx5PjZ6" rel="noopener noreferrer" target="_blank"> Salahaldin Street, Al Khabaisi, Abu Hail - Dubai </a>
             </p>
 
           </div>
