@@ -26,8 +26,8 @@ const CONTACT_DETAILS = [
   },
   {
     label: "Email",
-    value: "info@mahykoorayautomotive.com",
-    href: "mailto:info@mahykoorayautomotive.com",
+    value: "info@mahykhooryautomotive.com",
+    href: "mailto:info@mahykhooryautomotive.com",
   },
 ];
 
@@ -260,7 +260,7 @@ function Contact() {
 
       const formdata = new FormData();
       formdata.append("name", formData.name.trim());
-      formdata.append("email", formData.email.trim());
+      formdata.append("email", formData.email.trim().toLowerCase());
       formdata.append("phone", formatFullPhoneNumber(formData.countryCode, formData.phone));
       formdata.append("contact_subject_id", formData.subject.trim());
       formdata.append("message", formData.message.trim());

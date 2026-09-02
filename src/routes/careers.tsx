@@ -300,7 +300,7 @@ function Careers() {
 
       const formdata = new FormData();
       formdata.append("name", formData.name.trim());
-      formdata.append("email", formData.email.trim());
+      formdata.append("email", formData.email.trim().toLowerCase());
       formdata.append("phone", formatFullPhoneNumber(formData.countryCode, formData.phone));
       formdata.append("job_role_id", formData.department.trim());
       formdata.append("cover_letter", formData.message.trim());

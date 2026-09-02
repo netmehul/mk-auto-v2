@@ -541,8 +541,8 @@ function ContactContent({
 
       <ContactItem
         label="Email"
-        value="info@mahyKhooryautomotive.com"
-        href="mailto:info@mahyKhooryautomotive.com"
+        value="info@mahykhooryautomotive.com"
+        href="mailto:info@mahykhooryautomotive.com"
         mobile={mobile}
       />
 
@@ -583,7 +583,7 @@ function ContactContent({
           "
         >
           <a href="https://maps.app.goo.gl/5wYxu4rA1Rvx5PjZ6" rel="noopener noreferrer" target="_blank"> Salahaldin Street, Al Khabaisi, Abu Hail - Dubai </a>
-          
+
         </p>
       </div>
 
