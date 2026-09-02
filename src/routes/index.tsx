@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/mka/SiteHeader";
 import { Hero } from "@/components/mka/Hero";
@@ -52,12 +53,14 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
+  const [isLoaded, setIsLoaded] = useState(false);
+
   return (
     <>
-      <SiteLoader />
+      <SiteLoader onReady={() => setIsLoaded(true)} />
       <SiteHeader />
       <main>
-        <Hero />
+        <Hero isLoaded={isLoaded} />
         <WhoWeAre />
         <Brands />
         <AtAGlance />

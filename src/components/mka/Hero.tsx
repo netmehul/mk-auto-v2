@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import heroVideo from "@/assets/mk-corpo-video.webm";
+import heroVideo from "@/assets/for-website.webm";
 import { PrimaryButton } from "./Buttons";
 import { prefersReducedMotion, isMobileViewport } from "@/lib/motion-prefs";
 
@@ -12,11 +12,32 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 const easeOut = [0.22, 1, 0.36, 1] as const;
 const LINES = ["A legacy that inspires.", "A vision that moves forward."];
 
-export function Hero() {
+interface HeroProps {
+  isLoaded?: boolean;
+}
+
+export function Hero({ isLoaded = true }: HeroProps) {
   const root = useRef<HTMLElement>(null);
-  const [videoStarted, setVideoStarted] = useState(false);
-  const [contentVisible, setContentVisible] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [isVideoOpen, setIsVideoOpen] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (isLoaded) {
+      video.currentTime = 0;
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Autoplay fallback
+        });
+      }
+    } else {
+      video.pause();
+      video.currentTime = 0;
+    }
+  }, [isLoaded]);
 
   useGSAP(
     () => {
@@ -57,17 +78,6 @@ export function Hero() {
     { scope: root },
   );
 
-  const handleVideoPlay = () => {
-    setVideoStarted(true);
-    setContentVisible(false);
-  };
-
-  const handleInteraction = () => {
-    if (videoStarted && !isVideoOpen) {
-      setContentVisible(true);
-    }
-  };
-
   const openVideo = () => {
     setIsVideoOpen(true);
     document.body.style.overflow = "hidden";
@@ -97,36 +107,28 @@ export function Hero() {
         ref={root}
         id="top"
         aria-label="Introduction"
-        onMouseMove={handleInteraction}
-        onWheel={handleInteraction}
-        onTouchStart={handleInteraction}
         className="relative flex min-h-[100svh] items-end overflow-hidden bg-navy-900"
       >
         <div className="mt-18 md:mt-0 hero-media absolute inset-0 will-change-transform">
           <video
+            ref={videoRef}
             src={heroVideo}
             width={1920}
             height={1080}
-            autoPlay
             muted
             playsInline
             loop
             preload="auto"
-            onPlay={handleVideoPlay}
             onClick={openVideo}
             className="h-full w-full cursor-pointer object-cover"
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-navy-900/100 from-5% via-navy-900/15 via-30% to-navy-900/95 to-95%" />
         <div className="hero-scrim absolute inset-0 bg-navy-900 opacity-0" />
-        <div
-          className={`hero-content shell relative z-10 w-full pb-14 pt-40 transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] lg:pb-16 ${
-            videoStarted && !contentVisible ? "pointer-events-none opacity-0" : "opacity-100"
-          }`}
-        >
+        <div className="hero-content shell relative z-10 w-full pb-14 pt-40 transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] lg:pb-16 opacity-100">
           <motion.div
             initial="hidden"
-            animate="show"
+            animate={isLoaded ? "show" : "hidden"}
             variants={{
               show: {
                 transition: {

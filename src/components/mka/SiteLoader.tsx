@@ -3,7 +3,12 @@ import gsap from "gsap";
 import loaderLogo from "@/assets/logo-loader-optimized.svg";
 import PatternBG from '@/assets/pattern-bg.png';
 
-export function SiteLoader() {
+interface SiteLoaderProps {
+  onReady?: () => void;
+  onComplete?: () => void;
+}
+
+export function SiteLoader({ onReady, onComplete }: SiteLoaderProps = {}) {
   const loader = useRef<HTMLDivElement>(null);
   const logo = useRef<HTMLImageElement>(null);
   const percentage = useRef<HTMLDivElement>(null);
@@ -24,11 +29,13 @@ export function SiteLoader() {
     const timeline = gsap.timeline({
       onComplete: () => {
         setIsComplete(true);
+        onReady?.();
 
         const exitTimeline = gsap.timeline({
           onComplete: () => {
             document.body.style.overflow = "";
             loaderElement.style.display = "none";
+            onComplete?.();
           },
         });
 
