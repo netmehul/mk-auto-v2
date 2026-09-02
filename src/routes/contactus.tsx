@@ -12,6 +12,7 @@ import {
   ContactSubject,
   FALLBACK_CONTACT_SUBJECTS,
 } from "@/lib/contactSubjects";
+import { SmoothScroll } from "@/components/SmoothScroll";
 
 export const Route = createFileRoute("/contactus")({
   component: Contact,
@@ -329,14 +330,16 @@ function Contact() {
   };
 
   return (
+    
     <main className="bg-off-white text-navy-900">
+      <SmoothScroll>
         <SiteHeader />
         <ContactUsHeaderBand />
       {/* ======================================================
           INTRO
           ====================================================== */}
 
-      <section
+      {/* <section
         aria-labelledby="contact-title"
         className="section-y"
       >
@@ -375,12 +378,6 @@ function Contact() {
             </RevealItem>
 
           </RevealGroup>
-
-
-          {/* ====================================================
-              CONTACT DETAILS
-              ==================================================== */}
-
           <RevealGroup
             className="
               mt-16
@@ -450,15 +447,15 @@ function Contact() {
           </RevealGroup>
 
         </div>
-      </section>
+      </section> */}
 
 <section
   aria-labelledby="enquiry-title"
-  className="section mb-8 md:mb-[100px] bg-off-white text-ink"
+  className="section-y bg-off-white text-ink"
 >
   <div className="shell">
 
-    <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
+    <div className="grid gap-14 lg:grid-cols-12 lg:gap-10">
 
       {/* ------------------------------------------------
           LEFT CONTENT
@@ -469,7 +466,7 @@ function Contact() {
         <RevealItem>
           <h2
             id="enquiry-title"
-            className="h2-display mt-7 text-navy-900"
+            className="h2-display mt-7 uppercase text-navy-900"
           >
             How can we help?
           </h2>
@@ -484,8 +481,7 @@ function Contact() {
             text-grey-500
           "
         >
-          Tell us what you are looking for and our team will
-          make sure your enquiry reaches the right people.
+          Tell us what you’re looking for, and our team will get back to you
         </RevealItem>
 
         <RevealItem>
@@ -498,15 +494,13 @@ function Contact() {
             <p
               className="
                 mt-4
-                max-w-[35ch]
+                max-w-[45ch]
                 text-sm
                 leading-[1.8]
-                text-grey-500
+                text-ink-500
               "
             >
-              41, Near Abu Hail Metro Station,
-              <br />
-              Dubai, United Arab Emirates
+              <a href="https://maps.app.goo.gl/5wYxu4rA1Rvx5PjZ6" rel="noopener noreferrer" target="_blank"> Salahaldin Street, Al Khabaisi, Abu Hail - Dubai </a>
             </p>
 
           </div>
@@ -529,7 +523,7 @@ function Contact() {
             >
               Monday – Saturday
               <br />
-              8:00 AM – 6:00 PM
+              9:00 AM to 6:00 PM
             </p>
 
           </div>
@@ -584,7 +578,7 @@ function Contact() {
               >
                 Your enquiry has been received and will be
                 directed to the relevant team. Someone from
-                Mahy Khooray Automotive will get back to you
+                Mahy Khoory Automotive will get back to you
                 shortly.
               </p>
 
@@ -825,101 +819,56 @@ function Contact() {
                 />
 
 
-                <div>
+<div>
+  <label
+    htmlFor="subject"
+    className="
+      block
+      text-xs
+      font-medium
+      uppercase
+      tracking-[0.08em]
+      text-grey-500
+    "
+  >
+    Subject <span className="text-red-500">*</span>
+  </label>
 
-                  <label
-                    htmlFor="subject"
-                    className="
-                      block
-                      text-xs
-                      font-medium
-                      uppercase
-                      tracking-[0.08em]
-                      text-grey-500
-                    "
-                  >
-                    Subject / Department{" "}
-                    <span className="text-red-500">*</span>
-                  </label>
+  <input
+    id="subject"
+    name="subject"
+    type="text"
+    value={formData.subject}
+    onChange={handleChange}
+    onBlur={handleBlur}
+    placeholder="Enter subject"
+    className={`
+      mt-3
+      h-12
+      w-full
+      border-b
+      bg-transparent
+      px-0
+      text-sm
+      text-navy-900
+      outline-none
+      transition-colors
+      duration-300
+      placeholder:text-grey-400
+      ${
+        errors["subject"] && touched["subject"]
+          ? "border-red-400 focus:border-red-400"
+          : "border-grey-300 focus:border-gold"
+      }
+    `}
+  />
 
-                  <div className="relative mt-3">
-                    <select
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      disabled={
-                        isLoadingSubjects &&
-                        subjects.length === 0
-                      }
-                      className={`
-                        h-12
-                        w-full
-                        appearance-none
-                        border-b
-                        bg-transparent
-                        px-0
-                        pr-8
-                        text-sm
-                        outline-none
-                        transition-colors
-                        duration-300
-                        cursor-pointer
-                        ${
-                          !formData.subject
-                            ? "text-grey-400 font-normal"
-                            : "text-navy-900"
-                        }
-                        ${
-                          errors["subject"] && touched["subject"]
-                            ? "border-red-400 focus:border-red-400"
-                            : "border-grey-300 focus:border-gold"
-                        }
-                      `}
-                    >
-
-                      <option
-                        value=""
-                        disabled
-                        className="bg-white text-grey-400"
-                      >
-                        {isLoadingSubjects &&
-                        subjects.length === 0
-                          ? "Loading enquiry types..."
-                          : "Select an enquiry type"}
-                      </option>
-
-                      {subjects.map((item) => {
-                        const optionVal =
-                          item.id !== undefined &&
-                          item.id !== null
-                            ? String(item.id)
-                            : item.name;
-
-                        return (
-                          <option
-                            key={optionVal}
-                            value={optionVal}
-                            className="bg-white text-navy-900"
-                          >
-                            {item.name}
-                          </option>
-                        );
-                      })}
-
-                    </select>
-                    <ChevronDown className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 h-4 w-4 text-grey-400" />
-                  </div>
-
-                  {errors["subject"] &&
-                    touched["subject"] && (
-                      <p className="mt-1.5 text-xs text-red-500">
-                        {errors["subject"]}
-                      </p>
-                    )}
-
-                </div>
+  {errors["subject"] && touched["subject"] && (
+    <p className="mt-1.5 text-xs text-red-500">
+      {errors["subject"]}
+    </p>
+  )}
+</div>
 
               </div>
 
@@ -1126,6 +1075,7 @@ function Contact() {
 
       
       <SiteFooter />
+      </SmoothScroll>
     </main>
   );
 }

@@ -42,10 +42,9 @@ export function CareersSection() {
           <span className="careers-line block">Be part of something bigger.</span>
           <span className="careers-line block text-off-white/70">Build the future with us.</span>
         </h2>
-        <RevealGroup className="mt-10 flex flex-col items-start gap-8 lg:flex-row lg:items-center lg:justify-between">
+        <RevealGroup className="mt-10 flex flex-col items-start gap-8 lg:flex-col lg:gap-4">
           <RevealItem as="p" className="max-w-[52ch] text-[17px] leading-[1.7] text-off-white/70">
-            Want to join our team? We're hiring across retail, aftersales, parts and corporate functions as the
-            group grows.
+            Want to join our team?
           </RevealItem>
           <RevealItem>
             <MagneticButton href="/careers">Explore Careers</MagneticButton>

@@ -9,6 +9,7 @@ import { CareersSection } from "@/components/mka/Careers";
 import { News } from "@/components/mka/News";
 import { SiteFooter } from "@/components/mka/SiteFooter";
 import { SiteLoader } from "@/components/mka/SiteLoader";
+import { SmoothScroll } from "@/components/SmoothScroll";
 import ogImage from "@/assets/OG-image.png";
 
 const title = "MAHY Khoory Automotive";
@@ -38,7 +39,7 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "Organization",
           name: "MAHY Khoory Automotive",
-          alternateName: "MAHY Khooray Automotive",
+          alternateName: "MAHY Khoory Automotive",
           description,
           address: {
             "@type": "PostalAddress",
@@ -58,16 +59,19 @@ function Home() {
   return (
     <>
       <SiteLoader onReady={() => setIsLoaded(true)} />
-      <SiteHeader />
-      <main>
-        <Hero isLoaded={isLoaded} />
-        <WhoWeAre />
-        <Brands />
-        <AtAGlance />
-        <CareersSection />
-        <News />
-      </main>
-      <SiteFooter />
+      <SmoothScroll>
+        <SiteHeader />
+
+        <main>
+          <Hero isLoaded={isLoaded} />
+          <WhoWeAre />
+          <Brands />
+          <AtAGlance />
+          <CareersSection />
+          <News />
+        </main>
+        <SiteFooter />
+      </SmoothScroll>
     </>
   );
 }

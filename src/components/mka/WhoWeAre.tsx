@@ -22,17 +22,15 @@ export function WhoWeAre() {
         <RevealGroup className="lg:col-span-6">
           <RevealItem>
             <h2 id="who-we-are-title" className="h2-display mt-7 uppercase max-w-[18ch] text-navy-900">
-              A UAE automotive group built on legacy and scale.
+            A Legacy of Trust, Driving What’s Next
             </h2>
           </RevealItem>
           <RevealItem as="p" className="mt-7 max-w-[62ch] text-[17px] leading-[1.7] text-ink/65">
-            Part of the Mahy Khoory family of businesses, MKA represents world-class automotive brands across
-            the Emirates. Our operation spans distribution, retail, aftersales and genuine parts - supported by
-            a network engineered for consistency in every showroom we open.
+            MAHY Khoory Automotive is part of the M.A.H.Y Khoory Group, with nearly a century of heritage built on trust, 
+            innovation and excellence. Bringing this legacy into automotive, we combine global brands with strong regional expertise to deliver innovative vehicles, personalised customer service and dependable aftersales support. 
           </RevealItem>
           <RevealItem as="p" className="mt-4 max-w-[62ch] text-[17px] leading-[1.7] text-ink/65">
-            We measure ourselves on long-term ownership experience, not single transactions. That principle
-            shapes how we invest in facilities, technicians and the customers who trust us.
+          Our portfolio includes Dongfeng across the UAE, and OMODA & JAECOO in Abu Dhabi. We go beyond the drive, making every journey and every ownership experience better.
           </RevealItem>
           <RevealItem className="mt-9">
             <a

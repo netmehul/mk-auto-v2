@@ -47,7 +47,7 @@ export function News() {
           <div>
             <RevealItem>
               <h2 id="news-title" className="h2-display uppercase mt-7 max-w-[20ch] text-navy-900">
-                The latest from the group.
+                COMPANY HIGHLIGHTS
               </h2>
             </RevealItem>
           </div>

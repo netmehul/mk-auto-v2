@@ -10,7 +10,7 @@ import { prefersReducedMotion, isMobileViewport } from "@/lib/motion-prefs";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
-const LINES = ["A legacy that inspires.", "A vision that moves forward."];
+const LINES = ["Connecting People ", "to Better Journeys"];
 
 interface HeroProps {
   isLoaded?: boolean;
@@ -157,13 +157,13 @@ export function Hero({ isLoaded = true }: HeroProps) {
                           opacity: 1,
                           y: 0,
                           transition: {
-                            duration: 0.9,
+                            duration: 1,
                             ease: easeOut,
                           },
                         },
                       }}
                     >
-                      <span className={i === 1 ? "text-off-white/70" : undefined}>{line}</span>
+                      <span className={i === 1 ? "text-off-white/100" : undefined}>{line}</span>
                     </motion.span>
                   </span>
                 ))}

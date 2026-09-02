@@ -48,9 +48,9 @@ export function NewsHeaderBand() {
               Our Latest <br /> News & Insights
             </h1>
           </RevealItem>
-          <RevealItem as="p" className="mt-7 max-w-[58ch] text-[17px] leading-[1.7] text-off-white/70">
+          {/* <RevealItem as="p" className="mt-7 max-w-[58ch] text-[17px] leading-[1.7] text-off-white/70">
             A UAE automotive group built on legacy, scale, and a clear view of the road ahead.
-          </RevealItem>
+          </RevealItem> */}
         </RevealGroup>
       </div>
     </section>

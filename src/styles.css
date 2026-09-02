@@ -265,3 +265,9 @@
   height: auto;
 }
 
+html.loader-active,
+body.loader-active {
+  overflow: hidden !important;
+  height: 100%;
+  overscroll-behavior: none;
+}

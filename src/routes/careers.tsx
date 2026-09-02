@@ -12,6 +12,7 @@ import { Loader2, AlertCircle, CheckCircle2, FileText, X, ChevronDown, Upload } 
 import { PhoneInputField } from "@/components/mka/PhoneInputField";
 import { validatePhoneNumber, formatFullPhoneNumber } from "@/lib/phoneValidation";
 import { fetchJobRoles, JobRole, FALLBACK_JOB_ROLES } from "@/lib/jobRoles";
+import { SmoothScroll } from "@/components/SmoothScroll";
 
 export const Route = createFileRoute("/careers")({
   component: Careers,
@@ -381,6 +382,7 @@ function Careers() {
 
   return (
     <main className="bg-off-white text-navy-900">
+      <SmoothScroll>
       <SiteHeader />
       <CareerHeaderBand />
 
@@ -393,10 +395,10 @@ function Careers() {
         className="section-y"
       >
         <div className="shell">
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-20">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-20">
 
 
-          <RevealGroup className="lg:col-span-6">
+          <RevealGroup className="lg:col-span-6 md:mt-12">
             <RevealItem>
               <h2
                 id="why-work-with-us"
@@ -416,10 +418,7 @@ function Careers() {
                   text-grey-500
                 "
               >
-                At Mahy Khooray Automotive, we believe progress starts
-                with people. Our work brings together automotive brands,
-                customer experiences and teams working towards a shared
-                ambition for the future.
+                At MAHY Khoory Automotive, we believe progress starts with people.
               </p>
             </RevealItem>
           </RevealGroup>
@@ -515,7 +514,7 @@ function Careers() {
                     >
                       Tell us a little about yourself, your experience
                       and where you see yourself contributing at
-                      Mahy Khooray Automotive.
+                      Mahy Khoory Automotive.
                     </p>
                   </RevealItem>
 
@@ -1032,7 +1031,7 @@ function Careers() {
       </section>
 
       <SiteFooter />
-
+      </SmoothScroll>
     </main>
   );
 }

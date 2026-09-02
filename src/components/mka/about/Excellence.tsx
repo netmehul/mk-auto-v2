@@ -22,14 +22,14 @@ const TILES: Tile[] = [
     number: "01",
     title: "Sales Excellence",
     copy:
-      "Showroom teams trained on each marque, with a single handover standard across the network.",
+      "Helping customers find the right vehicle with knowledgeable guidance and a smooth, straightforward buying experience.",
     path: "M3 17l4-8 5 3 4-6 5 5M3 21h18",
   },
   {
     number: "02",
     title: "After Sales & Service",
     copy:
-      "Workshops staffed by certified technicians, with capacity planned around real service demand.",
+      "Providing genuine parts to maintain the quality, reliability and performance of every vehicle.",
     path:
       "M14.5 5.5a4 4 0 01-5.3 5.3L4 16v4h4l5.2-5.2a4 4 0 015.3-5.3l-2.8 2.8-2.4-2.4 2.8-2.8z",
   },
@@ -37,7 +37,7 @@ const TILES: Tile[] = [
     number: "03",
     title: "Genuine Parts",
     copy:
-      "Central parts holding in Dubai, distributed daily to every workshop we operate.",
+      "Supporting customers beyond the purchase with professional service, skilled technicians and dependable vehicle care.",
     path:
       "M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3zm0 0v18M4 7.5l8 4.5 8-4.5",
   },
@@ -45,7 +45,7 @@ const TILES: Tile[] = [
     number: "04",
     title: "Customer Experience",
     copy:
-      "One record of ownership per customer, from first enquiry through warranty and resale.",
+      "Putting our customers first with personal support and care at every step of their journey.",
     path:
       "M12 20s-7-4.3-7-9a4 4 0 017-2.6A4 4 0 0119 11c0 4.7-7 9-7 9z",
   },
@@ -206,335 +206,216 @@ export function Excellence() {
       aria-labelledby="excel-title"
       className="section-y bg-off-white text-ink"
     >
-      <div className="shell">
+            <div className="shell">
 
-        <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
+<div className="grid gap-14 lg:grid-cols-12 lg:gap-14">
 
-          {/* ======================================================
-              LEFT CONTENT
-              ====================================================== */}
+  {/* ======================================================
+      LEFT CONTENT
+      ====================================================== */}
 
-          <div className="lg:col-span-5">
+  <div className="lg:col-span-4">
 
-            <div className="lg:sticky lg:top-28 py-4">
+    <div className="lg:sticky lg:top-28 py-4">
 
-              <RevealGroup>
+      <RevealGroup>
 
-                {/* Heading */}
+        {/* Heading */}
 
-                <RevealItem>
-                  <h2
-                    id="excel-title"
-                    className="
-                      h2-display
-                      mt-7
-                      max-w-[14ch]
-                      uppercase
-                      text-navy-900
-                    "
-                  >
-                    Four disciplines the group is built around.
-                  </h2>
-                </RevealItem>
+        <RevealItem>
+          <h2
+            id="excel-title"
+            className="
+              h2-display
+              mt-7
+              max-w-[14ch]
+              uppercase
+              text-navy-900
+            "
+          >
+            What we <br/> excel at
+          </h2>
+        </RevealItem>
+        
+        {/* <RevealItem
+          as="p"
+          className="
+            mt-6
+            max-w-[46ch]
+            text-[16px]
+            leading-[1.75]
+            text-ink/65
+            sm:text-[17px]
+          "
+        >
+          Each one is run in house, so accountability sits
+          with MKA rather than a third party.
+        </RevealItem> */}
 
+      </RevealGroup>
 
-                {/* Description */}
+    </div>
 
-                <RevealItem
-                  as="p"
-                  className="
-                    mt-6
-                    max-w-[46ch]
-                    text-[16px]
-                    leading-[1.75]
-                    text-ink/65
-                    sm:text-[17px]
-                  "
-                >
-                  Each one is run in house, so accountability sits
-                  with MKA rather than a third party.
-                </RevealItem>
-
-              </RevealGroup>
-
-            </div>
-
-          </div>
+  </div>
 
 
-          {/* ======================================================
-              RIGHT SIDE
-              ====================================================== */}
+  {/* ======================================================
+      RIGHT SIDE
+      ====================================================== */}
 
-          <div className="lg:col-span-7">
+  <div className="w-full lg:col-span-8">
 
 
-            {/* ====================================================
-                DESKTOP STACK
-                ==================================================== */}
+    {/* ====================================================
+        DESKTOP STACK
+        ==================================================== */}
 
-            <div
-              ref={stack}
+    <div
+      ref={stack}
+      className="
+        relative
+        hidden
+        h-[450px]
+        w-full
+        lg:block
+      "
+    >
+
+      {TILES.map((tile, index) => (
+
+        <article
+          key={tile.title}
+          className="
+            excellence-card
+            absolute
+            left-0
+            top-0
+            h-[300px]
+            w-full
+            overflow-hidden
+            border
+            border-grey-200
+            bg-white
+            p-8
+            shadow-[0_20px_55px_rgba(5,15,55,0.07)]
+            will-change-transform
+          "
+          style={{
+            zIndex: index + 1,
+          }}
+        >
+
+          {/* ============================================
+              CARD HEADER
+              ============================================ */}
+
+          <div className="flex items-start justify-between">
+
+            <span
               className="
-                relative
-                hidden
-                h-[450px]
-                w-full
-                lg:block
+                font-display
+                text-xs
+                tracking-[0.16em]
+                text-gold
               "
             >
-
-              {TILES.map((tile, index) => (
-
-                <article
-                  key={tile.title}
-                  className="
-                    excellence-card
-                    absolute
-                    left-0
-                    top-0
-                    h-[300px]
-                    w-full
-                    overflow-hidden
-                    border
-                    border-grey-200
-                    bg-white
-                    p-8
-                    shadow-[0_20px_55px_rgba(5,15,55,0.07)]
-                    will-change-transform
-                  "
-                  style={{
-                    zIndex: index + 1,
-                  }}
-                >
-
-                  {/* ============================================
-                      CARD HEADER
-                      ============================================ */}
-
-                  <div className="flex items-start justify-between">
-
-                    <span
-                      className="
-                        font-display
-                        text-xs
-                        tracking-[0.16em]
-                        text-gold
-                      "
-                    >
-                      {tile.number}
-                    </span>
+              {tile.number}
+            </span>
 
 
-                    <svg
-                      width="34"
-                      height="34"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.35"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      aria-hidden="true"
-                      className="text-navy-900"
-                    >
-                      <path d={tile.path} />
-                    </svg>
-
-                  </div>
-
-
-                  {/* ============================================
-                      CARD CONTENT
-                      ============================================ */}
-
-                  <div
-                    className="
-                      absolute
-                      bottom-10
-                      left-10
-                      right-10
-                      max-w-[40ch]
-                    "
-                  >
-
-                    <h3
-                      className="
-                        font-display
-                        text-[28px]
-                        leading-[1.15]
-                        text-navy-900
-                        lg:text-[32px]
-                      "
-                    >
-                      {tile.title}
-                    </h3>
-
-
-                    <p
-                      className="
-                        mt-5
-                        text-[15px]
-                        leading-[1.8]
-                        text-ink/60
-                        lg:text-[16px]
-                      "
-                    >
-                      {tile.copy}
-                    </p>
-
-                  </div>
-
-
-                  {/* ============================================
-                      GOLD BOTTOM LINE
-                      ============================================ */}
-
-                  <div
-                    className="
-                      absolute
-                      bottom-0
-                      left-0
-                      h-[3px]
-                      w-full
-                      bg-gold
-                    "
-                  />
-
-                </article>
-
-              ))}
-
-            </div>
-
-
-            {/* ====================================================
-                TABLET / MOBILE
-                ==================================================== */}
-
-            <div className="space-y-5 lg:hidden">
-
-              {TILES.map((tile) => (
-
-                <RevealItem key={tile.title}>
-
-                  <article
-                    className="
-                      relative
-                      min-h-[280px]
-                      overflow-hidden
-                      border
-                      border-grey-200
-                      bg-white
-                      p-7
-                      shadow-[0_12px_35px_rgba(5,15,55,0.05)]
-                      sm:min-h-[320px]
-                      sm:p-9
-                    "
-                  >
-
-                    {/* Card header */}
-
-                    <div className="flex items-start justify-between">
-
-                      <span
-                        className="
-                          font-display
-                          text-xs
-                          tracking-[0.16em]
-                          text-gold
-                        "
-                      >
-                        {tile.number}
-                      </span>
-
-
-                      <svg
-                        width="32"
-                        height="32"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.35"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        aria-hidden="true"
-                        className="text-navy-900"
-                      >
-                        <path d={tile.path} />
-                      </svg>
-
-                    </div>
-
-
-                    {/* Card content */}
-
-                    <div
-                      className="
-                        absolute
-                        bottom-8
-                        left-7
-                        right-7
-                        max-w-[34ch]
-                        sm:left-9
-                        sm:right-9
-                      "
-                    >
-
-                      <h3
-                        className="
-                          font-display
-                          text-2xl
-                          leading-tight
-                          text-navy-900
-                          sm:text-3xl
-                        "
-                      >
-                        {tile.title}
-                      </h3>
-
-
-                      <p
-                        className="
-                          mt-4
-                          text-[15px]
-                          leading-[1.75]
-                          text-ink/60
-                          sm:text-[16px]
-                        "
-                      >
-                        {tile.copy}
-                      </p>
-
-                    </div>
-
-
-                    {/* Gold line */}
-
-                    <div
-                      className="
-                        absolute
-                        bottom-0
-                        left-0
-                        h-[3px]
-                        w-full
-                        bg-gold
-                      "
-                    />
-
-                  </article>
-
-                </RevealItem>
-
-              ))}
-
-            </div>
+            <svg
+              width="34"
+              height="34"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.35"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+              className="text-navy-900"
+            >
+              <path d={tile.path} />
+            </svg>
 
           </div>
 
-        </div>
 
-      </div>
+          {/* ============================================
+              CARD CONTENT
+              ============================================ */}
+
+          <div
+            className="
+              absolute
+              bottom-10
+              left-10
+              right-10
+              max-w-[50ch]
+            "
+          >
+
+            <h3
+              className="
+                font-display
+                text-[28px]
+                leading-[1.15]
+                text-navy-900
+                lg:text-[32px]
+              "
+            >
+              {tile.title}
+            </h3>
+
+
+            <p
+              className="
+                mt-5
+                text-[15px]
+                leading-[1.8]
+                text-ink/60
+                lg:text-[16px]
+              "
+            >
+              {tile.copy}
+            </p>
+
+          </div>
+
+
+          {/* ============================================
+              GOLD BOTTOM LINE
+              ============================================ */}
+
+          <div
+            className="
+              absolute
+              bottom-0
+              left-0
+              h-[3px]
+              w-full
+              bg-gold
+            "
+          />
+
+        </article>
+
+      ))}
+
+    </div>
+
+
+    {/* ====================================================
+        TABLET / MOBILE
+        ==================================================== */}
+
+    
+
+  </div>
+
+</div>
+
+</div>
     </section>
   );
 }

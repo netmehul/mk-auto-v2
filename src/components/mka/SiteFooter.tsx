@@ -56,29 +56,14 @@ const legalLinks = [
 
 const socials = [
   {
-    label: "Facebook",
-    icon: "/icons/social/facebook.svg",
-    href: "#",
+    label: "LinkedIn",
+    icon: "/icons/social/linkedin.svg",
+    href: "https://www.linkedin.com/company/mahy-khoory-automotive",
   },
   {
     label: "Instagram",
     icon: "/icons/social/instagram.svg",
-    href: "#",
-  },
-  {
-    label: "X",
-    icon: "/icons/social/x.svg",
-    href: "#",
-  },
-  {
-    label: "TikTok",
-    icon: "/icons/social/tiktok.svg",
-    href: "#",
-  },
-  {
-    label: "YouTube",
-    icon: "/icons/social/youtube.svg",
-    href: "#",
+    href: "https://www.instagram.com/mahykhooryautomotive",
   },
 ];
 
@@ -157,12 +142,12 @@ export function SiteFooter() {
           <RevealItem>
             <a
               href="/"
-              aria-label="MAHY Khooray Automotive"
+              aria-label="MAHY Khoory Automotive"
               className="inline-flex"
             >
               <img
                 src={logo}
-                alt="MAHY Khooray Automotive"
+                alt="MAHY Khoory Automotive"
                 className="
                   h-auto
                   w-[245px]
@@ -249,7 +234,7 @@ export function SiteFooter() {
         <RevealItem>
           <a
             href="/"
-            aria-label="MAHY Khooray Automotive"
+            aria-label="MAHY Khoory Automotive"
             className="
               inline-flex
               items-center
@@ -258,7 +243,7 @@ export function SiteFooter() {
           >
             <img
               src={logo}
-              alt="MAHY Khooray Automotive"
+              alt="MAHY Khoory Automotive"
               className="
                 h-auto
                 w-[235px]
@@ -353,7 +338,7 @@ export function SiteFooter() {
               md:text-[12px]
             "
           >
-            Copyright © 2026 MAHYKhooray.com - All rights reserved.
+            Copyright © 2026 MAHYKhoory.com - All rights reserved.
           </p>
 
         </div>
@@ -556,23 +541,10 @@ function ContactContent({
 
       <ContactItem
         label="Email"
-        value="info@mahykhoorayautomotive.com"
-        href="mailto:info@mahykhoorayautomotive.com"
+        value="info@mahyKhooryautomotive.com"
+        href="mailto:info@mahyKhooryautomotive.com"
         mobile={mobile}
       />
-
-
-      {/* ====================================================
-          CALL
-          ==================================================== */}
-
-      <ContactItem
-        label="Call"
-        value="+971 1234 568 7891"
-        href="tel:+97112345687891"
-        mobile={mobile}
-      />
-
 
       {/* ====================================================
           ADDRESS
@@ -610,7 +582,8 @@ function ContactContent({
             md:text-[14px]
           "
         >
-          41, Near Abu Hail Metro Station, Dubai, UAE.
+          <a href="https://maps.app.goo.gl/5wYxu4rA1Rvx5PjZ6" rel="noopener noreferrer" target="_blank"> Salahaldin Street, Al Khabaisi, Abu Hail - Dubai </a>
+          
         </p>
       </div>
 
@@ -717,6 +690,8 @@ function SocialLinks({
         <a
           key={social.label}
           href={social.href}
+          target="_blank"
+          rel="noopener noreferrer"
           aria-label={social.label}
           className="
             group

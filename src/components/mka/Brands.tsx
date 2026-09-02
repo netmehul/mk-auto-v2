@@ -23,7 +23,7 @@ const BRANDS = [
     note: "Quality vehicles, ready for their next journey",
     image: "/brands/preowned-lineup.webp",
     logo: "/brands/certified-pre-owned.svg",
-    desc: "Explore quality pre-owned vehicles backed by the expertise and reputation of Mahy Khooray Automotive.",
+    desc: "Explore quality pre-owned vehicles backed by the expertise and reputation of Mahy Khoory Automotive.",
     href: undefined,
   },
 ];
@@ -81,11 +81,11 @@ export function Brands() {
               id="brands-title"
               className="h2-display mt-7 uppercase text-off-white"
             >
-              Official UAE distributor for three global marques.
+              OFFICIAL DISTRIBUTOR <br/> FOR TWO GLOBAL MARQUES
             </h2>
           </RevealItem>
 
-          <RevealItem
+          {/* <RevealItem
             as="p"
             className="
               mt-6
@@ -95,10 +95,10 @@ export function Brands() {
               text-off-white/70
             "
           >
-            Each brand is supported end-to-end by Mahy Khooray
+            Each brand is supported end-to-end by Mahy Khoory
             Automotive sales, aftersales, genuine parts and
             warranty under one accountable group.
-          </RevealItem>
+          </RevealItem> */}
 
         </RevealGroup>
 

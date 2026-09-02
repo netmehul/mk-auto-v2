@@ -76,11 +76,7 @@ export function MissionVision() {
     >
       <div className="shell">
 
-        {/* ======================================================
-            TITLE
-            ====================================================== */}
-
-        <motion.header
+        {/* <motion.header
           className="mx-auto max-w-3xl text-center"
           initial="hidden"
           whileInView="show"
@@ -99,20 +95,15 @@ export function MissionVision() {
             <br />
             and where it is going.
           </motion.h2>
-        </motion.header>
+        </motion.header> */}
 
-
-        {/* ======================================================
-            IMAGE
-            ====================================================== */}
-
-              <img
+              {/* <img
                 src={missionImg}
-                alt="Mahy Khooray Automotive showroom floor in the United Arab Emirates"
+                alt="Mahy Khoory Automotive showroom floor in the United Arab Emirates"
                 className=" mt-8 h-full w-full object-cover object-center"
                 width={1920}
                 height={680}
-              />
+              /> */}
 
 
         {/* ======================================================
@@ -175,19 +166,15 @@ export function MissionVision() {
               className="
                 mt-6
                 max-w-[58ch]
-                text-[15px]
-                leading-[1.8]
-                text-ink/75
-                sm:text-[16px]
+                text-[16px]
+                leading-[1.4]
+                text-ink
+                md:text-[24px]
               "
             >
-              We distribute and support automotive brands across
-              the United Arab Emirates. Our work covers sales,
-              aftersales service and genuine parts, delivered
-              through facilities we own and teams we train. We
-              hold the same standard in every emirate we operate
-              in, so ownership feels consistent wherever a
-              customer buys.
+              Our mission is to bring leading global automotive brands to our customers, 
+              with local expertise, quality service and reliable aftersales care.
+
             </p>
 
           </motion.article>
@@ -228,18 +215,15 @@ export function MissionVision() {
               className="
                 mt-6
                 max-w-[58ch]
-                text-[15px]
-                leading-[1.8]
-                text-ink/75
-                sm:text-[16px]
+                text-[16px]
+                leading-[1.4]
+                text-ink
+                md:text-[24px]
               "
             >
-              We want to be the group UAE customers choose for
-              the full life of a vehicle, not only the first
-              purchase. That means more service capacity, faster
-              parts availability and a network that keeps pace
-              with new mobility technology. We build for the
-              next decade of the market, not the next quarter.
+              Our vision is to be a trusted automotive company in the UAE, bringing people closer to 
+              innovative vehicles and creating better ownership experiences.
+
             </p>
 
           </motion.article>

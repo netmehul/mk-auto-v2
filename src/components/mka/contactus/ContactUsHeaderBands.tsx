@@ -5,6 +5,8 @@ import { useGSAP } from "@gsap/react";
 import ogAsset from "@/assets/opengraph-image.png.asset.json";
 import { RevealGroup, RevealItem } from "../Reveal";
 import { prefersReducedMotion, isMobileViewport } from "@/lib/motion-prefs";
+import FooterBg from "@/assets/footer-bg.png";
+
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -40,6 +42,14 @@ export function ContactUsHeaderBand() {
         className="about-watermark pointer-events-none absolute inset-0 h-[120%] w-full object-cover opacity-[0.12]"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-navy-900/70 via-navy-900/85 to-navy-900" />
+      <div className="absolute inset-0">
+        <img
+          src={FooterBg}
+          alt=""
+          aria-hidden="true"
+          className="h-full w-full object-cover"
+        />
+      </div>
 
       <div className="shell relative">
         <RevealGroup className="w-full">
@@ -48,9 +58,9 @@ export function ContactUsHeaderBand() {
              Your Journey <br /> Starts With a Conversation
             </h1>
           </RevealItem>
-          <RevealItem as="p" className="mt-7 max-w-[58ch] text-[17px] leading-[1.7] text-off-white/70">
+          {/* <RevealItem as="p" className="mt-7 max-w-[58ch] text-[17px] leading-[1.7] text-off-white/70">
             A UAE automotive group built on legacy, scale, and a clear view of the road ahead.
-          </RevealItem>
+          </RevealItem> */}
         </RevealGroup>
       </div>
     </section>
